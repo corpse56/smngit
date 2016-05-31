@@ -19,7 +19,7 @@ namespace SummonManager
             cbWPNAME.ValueMember = "ID";
             cbWPNAME.DisplayMember = "WPNAME";
             cbWPNAME.DataSource = dbwp.GetAllWPNames();
-            //cbWPNAME.SelectedValue = SVO.IDWPNAME;
+            //cbWPNAME.SelectedValue = SVO.IDWPNAME;f.......
             this.mf = mf_;
         }
 
