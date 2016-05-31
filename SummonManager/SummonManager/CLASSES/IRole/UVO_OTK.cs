@@ -63,10 +63,11 @@ namespace SummonManager
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
 
-            if (ss.pfSERIAL.Required)
+            //if (ss.pfSERIAL.Required)
             {
                 ss.pfSERIAL.ACCESSMODE = "EDIT";
                 ss.pfSERIAL.Enabled = true;
+                ss.pfSERIAL.RequiredEnabled = true;
             }
 
 

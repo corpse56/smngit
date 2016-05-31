@@ -52,20 +52,23 @@ namespace SummonManager
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
 
-            if (ss.pfPASSPORT.Required)
+            //if (ss.pfPASSPORT.Required)
             {
                 ss.pfPASSPORT.ACCESSMODE = "EDIT";
                 ss.pfPASSPORT.Enabled = true;
+                ss.pfPASSPORT.RequiredEnabled = true;
             }
-            if (ss.pfMANUAL.Required)
+            //if (ss.pfMANUAL.Required)
             {
                 ss.pfMANUAL.ACCESSMODE = "EDIT";
                 ss.pfMANUAL.Enabled = true;
+                ss.pfMANUAL.RequiredEnabled = true;
             }
-            if (ss.pfPACKINGLIST.Required)
+            //if (ss.pfPACKINGLIST.Required)
             {
                 ss.pfPACKINGLIST.ACCESSMODE = "EDIT";
                 ss.pfPACKINGLIST.Enabled = true;
+                ss.pfPACKINGLIST.RequiredEnabled = true;
             }
         }
 

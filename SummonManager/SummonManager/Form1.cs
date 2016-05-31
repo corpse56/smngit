@@ -23,15 +23,15 @@ namespace SummonManager
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //my first git
         
-        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        //public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.10";
-        public static int VersionNumber = 210;
+        public static string ProgramVersion = "2.11";
+        public static int VersionNumber = 211;
         public MainF()
         {
             InitializeComponent();

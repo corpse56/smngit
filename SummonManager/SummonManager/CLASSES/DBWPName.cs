@@ -122,13 +122,13 @@ namespace SummonManager
                                            " COMPOSITIONREQ,DIMENSIONALDRAWINGREQ,CONFIGURATIONREQ,WIRINGDIAGRAMREQ," +
                                            " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PACKAGINGREQ,PASSPORTREQ, "+
                                            " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ "+
-                                           " ,LENGHT,WIDTH,HEIGHT,WEIGHT) " +
+                                           " ,LENGTH,WIDTH,HEIGHT,WEIGHT) " +
                                            " values (@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
                                            " @MECHPARTS,@SHILDS,@PACKAGING,@MANUAL, @PASSPORT,@PACKINGLIST,@POWERSUPPLY,@NOTE,@CREATED,      " +
                                            " @COMPOSITIONREQ,@DIMENSIONALDRAWINGREQ,@CONFIGURATIONREQ,@WIRINGDIAGRAMREQ," +
                                            " @TECHREQREQ,@SBORKA3DREQ,@MECHPARTSREQ,@SHILDSREQ,@PACKAGINGREQ,@PASSPORTREQ, " +
                                            " @MANUALREQ,@PACKINGLISTREQ,@SOFTWAREREQ,@CABLELISTREQ,@ZHGUTLISTREQ,@RUNCARDLISTREQ,@CIRCUITBOARDLISTREQ "+
-                                           " ,@LENGHT,@WIDTH,@HEIGHT,@WEIGHT)";
+                                           " ,@LENGTH,@WIDTH,@HEIGHT,@WEIGHT)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
