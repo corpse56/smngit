@@ -64,6 +64,7 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.MySummonsTSB = new System.Windows.Forms.ToolStripButton();
             this.tsbWorkPart = new System.Windows.Forms.ToolStripButton();
+            this.tsbRemark = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.TStbs = new System.Windows.Forms.ToolStripTextBox();
@@ -301,6 +302,7 @@
             this.toolStripButton3,
             this.MySummonsTSB,
             this.tsbWorkPart,
+            this.tsbRemark,
             this.toolStripSeparator2,
             this.toolStripLabel1,
             this.TStbs,
@@ -410,6 +412,16 @@
             this.tsbWorkPart.Size = new System.Drawing.Size(36, 36);
             this.tsbWorkPart.Text = "Изделия";
             this.tsbWorkPart.Click += new System.EventHandler(this.tsbWorkPart_Click);
+            // 
+            // tsbRemark
+            // 
+            this.tsbRemark.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRemark.Image = global::SummonManager.Properties.Resources.exclamation_form1;
+            this.tsbRemark.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRemark.Name = "tsbRemark";
+            this.tsbRemark.Size = new System.Drawing.Size(36, 36);
+            this.tsbRemark.Text = "Система замечаний";
+            this.tsbRemark.Click += new System.EventHandler(this.tsbRemark_Click);
             // 
             // toolStripSeparator2
             // 
@@ -619,6 +631,7 @@
         private System.Windows.Forms.ToolStripMenuItem открытьТТToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsbWorkPart;
         private System.ComponentModel.BackgroundWorker bkwReloadData;
+        private System.Windows.Forms.ToolStripButton tsbRemark;
     }
 }
 

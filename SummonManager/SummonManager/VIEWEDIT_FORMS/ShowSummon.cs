@@ -219,6 +219,13 @@ namespace SummonManager
             tableLayoutPanel1.Focus();
         }
 
+        private void bRemarks_Click(object sender, EventArgs e)
+        {
+            Remarks r = new Remarks(UVO);
+            r.ShowDialog();
+
+        }
+
        
 
 

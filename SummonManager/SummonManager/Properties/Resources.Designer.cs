@@ -151,6 +151,27 @@ namespace SummonManager.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap exclamation {
+            get {
+                object obj = ResourceManager.GetObject("exclamation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap exclamation_disable {
+            get {
+                object obj = ResourceManager.GetObject("exclamation_disable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap exclamation_form1 {
+            get {
+                object obj = ResourceManager.GetObject("exclamation_form1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap fileprint_7424 {
             get {
                 object obj = ResourceManager.GetObject("fileprint_7424", resourceCulture);
@@ -193,6 +214,13 @@ namespace SummonManager.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap remark_reply {
+            get {
+                object obj = ResourceManager.GetObject("remark_reply", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap search2_5458 {
             get {
                 object obj = ResourceManager.GetObject("search2_5458", resourceCulture);
@@ -202,15 +230,9 @@ namespace SummonManager.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на ============================================================================
-        ///1.88
-        ///-Изменён справочник &quot;Изделия&quot;. Поля-пути и некоторые другие поля перенесены из сущности &quot;Извещение&quot; в сущность &quot;Изделие&quot;. А также добавлены новые поля.
-        ///-Кабели вынесены в отдельный справочник
-        ///-Жгуты вынесены в отдельный справочник
-        ///-ОТК теперь может передавать на рекламацию в цех.
-        ///-Админ может завершать извещение
-        ///============================================================================
-        ///1.87
-        ///-Справочник изделий откры [остаток строки не уместился]&quot;;.
+        ///2.11
+        ///-Если длина ширина и высота не заполнены, то первая колонка у роли ОТК не будет подсвечиваться красным. Эти поля будут подсвечиваться красным на форме редактирования извещения.
+        ///-Полям-путям &quot;Планка&quot;, &quot;Серийные номера&quot;, &quot;Пасспорт&quot;, &quot;РЭ&quot; и &quot;Упаковочный лист&quot; (т.е. те, которые принадлежат сущности &quot;Извещение&quot;) в принудительном порядке поставлены галочки и ответственным ролям даны права самим эти галочки снимать и ставить. Рань [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Version_History {
             get {

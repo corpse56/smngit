@@ -76,22 +76,22 @@ namespace SummonManager
             tbNote.Text = wp.Note;
             tbNote.Enabled = false;
 
-            pfWIRINGDIAGRAM.Init(wp.WIRINGDIAGRAM, wp.WIRINGDIAGRAMREQ, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, UVO.Role, "VIEWONLY");
-            pfTECHREQ.Init(wp.TECHREQ, wp.TECHREQREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "VIEWONLY");
-            pfComposition.Init(wp.COMPOSITION, wp.COMPOSITIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "VIEWONLY");
-            pfCONFIGURATION.Init(wp.CONFIGURATION, wp.CONFIGURATIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "VIEWONLY");
-            pfDimDrawing.Init(wp.DIMENDRAWING, wp.DIMENSIONALDRAWINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
-            pf3DSBORKA.Init(wp.SBORKA3D, wp.SBORKA3DREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
-            pfMECHPARTS.Init(wp.MECHPARTS, wp.MECHPARTSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
+            pfWIRINGDIAGRAM.Init(wp.WIRINGDIAGRAM, wp.WIRINGDIAGRAMREQ, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, "VIEWONLY", UVO, "WIRINGDIAGRAM",null,wp);
+            pfTECHREQ.Init(wp.TECHREQ, wp.TECHREQREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "VIEWONLY", UVO, "TECHREQ", null, wp);
+            pfComposition.Init(wp.COMPOSITION, wp.COMPOSITIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "VIEWONLY", UVO, "COMPOSITION", null, wp);
+            pfCONFIGURATION.Init(wp.CONFIGURATION, wp.CONFIGURATIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "VIEWONLY", UVO, "CONFIGURATION", null, wp);
+            pfDimDrawing.Init(wp.DIMENDRAWING, wp.DIMENSIONALDRAWINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "DIMENSIONALDRAWING", null, wp);
+            pf3DSBORKA.Init(wp.SBORKA3D, wp.SBORKA3DREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "SBORKA3D", null, wp);
+            pfMECHPARTS.Init(wp.MECHPARTS, wp.MECHPARTSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "MECHPARTS", null, wp);
             packZHGUT.Init(WPTYPE.ZHGUTLIST, wp.ID, wp.ZHGUTLISTREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
             packCABLE.Init(WPTYPE.CABLELIST, wp.ID, wp.CABLELISTREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
-            pfSHILDS.Init(wp.SHILDS, wp.SHILDSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
+            pfSHILDS.Init(wp.SHILDS, wp.SHILDSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "SHILDS", null, wp);
             //pfPLANKA.Init(wp.PLANKA, wp.PLANKAREQ, false, RequireVisible, RequireEnabled,Roles.Constructor, UVO.Role);
             //pfSERIAL.Init(wp.SERIAL, wp.SERIALREQ, false, RequireVisible, RequireEnabled, Roles.OTK, UVO.Role);
-            pfPACKAGING.Init(wp.PACKAGING, wp.PACKAGINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
-            pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "VIEWONLY");
-            pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "VIEWONLY");
-            pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "VIEWONLY");
+            pfPACKAGING.Init(wp.PACKAGING, wp.PACKAGINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "PACKAGING", null, wp);
+            pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "VIEWONLY", UVO, "PASSPORT", null, wp);
+            pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "VIEWONLY", UVO, "MANUAL", null, wp);
+            pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "VIEWONLY", UVO, "PACKINGLIST", null, wp);
 
             packZHGUT.Enabled = false;
             packCABLE.Enabled = false;
@@ -122,22 +122,22 @@ namespace SummonManager
             tbNote.Text = wp.Note;
             tbNote.Enabled = false;
 
-            pfWIRINGDIAGRAM.Init(wp.WIRINGDIAGRAM, wp.WIRINGDIAGRAMREQ, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, UVO.Role, "EDIT");
-            pfTECHREQ.Init(wp.TECHREQ, wp.TECHREQREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "EDIT");
-            pfComposition.Init(wp.COMPOSITION, wp.COMPOSITIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "EDIT");
-            pfCONFIGURATION.Init(wp.CONFIGURATION, wp.CONFIGURATIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "EDIT");
-            pfDimDrawing.Init(wp.DIMENDRAWING, wp.DIMENSIONALDRAWINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "EDIT");
-            pf3DSBORKA.Init(wp.SBORKA3D, wp.SBORKA3DREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "EDIT");
-            pfMECHPARTS.Init(wp.MECHPARTS, wp.MECHPARTSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "EDIT");
+            pfWIRINGDIAGRAM.Init(wp.WIRINGDIAGRAM, wp.WIRINGDIAGRAMREQ, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, "EDIT", UVO, "WIRINGDIAGRAM", null, wp);
+            pfTECHREQ.Init(wp.TECHREQ, wp.TECHREQREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "EDIT", UVO, "TECHREQ", null, wp);
+            pfComposition.Init(wp.COMPOSITION, wp.COMPOSITIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "EDIT", UVO, "COMPOSITION", null, wp);
+            pfCONFIGURATION.Init(wp.CONFIGURATION, wp.CONFIGURATIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "EDIT", UVO, "CONFIGURATION", null, wp);
+            pfDimDrawing.Init(wp.DIMENDRAWING, wp.DIMENSIONALDRAWINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "EDIT", UVO, "DIMENSIONALDRAWING", null, wp);
+            pf3DSBORKA.Init(wp.SBORKA3D, wp.SBORKA3DREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "EDIT", UVO, "SBORKA3D", null, wp);
+            pfMECHPARTS.Init(wp.MECHPARTS, wp.MECHPARTSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "EDIT", UVO, "MECHPARTS", null, wp);
             packZHGUT.Init(WPTYPE.ZHGUTLIST, wp.ID, wp.ZHGUTLISTREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role,UVO);
             packCABLE.Init(WPTYPE.CABLELIST, wp.ID, wp.CABLELISTREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
-            pfSHILDS.Init(wp.SHILDS, wp.SHILDSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "EDIT");
+            pfSHILDS.Init(wp.SHILDS, wp.SHILDSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "EDIT", UVO, "SHILDS", null, wp);
             //pfPLANKA.Init(wp.PLANKA, wp.PLANKAREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role);
             //pfSERIAL.Init(wp.SERIAL, wp.SERIALREQ, false, RequireVisible, RequireEnabled, Roles.OTK, UVO.Role);
-            pfPACKAGING.Init(wp.PACKAGING, wp.PACKAGINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "EDIT");
-            pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "EDIT");
-            pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "EDIT");
-            pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "EDIT");
+            pfPACKAGING.Init(wp.PACKAGING, wp.PACKAGINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "EDIT", UVO, "PACKAGING", null, wp);
+            pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "EDIT", UVO, "PASSPORT", null, wp);
+            pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "EDIT", UVO, "MANUAL", null, wp);
+            pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "EDIT", UVO, "PACKINGLIST", null, wp);
 
             tbLENGTH.Text = wp.LENGTH;
             tbWIDTH.Text = wp.WIDTH;
@@ -170,22 +170,22 @@ namespace SummonManager
                 tbPowerSupply.Enabled = false;
                 tbNote.Enabled = false;
 
-                pfWIRINGDIAGRAM.Init(Clone.WIRINGDIAGRAM, Clone.WIRINGDIAGRAMREQ, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, UVO.Role, "NEWCLONE");
-                pfTECHREQ.Init(Clone.TECHREQ, Clone.TECHREQREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "NEWCLONE");
-                pfComposition.Init(Clone.COMPOSITION, Clone.COMPOSITIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "NEWCLONE");
-                pfCONFIGURATION.Init(Clone.CONFIGURATION, Clone.CONFIGURATIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "NEWCLONE");
-                pfDimDrawing.Init(Clone.DIMENDRAWING, Clone.DIMENSIONALDRAWINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
-                pf3DSBORKA.Init(Clone.SBORKA3D, Clone.SBORKA3DREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
-                pfMECHPARTS.Init(Clone.MECHPARTS, Clone.MECHPARTSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
+                pfWIRINGDIAGRAM.Init(Clone.WIRINGDIAGRAM, Clone.WIRINGDIAGRAMREQ, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, "NEWCLONE", UVO, "WIRINGDIAGRAM", null, Clone);
+                pfTECHREQ.Init(Clone.TECHREQ, Clone.TECHREQREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "NEWCLONE", UVO, "TECHREQ", null, Clone);
+                pfComposition.Init(Clone.COMPOSITION, Clone.COMPOSITIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "NEWCLONE", UVO, "COMPOSITION", null, Clone);
+                pfCONFIGURATION.Init(Clone.CONFIGURATION, Clone.CONFIGURATIONREQ, false, RequireVisible, RequireEnabled, Roles.Inzhener, "NEWCLONE", UVO, "CONFIGURATION", null, Clone);
+                pfDimDrawing.Init(Clone.DIMENDRAWING, Clone.DIMENSIONALDRAWINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "DIMENSIONALDRAWING", null, Clone);
+                pf3DSBORKA.Init(Clone.SBORKA3D, Clone.SBORKA3DREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "SBORKA3D", null, Clone);
+                pfMECHPARTS.Init(Clone.MECHPARTS, Clone.MECHPARTSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "MECHPARTS", null, Clone);
                 packZHGUT.Init(WPTYPE.ZHGUTLIST, Clone.ID, Clone.ZHGUTLISTREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
                 packCABLE.Init(WPTYPE.CABLELIST, Clone.ID, Clone.CABLELISTREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
-                pfSHILDS.Init(Clone.SHILDS, Clone.SHILDSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
+                pfSHILDS.Init(Clone.SHILDS, Clone.SHILDSREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "SHILDS", null, Clone);
                 //pfPLANKA.Init(Clone.PLANKA, Clone.PLANKAREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role);
                 //pfSERIAL.Init(Clone.SERIAL, Clone.SERIALREQ, false, RequireVisible, RequireEnabled, Roles.OTK, UVO.Role);
-                pfPACKAGING.Init(Clone.PACKAGING, Clone.PACKAGINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
-                pfPASSPORT.Init(Clone.PASSPORT, Clone.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEWCLONE");
-                pfMANUAL.Init(Clone.MANUAL, Clone.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEWCLONE");
-                pfPACKINGLIST.Init(Clone.PACKINGLIST, Clone.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEWCLONE");
+                pfPACKAGING.Init(Clone.PACKAGING, Clone.PACKAGINGREQ, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "PACKAGING", null, Clone);
+                pfPASSPORT.Init(Clone.PASSPORT, Clone.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "NEWCLONE", UVO, "PASSPORT", null, Clone);
+                pfMANUAL.Init(Clone.MANUAL, Clone.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "NEWCLONE", UVO, "MANUAL", null, Clone);
+                pfPACKINGLIST.Init(Clone.PACKINGLIST, Clone.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, "NEWCLONE", UVO, "PACKINGLIST", null, Clone);
                 tbPowerSupply.Text = Clone.PowerSupply;
                 tbNote.Text = Clone.Note;
 
@@ -202,22 +202,22 @@ namespace SummonManager
         private void InitNEW()
         {
 
-            pfWIRINGDIAGRAM.Init("", false, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, UVO.Role, "NEW");
-            pfTECHREQ.Init("", false, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "NEW");
-            pfComposition.Init("", false, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "NEW");
-            pfCONFIGURATION.Init("", false, false, RequireVisible, RequireEnabled, Roles.Inzhener, UVO.Role, "NEW");
-            pfDimDrawing.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
-            pf3DSBORKA.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
-            pfMECHPARTS.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
+            pfWIRINGDIAGRAM.Init("", false, false, RequireVisible, RequireEnabled, Roles.Shemotehnik, "NEW", UVO, "WIRINGDIAGRAM",null, new WPNameVO());
+            pfTECHREQ.Init("", false, false, RequireVisible, RequireEnabled, Roles.Inzhener, "NEW", UVO, "TECHREQ", null, new WPNameVO());
+            pfComposition.Init("", false, false, RequireVisible, RequireEnabled, Roles.Inzhener, "NEW", UVO, "COMPOSITION", null, new WPNameVO());
+            pfCONFIGURATION.Init("", false, false, RequireVisible, RequireEnabled, Roles.Inzhener, "NEW", UVO, "CONFIGURATION", null, new WPNameVO());
+            pfDimDrawing.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEW", UVO, "DIMENSIONALDRAWING", null, new WPNameVO());
+            pf3DSBORKA.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEW", UVO, "SBORKA3D", null, new WPNameVO());
+            pfMECHPARTS.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEW", UVO, "MECHPARTS", null, new WPNameVO());
             packZHGUT.Init(WPTYPE.ZHGUTLIST, 0, false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
             packCABLE.Init(WPTYPE.CABLELIST, 0, false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, UVO);
-            pfSHILDS.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
+            pfSHILDS.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEW", UVO, "SHILDS", null, new WPNameVO());
            // pfPLANKA.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role);
             //pfSERIAL.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTK, UVO.Role);
-            pfPACKAGING.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
-            pfPASSPORT.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEW");
-            pfMANUAL.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEW");
-            pfPACKINGLIST.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEW");
+            pfPACKAGING.Init("", false, false, RequireVisible, RequireEnabled, Roles.Constructor, "NEW", UVO, "PACKAGING", null, new WPNameVO());
+            pfPASSPORT.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTD, "NEW", UVO, "PASSPORT", null, new WPNameVO());
+            pfMANUAL.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTD, "NEW", UVO, "MANUAL", null, new WPNameVO());
+            pfPACKINGLIST.Init("", false, false, RequireVisible, RequireEnabled, Roles.OTD, "NEW", UVO, "PACKINGLIST", null, new WPNameVO());
             AllocateRoles();
         }
 

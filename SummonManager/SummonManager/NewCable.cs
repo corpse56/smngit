@@ -77,7 +77,7 @@ namespace SummonManager
             tbNote.Enabled = false;
             tbCONNECTORS.Text = wp.CONECTORS;
             tbCONNECTORS.Enabled = false;
-            pfDimDrawing.Init(wp.DIMENDRAWING, true, false, false, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
+            pfDimDrawing.Init(wp.DIMENDRAWING, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "DIMENSIONALDRAWING_CABLE", null, wp);
 
         }
 
@@ -92,7 +92,7 @@ namespace SummonManager
             tbCLENGTH.Text = wp.CLENGTH;
             tbNote.Text = wp.NOTE;
 
-            pfDimDrawing.Init(wp.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, UVO.Role,"EDIT");
+            pfDimDrawing.Init(wp.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, "EDIT", UVO, "DIMENSIONALDRAWING_CABLE", null, wp);
 
 
             //AllocateRoles();
@@ -114,7 +114,7 @@ namespace SummonManager
                 tbDecNum.Text = Clone.DecNum;
                 cbCategory.SelectedValue = Clone.IDCat;//CHECK!!!!!!!!
                 cbSubCategory.SelectedValue = Clone.IDSubCat;//CHECK!!!!!!!!!
-                pfDimDrawing.Init(Clone.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
+                pfDimDrawing.Init(Clone.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "DIMENSIONALDRAWING_CABLE", null, Clone);
                 tbCONNECTORS.Text = Clone.CONECTORS;
                 tbCLENGTH.Text = Clone.CLENGTH;
                 tbNote.Text = Clone.NOTE;
@@ -124,7 +124,7 @@ namespace SummonManager
 
         private void InitNEW()
         {
-            pfDimDrawing.Init("", true, true, false, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
+            pfDimDrawing.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO, "DIMENSIONALDRAWING_CABLE",null,new CableVO());
         }
 
 

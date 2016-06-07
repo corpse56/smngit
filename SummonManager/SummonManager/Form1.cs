@@ -29,8 +29,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.11";
-        public static int VersionNumber = 211;
+        public static string ProgramVersion = "2.12";
+        public static int VersionNumber = 212;
         //работаем над системой замечаний
         public MainF()
         {
@@ -1346,6 +1346,12 @@ namespace SummonManager
 
         private void bkwReloadData_DoWork(object sender, DoWorkEventArgs e)
         {
+        }
+
+        private void tsbRemark_Click(object sender, EventArgs e)
+        {
+            Remarks r = new Remarks(UVO);
+            r.ShowDialog();
         }
 
        

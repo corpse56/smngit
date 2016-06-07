@@ -59,3 +59,6 @@ f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\
 f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.application
 f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.exe
 f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.pdb
+f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.NewREMARKWP.resources
+f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.Remarks.resources
+f:\projects\haltura\smntortoisegit\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.RemarkWork.resources

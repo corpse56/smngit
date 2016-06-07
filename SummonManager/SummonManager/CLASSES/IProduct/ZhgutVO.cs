@@ -70,11 +70,12 @@ namespace SummonManager.CLASSES
 
             PathField pf = new PathField();
             pf.Tag = Roles.Inzhener;
-            pf.Init(wp.ZHGUTPATH, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+            pf.Init(wp.ZHGUTPATH, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "ZHGUTPATH",null,this);
             pf.bDelVisible = false;
             pf.bPathVisible = false;
             pf.tbPath.Dock = DockStyle.Fill;
             pf.Dock = DockStyle.Fill;
+            pf.bRemark.Visible = false;
             UIWorks.AddToTLP(TLP, "Изготовление жгута", pf);
 
         }

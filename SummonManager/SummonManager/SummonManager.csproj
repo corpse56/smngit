@@ -137,6 +137,14 @@
     <Compile Include="CLASSES\DBZhgutList.cs" />
     <Compile Include="CLASSES\IProduct\ZhgutVO.cs" />
     <Compile Include="CLASSES\UIWorks.cs" />
+    <Compile Include="REMARK\DBRemarkWP.cs" />
+    <Compile Include="REMARK\RemarkWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="REMARK\RemarkWork.Designer.cs">
+      <DependentUpon>RemarkWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REMARK\RemarkWPVO.cs" />
     <Compile Include="Controls\ColorSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -317,6 +325,12 @@
     </Compile>
     <Compile Include="Controls\SummonTransfer.Designer.cs">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REMARK\Remarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="REMARK\Remarks.Designer.cs">
+      <DependentUpon>Remarks.cs</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
@@ -501,6 +515,12 @@
     <EmbeddedResource Include="Controls\SummonTransfer.resx">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="REMARK\RemarkWork.resx">
+      <DependentUpon>RemarkWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REMARK\Remarks.resx">
+      <DependentUpon>Remarks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
@@ -570,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PickIntoPackage.resx">
       <DependentUpon>PickIntoPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REMARK\NewREMARKWP.resx">
+      <DependentUpon>NewREMARKWP.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -657,6 +680,14 @@
     <Compile Include="PickIntoPackage.Designer.cs">
       <DependentUpon>PickIntoPackage.cs</DependentUpon>
     </Compile>
+    <Compile Include="REMARK\NewREMARKWP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="REMARK\NewREMARKWP.Designer.cs">
+      <DependentUpon>NewREMARKWP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REMARKSUMMON\DBRemarkSUMMON.cs" />
+    <Compile Include="REMARKSUMMON\RemarkSummonVO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
@@ -695,7 +726,11 @@
     <Content Include="ico\document-open.ico" />
     <None Include="ico\product.png" />
     <None Include="ico\edit-notes-gray.png" />
+    <None Include="ico\exclamation.png" />
+    <None Include="ico\exclamation_disable.png" />
+    <None Include="ico\exclamation_form1.png" />
     <Content Include="ico\Refresh.ico" />
+    <None Include="ico\remark_reply.png" />
     <None Include="Resources\Список изменений.txt" />
     <None Include="Properties\app.manifest" />
     <None Include="ico\search2_5458.png" />
