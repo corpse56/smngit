@@ -12,7 +12,7 @@ namespace SummonManager
 
         public DataTable GetAll()
         {
-            DA.SelectCommand.CommandText = "select A.ID,IDWP,DOCUMENTNAME,"+
+            DA.SelectCommand.CommandText = "select A.ID,W.WPNAME+' '+W.DECNUM WP,IDWP,DOCUMENTNAME, REMARK,"+
                                            " case when DOCUMENTNAME = 'COMPOSITION' then 'Состав изделия' else " +
                                            " case when DOCUMENTNAME = 'DIMENSIONALDRAWING' then 'Габаритный чертёж' else " +
                                            " case when DOCUMENTNAME = 'CONFIGURATION' then 'Конфигурация' else " +
@@ -30,7 +30,8 @@ namespace SummonManager
                                            " left join " + Base.BaseName + "..USERS B on A.IDCREATOR = B.ID " +
                                            " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID "+
                                            " left join " + Base.BaseName + "..USERS D on A.IDCLOSER = D.ID " +
-                                           " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID ";
+                                           " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID "+
+                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }

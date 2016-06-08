@@ -49,8 +49,8 @@ namespace SummonManager.Controls
                 {
                     this.PATH = "<нет>";
                     tbPath.Text = "<нет>";
-                    bRemark.Enabled = false;
-                    bRemark.BackgroundImage = Resources.exclamation_disable;
+                    //bRemark.Enabled = false;
+                    //bRemark.BackgroundImage = Resources.exclamation_disable;
 
                 }
                 else
@@ -204,17 +204,18 @@ namespace SummonManager.Controls
             tt.SetToolTip(this.bRemark, "Добавить замечание");
 
             //если путь пустой - то выключить замечание нужно в Init
-            if (FullPath == "<нет>")
-            {
-                bRemark.Enabled = false;
-                bRemark.BackgroundImage = Resources.exclamation_disable;
-            }
-            else
-            {
-                SetRemarkIcons();
+            //эта фича не нужна оказывается...(
+            //if (FullPath == "<нет>")
+            //{
+            //    bRemark.Enabled = false;
+            //    bRemark.BackgroundImage = Resources.exclamation_disable;
+            //}
+            //else
+            //{
+            //    SetRemarkIcons();
                 
-            }
-
+            //}
+            SetRemarkIcons();
 
             //this.tbPath.
             //tbPath.Text = this.FileName;
@@ -335,14 +336,7 @@ namespace SummonManager.Controls
             tbPath.ForeColor = Color.Black;
         }
 
-        private void tbPath_Click(object sender, EventArgs e)
-        {
-            if (this.FullPath != "<нет>")
-            {
-                //Process.Start(@"explorer.exe", this.FullPath);
-                Process.Start(@"explorer.exe", @"/select, " + this.FullPath);
-            }
-        }
+      
 
         private void tbPath_MouseEnter(object sender, EventArgs e)
         {
@@ -406,6 +400,36 @@ namespace SummonManager.Controls
             SetRemarkIcons();
         }
 
+        private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(this.FullPath);
+        }
+
+       
+
+        private void tbPath_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (this.FullPath != "<нет>")
+                {
+                    //Process.Start(@"explorer.exe", this.FullPath);
+                    Process.Start(@"explorer.exe", @"/select, " + this.FullPath);
+                }
+            }
+            //else
+            //{
+            //    if (e.Button == MouseButtons.Right)
+            //    {
+            //        contextMenuStrip1.Show(e.Location.X, e.Location.Y);
+
+            //    }
+            //}
+        }
+        private void tbPath_Click(object sender, EventArgs e)
+        {
+            
+        }
         //tbPath.Image = Resources.document_open_disabled;
         //tbPath.Enabled = false;
         //tbPath.Image = Resources.document_open;

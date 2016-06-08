@@ -161,6 +161,12 @@ namespace SummonManager
             SVO.BILLPAYED = false;
             SVO.CONTRACTTYPE = cbCONTRACTTYPE.Text;
             SVO.BILLNUMBER = tbBillNumber.Text;
+            SVO.PACKINGLISTREQ = true;
+            SVO.PASSPORTREQ = true;
+            SVO.PLANKAREQ = true;
+            SVO.SERIALREQ = true;
+            SVO.MANUALREQ = true;
+
             dbs.AddNewSummon(SVO,UVO);
             //MessageBox.Show("Извещение успешно создано и передано в ОЗиС!");
             this.Close();
@@ -215,6 +221,13 @@ namespace SummonManager
             SVO.DOCSREADY = false;
             SVO.CONTRACTTYPE = cbCONTRACTTYPE.Text;
             SVO.BILLNUMBER = tbBillNumber.Text;
+
+            SVO.PACKINGLISTREQ = true;
+            SVO.PASSPORTREQ = true;
+            SVO.PLANKAREQ = true;
+            SVO.SERIALREQ = true;
+            SVO.MANUALREQ = true;
+
             /*if (chbDeterm.Checked)
                 SVO.PASSDATE = null;
             else

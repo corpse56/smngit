@@ -56,6 +56,19 @@ namespace SummonManager
 
 
         }
-
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "DIMESIONALDRAWING") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "SBORKA3D") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "MECHPARTS") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "SHILDS") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "PACKAGING") )
+                {
+                    r.Visible = false;
+                }
+            }
+        }
     }
 }

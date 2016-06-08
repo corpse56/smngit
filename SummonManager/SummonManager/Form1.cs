@@ -29,8 +29,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.12";
-        public static int VersionNumber = 212;
+        public static string ProgramVersion = "2.13";
+        public static int VersionNumber = 213;
         //работаем над системой замечаний
         public MainF()
         {
@@ -163,6 +163,7 @@ namespace SummonManager
             наименованиеИзделияToolStripMenuItem.Enabled = true;//открыто всем на чтение
             упаковкаToolStripMenuItem.Enabled = false;
         }
+        
         public void SpravochnikiEnable()
         {
             справочникиToolStripMenuItem.Enabled = true;

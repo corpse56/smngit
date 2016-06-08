@@ -290,8 +290,11 @@ namespace SummonManager
         private void EnableOTD()
         {
             pfPASSPORT.Enabled = pfPASSPORT.Required;
+            pfPASSPORT.RequiredEnabled = true;
             pfMANUAL.Enabled = pfMANUAL.Required;
+            pfMANUAL.RequiredEnabled = true;
             pfPACKINGLIST.Enabled = pfPACKINGLIST.Required;
+            pfPACKINGLIST.RequiredEnabled = true;
             tbNote.Enabled = true;
         }
 
@@ -303,6 +306,7 @@ namespace SummonManager
         private void EnableShemotehnik()
         {
             pfWIRINGDIAGRAM.Enabled = pfWIRINGDIAGRAM.Required;
+            pfWIRINGDIAGRAM.RequiredEnabled = true;
             tbNote.Enabled = true;
         }
         private void EnableConstructor()
@@ -314,9 +318,13 @@ namespace SummonManager
             tbNote.Enabled = true;
 
             pfDimDrawing.Enabled = pfDimDrawing.Required;
+            pfDimDrawing.RequiredEnabled = true;
             pf3DSBORKA.Enabled = pf3DSBORKA.Required;
+            pf3DSBORKA.RequiredEnabled = true;
             pfMECHPARTS.Enabled = pfMECHPARTS.Required;
+            pfMECHPARTS.RequiredEnabled = true;
             pfSHILDS.Enabled = pfSHILDS.Required;
+            pfSHILDS.RequiredEnabled = true;
             //pfPLANKA.Enabled = pfPLANKA.Required;
             pfPACKAGING.Enabled = pfPACKAGING.Required;
             if ((AccessMode != "NEW") || (AccessMode != "NEWCLONE"))
@@ -324,6 +332,9 @@ namespace SummonManager
                 packCABLE.Enabled = packCABLE.Required;
                 packZHGUT.Enabled = packZHGUT.Required;
             }
+            packCABLE.RequiredEnabled = true;
+            packZHGUT.RequiredEnabled = true;
+
         }
 
         private void EnableAdmin()
@@ -457,6 +468,21 @@ namespace SummonManager
             }
             if ((AccessMode == "NEW") || (AccessMode == "NEWCLONE"))
             {
+                wp.COMPOSITIONREQ = true;
+                wp.DIMENSIONALDRAWINGREQ = true;
+                wp.CONFIGURATIONREQ = true;
+                wp.WIRINGDIAGRAMREQ = true;
+                wp.TECHREQREQ = true;
+                wp.SBORKA3DREQ = true;
+                wp.MECHPARTSREQ = true;
+                wp.SHILDSREQ = true;
+                wp.PACKAGINGREQ = true;
+                wp.PASSPORTREQ = true;
+                wp.MANUALREQ = true;
+                wp.PACKINGLISTREQ = true;
+                wp.CABLELISTREQ = true;
+                wp.ZHGUTLISTREQ = true;	
+
                 dbwp.AddNewWP(wp);
                 MessageBox.Show("Изделие успешно добавлено!");
             }

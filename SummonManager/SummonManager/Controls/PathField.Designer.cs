@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bPathDel = new System.Windows.Forms.Button();
             this.bPath = new System.Windows.Forms.Button();
             this.tbPath = new System.Windows.Forms.TextBox();
             this.chRequired = new System.Windows.Forms.CheckBox();
             this.bRemark = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bPathDel
@@ -64,6 +68,7 @@
             // 
             this.tbPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPath.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tbPath.ContextMenuStrip = this.contextMenuStrip1;
             this.tbPath.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbPath.Location = new System.Drawing.Point(34, 3);
             this.tbPath.Name = "tbPath";
@@ -71,6 +76,7 @@
             this.tbPath.TabIndex = 26;
             this.tbPath.MouseLeave += new System.EventHandler(this.tbPath_MouseLeave);
             this.tbPath.Click += new System.EventHandler(this.tbPath_Click);
+            this.tbPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbPath_MouseClick);
             this.tbPath.MouseEnter += new System.EventHandler(this.tbPath_MouseEnter);
             // 
             // chRequired
@@ -95,6 +101,20 @@
             this.bRemark.UseVisualStyleBackColor = true;
             this.bRemark.Click += new System.EventHandler(this.bRemark_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboardToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(266, 26);
+            // 
+            // copyToClipboardToolStripMenuItem
+            // 
+            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.copyToClipboardToolStripMenuItem.Text = "Скопировать путь в буфер обмена";
+            this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            // 
             // PathField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -108,6 +128,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PathField";
             this.Size = new System.Drawing.Size(546, 28);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +141,8 @@
         private System.Windows.Forms.CheckBox chRequired;
         public System.Windows.Forms.TextBox tbPath;
         public System.Windows.Forms.Button bRemark;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
 
 
     }

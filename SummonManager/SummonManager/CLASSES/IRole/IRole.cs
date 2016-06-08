@@ -295,6 +295,13 @@ namespace SummonManager.CLASSES.IRole_namespace
 
         }
 
+
+       
+
+        public virtual void MyRemarksWP(DataGridView dgWP)
+        {
+            
+        }
     }
 
     public class UserFactory
