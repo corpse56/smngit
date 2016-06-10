@@ -231,16 +231,18 @@ namespace SummonManager.Controls
                 if (IDREMARK != "")
                 {
                     bRemark.Enabled = true;
-                    bRemark.BackgroundImage = Resources.remark_reply;
-                    bRemark.BackgroundImage.Tag = "reply";
+                    bRemark.BackgroundImage = Resources.exclamation;
+                    bRemark.BackgroundImage.Tag = "exclamation";
                     tt = new ToolTip();
                     tt.SetToolTip(this.bRemark, "Отработать замечание");
                 }
                 else
                 {
                     bRemark.Enabled = true;
-                    bRemark.BackgroundImage = Resources.exclamation;
-                    bRemark.BackgroundImage.Tag = "exclamation";
+                    bRemark.BackgroundImage = Resources.remark_reply;
+                    bRemark.BackgroundImage.Tag = "reply";
+                    tt = new ToolTip();
+                    tt.SetToolTip(this.bRemark, "Добавить замечание");
                 }
 
             }
@@ -251,16 +253,18 @@ namespace SummonManager.Controls
                 if (IDREMARK != "")
                 {
                     bRemark.Enabled = true;
-                    bRemark.BackgroundImage = Resources.remark_reply;
-                    bRemark.BackgroundImage.Tag = "reply";
+                    bRemark.BackgroundImage = Resources.exclamation;
+                    bRemark.BackgroundImage.Tag = "exclamation";
                     tt = new ToolTip();
                     tt.SetToolTip(this.bRemark, "Отработать замечание");
                 }
                 else
                 {
                     bRemark.Enabled = true;
-                    bRemark.BackgroundImage = Resources.exclamation;
-                    bRemark.BackgroundImage.Tag = "exclamation";
+                    bRemark.BackgroundImage = Resources.remark_reply;
+                    bRemark.BackgroundImage.Tag = "reply";
+                    tt = new ToolTip();
+                    tt.SetToolTip(this.bRemark, "Добавить замечание");
                 }
             }
         }

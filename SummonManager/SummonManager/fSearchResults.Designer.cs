@@ -56,6 +56,7 @@
             this.dgSummon.TabIndex = 4;
             this.dgSummon.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_ColumnHeaderMouseClick);
             this.dgSummon.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_CellMouseDown);
+            this.dgSummon.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_CellMouseDoubleClick);
             // 
             // button1
             // 

@@ -31,10 +31,10 @@ namespace SummonManager
             dgSummon.Columns["cust"].Width = 190;
             dgSummon.Columns["sts"].HeaderText = "Статус";
             dgSummon.Columns["sts"].Width = 100;
-            dgSummon.Columns["dt"].HeaderText = "Дата смены статуса";
-            dgSummon.Columns["dt"].Width = 130;
+            //dgSummon.Columns["dt"].HeaderText = "Дата смены статуса";
+            //dgSummon.Columns["dt"].Width = 130;
             //dgSummon.Columns["dt"].ValueType = typeof(DateTime);
-            dgSummon.Columns["dt"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
+            //dgSummon.Columns["dt"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
             dgSummon.Columns["note"].HeaderText = "Примечание";
             dgSummon.Columns["note"].Width = 250;
             dgSummon.Columns["ptime"].HeaderText = "Срок сдачи изделия";
@@ -139,10 +139,10 @@ namespace SummonManager
             dgSummon.Columns["cust"].Width = 190;
             dgSummon.Columns["sts"].HeaderText = "Статус";
             dgSummon.Columns["sts"].Width = 100;
-            dgSummon.Columns["dt"].HeaderText = "Дата смены статуса";
-            dgSummon.Columns["dt"].Width = 130;
+            //dgSummon.Columns["dt"].HeaderText = "Дата смены статуса";
+            //dgSummon.Columns["dt"].Width = 130;
             //dgSummon.Columns["dt"].ValueType = typeof(DateTime);
-            dgSummon.Columns["dt"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
+            //dgSummon.Columns["dt"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
             dgSummon.Columns["note"].HeaderText = "Примечание";
             dgSummon.Columns["note"].Width = 250;
             dgSummon.Columns["ptime"].HeaderText = "Срок сдачи изделия";
@@ -250,6 +250,24 @@ namespace SummonManager
                     
                 }
             }
+
+        }
+
+        private void dgSummon_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            if (dgSummon.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Извещение не выбрано!");
+                return;
+            }
+            DBSummon dbs = new DBSummon();
+            SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
+            PreviousState ps = new PreviousState(dgSummon, "");
+
+            ShowSummon ss = new ShowSummon(mf.UVO, svo);
+            ss.ShowDialog();
 
         }
     }
