@@ -327,6 +327,7 @@ namespace SummonManager
             pfSHILDS.RequiredEnabled = true;
             //pfPLANKA.Enabled = pfPLANKA.Required;
             pfPACKAGING.Enabled = pfPACKAGING.Required;
+            pfPACKAGING.RequiredEnabled = true;
             if ((AccessMode != "NEW") || (AccessMode != "NEWCLONE"))
             {
                 packCABLE.Enabled = packCABLE.Required;
@@ -423,7 +424,6 @@ namespace SummonManager
             wp.PACKINGLIST              = (pfPACKINGLIST.FullPath == "<нет>") ? null : pfPACKINGLIST.FullPath; 
             wp.PowerSupply              = tbPowerSupply.Text;
             wp.Note                     = tbNote.Text;
-            
             wp.COMPOSITIONREQ           = pfComposition.Required;
             wp.DIMENSIONALDRAWINGREQ    = pfDimDrawing.Required	;
             //wp.POWERSUPPLYREQ	        = pfpowe;

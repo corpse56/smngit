@@ -57,8 +57,8 @@ namespace SummonManager.Controls
                 {
                     this.PATH = value;
                     tbPath.Text = this.FileName;
-                    bRemark.Enabled = true;
-                    bRemark.BackgroundImage = Resources.exclamation;
+                    //bRemark.Enabled = true;
+                    //bRemark.BackgroundImage = Resources.exclamation;
 
                 }
                 PaintRed();
@@ -361,7 +361,7 @@ namespace SummonManager.Controls
         private void bRemark_Click(object sender, EventArgs e)
         {
 
-            if (bRemark.BackgroundImage.Tag.ToString() != "reply")
+            if (bRemark.BackgroundImage.Tag.ToString() == "reply")
             {
 
 

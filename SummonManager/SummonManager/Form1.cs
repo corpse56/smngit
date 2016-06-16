@@ -29,8 +29,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.14";
-        public static int VersionNumber = 214;
+        public static string ProgramVersion = "2.16";
+        public static int VersionNumber = 216;
         //работаем над системой замечаний
         public MainF()
         {
