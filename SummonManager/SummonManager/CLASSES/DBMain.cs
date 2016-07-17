@@ -106,7 +106,7 @@ namespace SummonManager
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (1) order by ids";
                     break;
                 case Roles.OTK:
-                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (7,19,20) or idsubst in (16) order by ids";
+                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (7,19,20,16) or idsubst in (16) order by ids";
                     break;
                 case Roles.Ozis:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (3) order by ids";
@@ -124,7 +124,7 @@ namespace SummonManager
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";
                     break;
                 case Roles.Montage: case Roles.MainMontage:
-                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where  idsubst in (15,18) order by ids";
+                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (15,18) or  idsubst in (15,18) order by ids";
                     break;
                 case Roles.Constructor:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 and paint_constr = 1 order by ids";

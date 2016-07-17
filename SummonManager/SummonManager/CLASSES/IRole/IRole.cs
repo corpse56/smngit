@@ -105,13 +105,13 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.summonTransfer1.Enabled = true;
             ss.summonTransfer2.Enabled = true;
 
-            ss.pfPLANKA.Init(ss.SVO.PLANKA, ss.SVO.PLANKAREQ, false, true, false, Roles.Constructor, this.Role, "VIEWONLY");
-            ss.pfSERIAL.Init(ss.SVO.SERIAL, ss.SVO.SERIALREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
+            ss.pfPLANKA.Init(ss.SVO.PLANKA, ss.SVO.PLANKAREQ, false, true, false, Roles.Constructor, "VIEWONLY", this, "PLANKA",ss.SVO,null);
+            ss.pfSERIAL.Init(ss.SVO.SERIAL, ss.SVO.SERIALREQ, false, true, false, Roles.OTK, "VIEWONLY", this, "SERIAL",ss.SVO,null);
             //ss.summonNotes1.button1.Enabled = false;
 
-            ss.pfPASSPORT.Init(ss.SVO.PASSPORT, ss.SVO.PASSPORTREQ, false, true, false, Roles.OTD, this.Role, "VIEWONLY");
-            ss.pfMANUAL.Init(ss.SVO.MANUAL, ss.SVO.MANUALREQ, false, true, false, Roles.OTD, this.Role, "VIEWONLY");
-            ss.pfPACKINGLIST.Init(ss.SVO.PACKINGLIST, ss.SVO.PACKINGLISTREQ, false, true, false, Roles.OTD, this.Role, "VIEWONLY");
+            ss.pfPASSPORT.Init(ss.SVO.PASSPORT, ss.SVO.PASSPORTREQ, false, true, false, Roles.OTD,  "VIEWONLY", this, "PASSPORT",ss.SVO,null);
+            ss.pfMANUAL.Init(ss.SVO.MANUAL, ss.SVO.MANUALREQ, false, true, false, Roles.OTD,  "VIEWONLY", this, "MANUAL",ss.SVO,null);
+            ss.pfPACKINGLIST.Init(ss.SVO.PACKINGLIST, ss.SVO.PACKINGLISTREQ, false, true, false, Roles.OTD, "VIEWONLY", this, "PACKINGLIST",ss.SVO,null);
             //ss.tbLENGTH.Enabled = false;
             //ss.tbWIDTH.Enabled = false;
             //ss.tbHEIGHT.Enabled = false;
@@ -295,6 +295,13 @@ namespace SummonManager.CLASSES.IRole_namespace
 
         }
 
+
+       
+
+        public virtual void MyRemarksWP(DataGridView dgWP)
+        {
+            
+        }
     }
 
     public class UserFactory

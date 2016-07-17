@@ -121,34 +121,38 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Inzhener;
-                pf.Init(wp.COMPOSITION, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+                pf.Init(wp.COMPOSITION, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "COMPOSITION",null,wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
-
+                //pf.tbPath.Dock = DockStyle.Left;
+                //pf.tbPath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Состав изделия", pf);
             }
             if (wp.TECHREQREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Inzhener;
-                pf.Init(wp.TECHREQ, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+                pf.Init(wp.TECHREQ, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "TECHREQ", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Технические требования", pf);
             }
             if (wp.CONFIGURATIONREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Inzhener;
-                pf.Init(wp.CONFIGURATION, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+                pf.Init(wp.CONFIGURATION, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "CONFIGURATION", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Конфигурация", pf);
             }
             //===============================================================Constructor
@@ -156,44 +160,48 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
+                pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Constructor, "VIEWONLY", UVO, "DIMENSIONALDRAWING", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Габаритный чертёж", pf);
             }
             if (wp.SBORKA3DREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.SBORKA3D, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
+                pf.Init(wp.SBORKA3D, true, false, false, true, Roles.Constructor, "VIEWONLY", UVO, "SBORKA3D", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "3Д сборка", pf);
             }
             if (wp.MECHPARTSREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.MECHPARTS, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
+                pf.Init(wp.MECHPARTS, true, false, false, true, Roles.Constructor, "VIEWONLY", UVO, "MECHPARTS", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Проект механических деталей", pf);
             }
             if (wp.SHILDSREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.SHILDS, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
+                pf.Init(wp.SHILDS, true, false, false, true, Roles.Constructor, "VIEWONLY", UVO, "SHILDS", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Шильды", pf);
             }
             /*if (wp.PLANKAREQ)
@@ -210,11 +218,12 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.PACKAGING, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
+                pf.Init(wp.PACKAGING, true, false, false, true, Roles.Constructor, "VIEWONLY", UVO, "PACKAGING", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Упаковка", pf);
             }
             //===================================================================================TEHNOLOG
@@ -224,11 +233,12 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Shemotehnik;
-                pf.Init(wp.WIRINGDIAGRAM, true, false, false, true, Roles.Shemotehnik, UVO.Role, "VIEWONLY");
+                pf.Init(wp.WIRINGDIAGRAM, true, false, false, true, Roles.Shemotehnik, "VIEWONLY", UVO, "WIRINGDIAGRAM", null, wp);
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
                 pf.tbPath.Dock = DockStyle.Fill;
                 pf.Dock = DockStyle.Fill;
+                pf.bRemark.Visible = false;
                 UIWorks.AddToTLP(TLP, "Схема электрическая монтажная", pf);
             }
 

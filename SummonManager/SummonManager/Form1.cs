@@ -24,14 +24,14 @@ namespace SummonManager
         
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        //my first git
         
         public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.10";
-        public static int VersionNumber = 210;
+        public static string ProgramVersion = "2.16";
+        public static int VersionNumber = 216;
+        //работаем над системой замечаний
         public MainF()
         {
             InitializeComponent();
@@ -163,6 +163,7 @@ namespace SummonManager
             наименованиеИзделияToolStripMenuItem.Enabled = true;//открыто всем на чтение
             упаковкаToolStripMenuItem.Enabled = false;
         }
+        
         public void SpravochnikiEnable()
         {
             справочникиToolStripMenuItem.Enabled = true;
@@ -1346,6 +1347,12 @@ namespace SummonManager
 
         private void bkwReloadData_DoWork(object sender, DoWorkEventArgs e)
         {
+        }
+
+        private void tsbRemark_Click(object sender, EventArgs e)
+        {
+            Remarks r = new Remarks(UVO);
+            r.ShowDialog();
         }
 
        

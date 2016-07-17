@@ -77,12 +77,14 @@ namespace SummonManager.CLASSES
 
             PathField pf = new PathField();
             pf.Tag = Roles.Inzhener;
-            pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+            pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "DIMENSIONALDRAWING",null,wp);
             pf.bDelVisible = false;
             pf.bPathVisible = false;
             pf.tbPath.Width += 150;
             pf.tbPath.Dock = DockStyle.Fill;
             pf.Dock = DockStyle.Fill;
+            pf.bRemark.Visible = false;
+
             UIWorks.AddToTLP(TLP, "Сборочный чертёж", pf);
 
             tb = new TextBox();

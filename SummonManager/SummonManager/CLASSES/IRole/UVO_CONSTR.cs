@@ -47,14 +47,28 @@ namespace SummonManager
             ss.bSave.Enabled = true;
 
 
-            if (ss.pfPLANKA.Required)
+            //if (ss.pfPLANKA.Required)
             {
                 ss.pfPLANKA.Enabled = true;
                 ss.pfPLANKA.ACCESSMODE = "EDIT";
+                ss.pfPLANKA.RequiredEnabled = true;
             }
 
 
         }
-
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "DIMESIONALDRAWING") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "SBORKA3D") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "MECHPARTS") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "SHILDS") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "PACKAGING") )
+                {
+                    r.Visible = false;
+                }
+            }
+        }
     }
 }

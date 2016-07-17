@@ -47,7 +47,7 @@
             this.cbWPNAME.Enabled = false;
             this.cbWPNAME.FormattingEnabled = true;
             this.cbWPNAME.Location = new System.Drawing.Point(360, 41);
-            this.cbWPNAME.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbWPNAME.Margin = new System.Windows.Forms.Padding(4);
             this.cbWPNAME.Name = "cbWPNAME";
             this.cbWPNAME.Size = new System.Drawing.Size(464, 24);
             this.cbWPNAME.TabIndex = 0;
@@ -151,6 +151,7 @@
             // 
             // fSearchConditions
             // 
+            this.AcceptButton = this.bSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 185);
@@ -167,7 +168,7 @@
             this.Controls.Add(this.cbWPNAME);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "fSearchConditions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

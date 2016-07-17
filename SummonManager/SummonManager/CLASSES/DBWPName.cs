@@ -122,13 +122,13 @@ namespace SummonManager
                                            " COMPOSITIONREQ,DIMENSIONALDRAWINGREQ,CONFIGURATIONREQ,WIRINGDIAGRAMREQ," +
                                            " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PACKAGINGREQ,PASSPORTREQ, "+
                                            " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ "+
-                                           " ,LENGHT,WIDTH,HEIGHT,WEIGHT) " +
+                                           " ,LENGTH,WIDTH,HEIGHT,WEIGHT) " +
                                            " values (@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
                                            " @MECHPARTS,@SHILDS,@PACKAGING,@MANUAL, @PASSPORT,@PACKINGLIST,@POWERSUPPLY,@NOTE,@CREATED,      " +
                                            " @COMPOSITIONREQ,@DIMENSIONALDRAWINGREQ,@CONFIGURATIONREQ,@WIRINGDIAGRAMREQ," +
                                            " @TECHREQREQ,@SBORKA3DREQ,@MECHPARTSREQ,@SHILDSREQ,@PACKAGINGREQ,@PASSPORTREQ, " +
                                            " @MANUALREQ,@PACKINGLISTREQ,@SOFTWAREREQ,@CABLELISTREQ,@ZHGUTLISTREQ,@RUNCARDLISTREQ,@CIRCUITBOARDLISTREQ "+
-                                           " ,@LENGHT,@WIDTH,@HEIGHT,@WEIGHT)";
+                                           " ,@LENGTH,@WIDTH,@HEIGHT,@WEIGHT)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
@@ -367,18 +367,27 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.UpdateCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
             DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWINGREQ", p.DIMENSIONALDRAWINGREQ);
             DA.UpdateCommand.Parameters.AddWithValue("SBORKA3D", ((object)p.SBORKA3D) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SBORKA3DREQ", p.SBORKA3DREQ);
             DA.UpdateCommand.Parameters.AddWithValue("MECHPARTS", ((object)p.MECHPARTS) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MECHPARTSREQ", p.MECHPARTSREQ);
             DA.UpdateCommand.Parameters.AddWithValue("SHILDS", ((object)p.SHILDS) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SHILDSREQ", p.SHILDSREQ);
             //DA.UpdateCommand.Parameters.AddWithValue("PLANKA", ((object)p.PLANKA) ?? DBNull.Value);
             DA.UpdateCommand.Parameters.AddWithValue("PACKAGING", ((object)p.PACKAGING) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKAGINGREQ", p.PACKAGINGREQ);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
+            DA.UpdateCommand.Parameters.AddWithValue("ZHGUTLISTREQ", p.ZHGUTLISTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("CABLELISTREQ", p.CABLELISTREQ);
 
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WPNAME  = @WPNAME,IDCATEGORY = @IDCATEGORY,IDSUBCAT = @IDSUBCAT,DECNUM = @DECNUM, " +
-                                           " DIMENSIONALDRAWING=@DIMENSIONALDRAWING,SBORKA3D=@SBORKA3D,MECHPARTS=@MECHPARTS,SHILDS=@SHILDS,PACKAGING=@PACKAGING,NOTE=@NOTE " +
-                                            " where ID = @ID";
+                                           " DIMENSIONALDRAWING=@DIMENSIONALDRAWING,SBORKA3D=@SBORKA3D,MECHPARTS=@MECHPARTS,SHILDS=@SHILDS,PACKAGING=@PACKAGING,NOTE=@NOTE, " +
+                                           " SHILDSREQ=@SHILDSREQ, PACKAGINGREQ=@PACKAGINGREQ,DIMENSIONALDRAWINGREQ=@DIMENSIONALDRAWINGREQ,SBORKA3DREQ=@SBORKA3DREQ,MECHPARTSREQ=@MECHPARTSREQ " +
+                                           " ,ZHGUTLISTREQ=@ZHGUTLISTREQ,CABLELISTREQ=@CABLELISTREQ " +
+                                           " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
@@ -403,11 +412,12 @@ namespace SummonManager
         {
             DA.UpdateCommand.Parameters.Clear();
             DA.UpdateCommand.Parameters.AddWithValue("WIRINGDIAGRAM", ((object)p.WIRINGDIAGRAM) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("WIRINGDIAGRAMREQ", p.WIRINGDIAGRAMREQ);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
 
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WIRINGDIAGRAM  = @WIRINGDIAGRAM, NOTE=@NOTE" +
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WIRINGDIAGRAM  = @WIRINGDIAGRAM,WIRINGDIAGRAMREQ=@WIRINGDIAGRAMREQ, NOTE=@NOTE" +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
@@ -420,11 +430,15 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("PASSPORT", ((object)p.PASSPORT) ?? DBNull.Value);
             DA.UpdateCommand.Parameters.AddWithValue("MANUAL", ((object)p.MANUAL) ?? DBNull.Value);
             DA.UpdateCommand.Parameters.AddWithValue("PACKINGLIST", ((object)p.PACKINGLIST) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PASSPORTREQ", p.PASSPORTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("MANUALREQ", p.MANUALREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKINGLISTREQ", p.PACKINGLISTREQ);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
 
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set PASSPORT  = @PASSPORT,MANUAL=@MANUAL,PACKINGLIST=@PACKINGLIST,  NOTE=@NOTE" +
+                                           ", PASSPORTREQ=@PASSPORTREQ,MANUALREQ=@MANUALREQ,PACKINGLISTREQ=@PACKINGLISTREQ " + 
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
