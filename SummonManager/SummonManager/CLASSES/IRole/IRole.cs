@@ -310,6 +310,21 @@ namespace SummonManager.CLASSES.IRole_namespace
                 r.Visible = true;
             }
         }
+
+        internal void FinishedRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                if (r.Cells["CLOSED"].Value.ToString().Contains("Отработано"))
+                {
+                    r.Visible = true;
+                }
+                else
+                {
+                    r.Visible = false;
+                }
+            }
+        }
     }
 
     public class UserFactory

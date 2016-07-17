@@ -32,10 +32,10 @@
             this.bPathDel = new System.Windows.Forms.Button();
             this.bPath = new System.Windows.Forms.Button();
             this.tbPath = new System.Windows.Forms.TextBox();
-            this.chRequired = new System.Windows.Forms.CheckBox();
-            this.bRemark = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chRequired = new System.Windows.Forms.CheckBox();
+            this.bRemark = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             // bPath
             // 
             this.bPath.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.bPath.Location = new System.Drawing.Point(423, 3);
+            this.bPath.Location = new System.Drawing.Point(423, 2);
             this.bPath.Margin = new System.Windows.Forms.Padding(4);
             this.bPath.Name = "bPath";
             this.bPath.Size = new System.Drawing.Size(50, 25);
@@ -79,28 +79,6 @@
             this.tbPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbPath_MouseClick);
             this.tbPath.MouseEnter += new System.EventHandler(this.tbPath_MouseEnter);
             // 
-            // chRequired
-            // 
-            this.chRequired.AutoSize = true;
-            this.chRequired.Location = new System.Drawing.Point(10, 7);
-            this.chRequired.Name = "chRequired";
-            this.chRequired.Size = new System.Drawing.Size(15, 14);
-            this.chRequired.TabIndex = 27;
-            this.chRequired.UseVisualStyleBackColor = true;
-            this.chRequired.CheckedChanged += new System.EventHandler(this.chRequired_CheckedChanged);
-            // 
-            // bRemark
-            // 
-            this.bRemark.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.bRemark.BackgroundImage = global::SummonManager.Properties.Resources.exclamation;
-            this.bRemark.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bRemark.Location = new System.Drawing.Point(477, 3);
-            this.bRemark.Name = "bRemark";
-            this.bRemark.Size = new System.Drawing.Size(31, 25);
-            this.bRemark.TabIndex = 28;
-            this.bRemark.UseVisualStyleBackColor = true;
-            this.bRemark.Click += new System.EventHandler(this.bRemark_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -115,13 +93,35 @@
             this.copyToClipboardToolStripMenuItem.Text = "Скопировать путь в буфер обмена";
             this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
             // 
+            // chRequired
+            // 
+            this.chRequired.AutoSize = true;
+            this.chRequired.Location = new System.Drawing.Point(10, 7);
+            this.chRequired.Name = "chRequired";
+            this.chRequired.Size = new System.Drawing.Size(15, 14);
+            this.chRequired.TabIndex = 27;
+            this.chRequired.UseVisualStyleBackColor = true;
+            this.chRequired.CheckedChanged += new System.EventHandler(this.chRequired_CheckedChanged);
+            // 
+            // bRemark
+            // 
+            this.bRemark.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bRemark.BackgroundImage = global::SummonManager.Properties.Resources.remark_reply;
+            this.bRemark.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bRemark.Location = new System.Drawing.Point(477, 3);
+            this.bRemark.Name = "bRemark";
+            this.bRemark.Size = new System.Drawing.Size(31, 25);
+            this.bRemark.TabIndex = 28;
+            this.bRemark.UseVisualStyleBackColor = true;
+            this.bRemark.Click += new System.EventHandler(this.bRemark_Click);
+            // 
             // PathField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bRemark);
             this.Controls.Add(this.chRequired);
             this.Controls.Add(this.tbPath);
+            this.Controls.Add(this.bRemark);
             this.Controls.Add(this.bPathDel);
             this.Controls.Add(this.bPath);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

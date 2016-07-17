@@ -55,6 +55,10 @@ namespace SummonManager
                 {
                     r.Visible = false;
                 }
+                else
+                {
+                    r.Visible = true;
+                }
             }
         }
 

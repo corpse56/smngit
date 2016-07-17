@@ -81,8 +81,10 @@ namespace SummonManager
         {
             foreach (DataGridViewRow r in dgWP.Rows)
             {
+
                 r.Visible = false;
             }
+
         }
 
     }

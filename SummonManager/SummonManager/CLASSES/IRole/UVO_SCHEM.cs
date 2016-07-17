@@ -55,6 +55,11 @@ namespace SummonManager
                 {
                     r.Visible = false;
                 }
+                else
+                {
+                    r.Visible = true;
+                }
+                //r.Visible = !((r.Cells["DOCUMENTNAME"].Value.ToString() != "WIRINGDIAGRAM"));
             }
         }
 
