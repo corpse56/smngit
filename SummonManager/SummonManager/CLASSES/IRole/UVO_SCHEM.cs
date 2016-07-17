@@ -47,6 +47,16 @@ namespace SummonManager
             //ss.bSave.Enabled = true;
 
         }
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "WIRINGDIAGRAM"))
+                {
+                    r.Visible = false;
+                }
+            }
+        }
 
     }
 }

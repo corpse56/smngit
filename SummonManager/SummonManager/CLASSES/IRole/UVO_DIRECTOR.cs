@@ -42,6 +42,12 @@ namespace SummonManager
         {
 
         }
-
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                r.Visible = false;
+            }
+        }
     }
 }

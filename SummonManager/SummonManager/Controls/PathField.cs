@@ -226,7 +226,7 @@ namespace SummonManager.Controls
         {
             if (PRODUCT != null)
             {
-                DBRemarkWP dbr = new DBRemarkWP();
+                DBRemarkWP dbr = new DBRemarkWP(UVO);
                 IDREMARK = dbr.RemarkExists(PRODUCT.GetID().ToString(), DOCUMENTNAME);
                 if (IDREMARK != "")
                 {

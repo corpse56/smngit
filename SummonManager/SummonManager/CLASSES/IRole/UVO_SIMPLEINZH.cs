@@ -45,6 +45,18 @@ namespace SummonManager
            // ss.bSave.Enabled = true;
 
         }
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "TECHREQ") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "COMPOSITION") ||
+                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "CONFIGURATION"))
+                {
+                    r.Visible = false;
+                }
+            }
+        }
 
     }
 }

@@ -33,14 +33,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.bWPWork = new System.Windows.Forms.Button();
             this.dgWP = new System.Windows.Forms.DataGridView();
-            this.bSummWork = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dgSumm = new System.Windows.Forms.DataGridView();
             this.bGoToSummon = new System.Windows.Forms.Button();
             this.bSummonWork = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.chbWPMY = new System.Windows.Forms.CheckBox();
-            this.chbWPFinished = new System.Windows.Forms.CheckBox();
+            this.bSummWork = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgSumm = new System.Windows.Forms.DataGridView();
+            this.rbMyRemarks = new System.Windows.Forms.RadioButton();
+            this.rbAllRemarks = new System.Windows.Forms.RadioButton();
+            this.rbFinishedRemarks = new System.Windows.Forms.RadioButton();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -58,8 +59,9 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.chbWPFinished);
-            this.splitContainer1.Panel1.Controls.Add(this.chbWPMY);
+            this.splitContainer1.Panel1.Controls.Add(this.rbFinishedRemarks);
+            this.splitContainer1.Panel1.Controls.Add(this.rbAllRemarks);
+            this.splitContainer1.Panel1.Controls.Add(this.rbMyRemarks);
             this.splitContainer1.Panel1.Controls.Add(this.bGoToWP);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.bWPWork);
@@ -119,14 +121,46 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgWP.Location = new System.Drawing.Point(15, 28);
+            this.dgWP.Location = new System.Drawing.Point(15, 36);
             this.dgWP.MultiSelect = false;
             this.dgWP.Name = "dgWP";
             this.dgWP.ReadOnly = true;
             this.dgWP.RowHeadersVisible = false;
             this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(1092, 311);
+            this.dgWP.Size = new System.Drawing.Size(1092, 303);
             this.dgWP.TabIndex = 11;
+            // 
+            // bGoToSummon
+            // 
+            this.bGoToSummon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bGoToSummon.Location = new System.Drawing.Point(282, 338);
+            this.bGoToSummon.Name = "bGoToSummon";
+            this.bGoToSummon.Size = new System.Drawing.Size(163, 23);
+            this.bGoToSummon.TabIndex = 19;
+            this.bGoToSummon.Text = "Перейти к извещению";
+            this.bGoToSummon.UseVisualStyleBackColor = true;
+            this.bGoToSummon.Click += new System.EventHandler(this.bGoToSummon_Click);
+            // 
+            // bSummonWork
+            // 
+            this.bSummonWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bSummonWork.Location = new System.Drawing.Point(15, 338);
+            this.bSummonWork.Name = "bSummonWork";
+            this.bSummonWork.Size = new System.Drawing.Size(261, 23);
+            this.bSummonWork.TabIndex = 18;
+            this.bSummonWork.Text = "Отработать замечание к извещению";
+            this.bSummonWork.UseVisualStyleBackColor = true;
+            this.bSummonWork.Click += new System.EventHandler(this.bSummWork_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 16);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Замечания к извещениям";
             // 
             // bSummWork
             // 
@@ -165,61 +199,43 @@
             this.dgSumm.Size = new System.Drawing.Size(1092, 302);
             this.dgSumm.TabIndex = 12;
             // 
-            // bGoToSummon
+            // rbMyRemarks
             // 
-            this.bGoToSummon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bGoToSummon.Location = new System.Drawing.Point(282, 338);
-            this.bGoToSummon.Name = "bGoToSummon";
-            this.bGoToSummon.Size = new System.Drawing.Size(163, 23);
-            this.bGoToSummon.TabIndex = 19;
-            this.bGoToSummon.Text = "Перейти к извещению";
-            this.bGoToSummon.UseVisualStyleBackColor = true;
-            this.bGoToSummon.Click += new System.EventHandler(this.bGoToSummon_Click);
+            this.rbMyRemarks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbMyRemarks.AutoSize = true;
+            this.rbMyRemarks.Checked = true;
+            this.rbMyRemarks.Location = new System.Drawing.Point(707, 4);
+            this.rbMyRemarks.Name = "rbMyRemarks";
+            this.rbMyRemarks.Size = new System.Drawing.Size(102, 26);
+            this.rbMyRemarks.TabIndex = 16;
+            this.rbMyRemarks.TabStop = true;
+            this.rbMyRemarks.Text = "Поазать мои";
+            this.rbMyRemarks.UseVisualStyleBackColor = true;
+            this.rbMyRemarks.CheckedChanged += new System.EventHandler(this.rbMyRemarks_CheckedChanged);
             // 
-            // bSummonWork
+            // rbAllRemarks
             // 
-            this.bSummonWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bSummonWork.Location = new System.Drawing.Point(15, 338);
-            this.bSummonWork.Name = "bSummonWork";
-            this.bSummonWork.Size = new System.Drawing.Size(261, 23);
-            this.bSummonWork.TabIndex = 18;
-            this.bSummonWork.Text = "Отработать замечание к извещению";
-            this.bSummonWork.UseVisualStyleBackColor = true;
-            this.bSummonWork.Click += new System.EventHandler(this.bSummWork_Click);
+            this.rbAllRemarks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbAllRemarks.AutoSize = true;
+            this.rbAllRemarks.Location = new System.Drawing.Point(815, 4);
+            this.rbAllRemarks.Name = "rbAllRemarks";
+            this.rbAllRemarks.Size = new System.Drawing.Size(107, 26);
+            this.rbAllRemarks.TabIndex = 16;
+            this.rbAllRemarks.Text = "Показать все";
+            this.rbAllRemarks.UseVisualStyleBackColor = true;
+            this.rbAllRemarks.CheckedChanged += new System.EventHandler(this.rbAllRemarks_CheckedChanged);
             // 
-            // label1
+            // rbFinishedRemarks
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 16);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Замечания к извещениям";
-            // 
-            // chbWPMY
-            // 
-            this.chbWPMY.AutoSize = true;
-            this.chbWPMY.Location = new System.Drawing.Point(654, 2);
-            this.chbWPMY.Name = "chbWPMY";
-            this.chbWPMY.Size = new System.Drawing.Size(241, 20);
-            this.chbWPMY.TabIndex = 15;
-            this.chbWPMY.Text = "Показать только мои замечания";
-            this.chbWPMY.UseVisualStyleBackColor = true;
-            this.chbWPMY.Visible = false;
-            this.chbWPMY.CheckedChanged += new System.EventHandler(this.chbWPMY_CheckedChanged);
-            // 
-            // chbWPFinished
-            // 
-            this.chbWPFinished.AutoSize = true;
-            this.chbWPFinished.Location = new System.Drawing.Point(901, 3);
-            this.chbWPFinished.Name = "chbWPFinished";
-            this.chbWPFinished.Size = new System.Drawing.Size(205, 20);
-            this.chbWPFinished.TabIndex = 15;
-            this.chbWPFinished.Text = "Показывать отработанные";
-            this.chbWPFinished.UseVisualStyleBackColor = true;
-            this.chbWPFinished.Visible = false;
-            this.chbWPFinished.CheckedChanged += new System.EventHandler(this.chbWPFinished_CheckedChanged);
+            this.rbFinishedRemarks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbFinishedRemarks.AutoSize = true;
+            this.rbFinishedRemarks.Location = new System.Drawing.Point(928, 4);
+            this.rbFinishedRemarks.Name = "rbFinishedRemarks";
+            this.rbFinishedRemarks.Size = new System.Drawing.Size(179, 26);
+            this.rbFinishedRemarks.TabIndex = 16;
+            this.rbFinishedRemarks.Text = "Показать отработанные";
+            this.rbFinishedRemarks.UseVisualStyleBackColor = true;
+            this.rbFinishedRemarks.CheckedChanged += new System.EventHandler(this.rbFinishedRemarks_CheckedChanged);
             // 
             // Remarks
             // 
@@ -257,7 +273,8 @@
         private System.Windows.Forms.Button bGoToSummon;
         private System.Windows.Forms.Button bSummonWork;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chbWPMY;
-        private System.Windows.Forms.CheckBox chbWPFinished;
+        private System.Windows.Forms.RadioButton rbFinishedRemarks;
+        private System.Windows.Forms.RadioButton rbAllRemarks;
+        private System.Windows.Forms.RadioButton rbMyRemarks;
     }
 }

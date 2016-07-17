@@ -35,7 +35,7 @@ namespace SummonManager
                 RVO.REMARK = tbRemark.Text;
                 RVO.IDCREATOR = UVO.id;
                 RVO.DATEREMARK = DateTime.Now;
-                DBRemarkWP dbr = new DBRemarkWP();
+                DBRemarkWP dbr = new DBRemarkWP(UVO);
                 dbr.AddNew(RVO);
             }
             else

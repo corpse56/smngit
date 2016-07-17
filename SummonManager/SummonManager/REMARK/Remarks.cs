@@ -86,15 +86,25 @@ namespace SummonManager
 
         private void Remarks_Load(object sender, EventArgs e)
         {
-            DBRemarkWP dbr = new DBRemarkWP();
+            DBRemarkWP dbr = new DBRemarkWP(UVO);
             dgWP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgWP.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             
 
 
             //dgSummon.Columns["qty"].FillWeight = 50;
-
-            dgWP.DataSource = dbr.GetAll();
+            if (rbAllRemarks.Checked)
+            {
+                UVO.MyRemarksWP(dgWP);
+            }
+            if (rbMyRemarks.Checked)
+            {
+                UVO.AllRemarksWP(dgWP);
+            }
+            if (rbFinishedRemarks.Checked)
+            {
+                UVO.FinishedRemarksWP(dgWP);
+            }
 
             //if (chbWPFinished.Checked) HideFinishedWP();
             //if (chbWPMY.Checked) UVO.MyRemarksWP(dgWP);
@@ -212,12 +222,20 @@ namespace SummonManager
             Remarks_Load(sender, e);
         }
 
-        private void chbWPFinished_CheckedChanged(object sender, EventArgs e)
+       
+
+        private void rbMyRemarks_CheckedChanged(object sender, EventArgs e)
         {
             Remarks_Load(sender, e);
         }
 
-        private void chbWPMY_CheckedChanged(object sender, EventArgs e)
+        private void rbAllRemarks_CheckedChanged(object sender, EventArgs e)
+        {
+            Remarks_Load(sender, e);
+
+        }
+
+        private void rbFinishedRemarks_CheckedChanged(object sender, EventArgs e)
         {
             Remarks_Load(sender, e);
 

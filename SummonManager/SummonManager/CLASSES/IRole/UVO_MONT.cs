@@ -50,6 +50,13 @@ namespace SummonManager
             //ss.bSave.Enabled = true;
 
         }
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                r.Visible = false;
+            }
+        }
 
     }
 }

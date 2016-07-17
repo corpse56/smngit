@@ -55,11 +55,14 @@ namespace SummonManager
             ss.summonTransfer1.Enabled = false;
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
-            /*ss.chbDeterm.Enabled = true;
-            if (ss.chbDeterm.Checked)
-                ss.dtpAPPROX.Enabled = false;
-            else
-                ss.dtpAPPROX.Enabled = true;*/
+        }
+
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                r.Visible = false;
+            }
         }
 
     }

@@ -39,7 +39,7 @@ namespace SummonManager
             if (this.RemarkType == "WP")
             {
                 RVO = RemarkWPVO.RemarkVOByID(this.ID);
-                DBRemarkWP dbr = new DBRemarkWP();
+                DBRemarkWP dbr = new DBRemarkWP(UVO);
                 RVO.CLOSED = true;
                 RVO.CLOSINGCOMMENT = textBox1.Text;
                 RVO.DATECLOSE = DateTime.Now;

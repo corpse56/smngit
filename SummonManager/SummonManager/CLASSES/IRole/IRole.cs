@@ -302,6 +302,14 @@ namespace SummonManager.CLASSES.IRole_namespace
         {
             
         }
+
+        internal void AllRemarksWP(DataGridView dgWP)//сделать все замечания видимыми
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                r.Visible = true;
+            }
+        }
     }
 
     public class UserFactory

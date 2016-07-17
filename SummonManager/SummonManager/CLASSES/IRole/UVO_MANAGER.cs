@@ -81,6 +81,13 @@ namespace SummonManager
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer2.Enabled = false;
         }
+        public override void MyRemarksWP(DataGridView dgWP)
+        {
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                r.Visible = false;
+            }
+        }
 
 
 

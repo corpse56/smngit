@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     class DBRemarkWP :DB
     {
-        public DBRemarkWP() { }
+        IRole UVO;
+        public DBRemarkWP()
+        {
+        }
+        public DBRemarkWP(IRole UVO_)
+        {
+            this.UVO = UVO_;
+        }
 
         public DataTable GetAll()
         {
@@ -121,6 +129,61 @@ namespace SummonManager
             else
                 return "";
 
+        }
+
+        internal object GetMy()
+        {
+
+             
+            DA.SelectCommand.CommandText = "select A.ID,W.WPNAME+' '+W.DECNUM WP,IDWP,DOCUMENTNAME, REMARK," +
+                                           " case when DOCUMENTNAME = 'COMPOSITION' then 'Состав изделия' else " +
+                                           " case when DOCUMENTNAME = 'DIMENSIONALDRAWING' then 'Габаритный чертёж' else " +
+                                           " case when DOCUMENTNAME = 'CONFIGURATION' then 'Конфигурация' else " +
+                                           " case when DOCUMENTNAME = 'WIRINGDIAGRAM' then 'Схема электрическая' else " +
+                                           " case when DOCUMENTNAME = 'TECHREQ' then 'Технические требования' else " +
+                                           " case when DOCUMENTNAME = 'SBORKA3D' then 'Сборка 3Д' else " +
+                                           " case when DOCUMENTNAME = 'MECHPARTS' then 'Проект механических деталей' else " +
+                                           " case when DOCUMENTNAME = 'SHILDS' then 'Шильды' else " +
+                                           " case when DOCUMENTNAME = 'PACKAGING' then 'Упаковка' else " +
+                                           " case when DOCUMENTNAME = 'SOFTWARE' then 'Программное обеспечение' else DOCUMENTNAME end end end end end end end end end end DOCUMENTNAME_RUS" +
+
+                                           " ,DATEREMARK,B.FIO creator,C.ROLENAME createrole, " +
+                                           " case when CLOSED=1 then 'Отработано' else 'Открыто' end CLOSED,CLOSINGCOMMENT,DATECLOSE,D.FIO closer,E.ROLENAME closerole " +
+                                           " from " + Base.BaseName + "..REMARKWP A" +
+                                           " left join " + Base.BaseName + "..USERS B on A.IDCREATOR = B.ID " +
+                                           " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID " +
+                                           " left join " + Base.BaseName + "..USERS D on A.IDCLOSER = D.ID " +
+                                           " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID " +
+                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID";
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
+
+        internal object GetFinished()
+        {
+            DA.SelectCommand.CommandText = "select A.ID,W.WPNAME+' '+W.DECNUM WP,IDWP,DOCUMENTNAME, REMARK," +
+                                           " case when DOCUMENTNAME = 'COMPOSITION' then 'Состав изделия' else " +
+                                           " case when DOCUMENTNAME = 'DIMENSIONALDRAWING' then 'Габаритный чертёж' else " +
+                                           " case when DOCUMENTNAME = 'CONFIGURATION' then 'Конфигурация' else " +
+                                           " case when DOCUMENTNAME = 'WIRINGDIAGRAM' then 'Схема электрическая' else " +
+                                           " case when DOCUMENTNAME = 'TECHREQ' then 'Технические требования' else " +
+                                           " case when DOCUMENTNAME = 'SBORKA3D' then 'Сборка 3Д' else " +
+                                           " case when DOCUMENTNAME = 'MECHPARTS' then 'Проект механических деталей' else " +
+                                           " case when DOCUMENTNAME = 'SHILDS' then 'Шильды' else " +
+                                           " case when DOCUMENTNAME = 'PACKAGING' then 'Упаковка' else " +
+                                           " case when DOCUMENTNAME = 'SOFTWARE' then 'Программное обеспечение' else DOCUMENTNAME end end end end end end end end end end DOCUMENTNAME_RUS" +
+
+                                           " ,DATEREMARK,B.FIO creator,C.ROLENAME createrole, " +
+                                           " case when CLOSED=1 then 'Отработано' else 'Открыто' end CLOSED,CLOSINGCOMMENT,DATECLOSE,D.FIO closer,E.ROLENAME closerole " +
+                                           " from " + Base.BaseName + "..REMARKWP A" +
+                                           " left join " + Base.BaseName + "..USERS B on A.IDCREATOR = B.ID " +
+                                           " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID " +
+                                           " left join " + Base.BaseName + "..USERS D on A.IDCLOSER = D.ID " +
+                                           " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID " +
+                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID "+
+                                           " where A.CLOSED = 1";
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
         }
     }
 }
