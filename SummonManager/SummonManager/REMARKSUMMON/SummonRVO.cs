@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SummonManager.CLASSES;
+using System.Data;
 
 namespace SummonManager
 {
@@ -28,9 +29,9 @@ namespace SummonManager
             return new DBRemarkSUMMON().GetRemarkByID(id);
         }
 
-        public static SummonRVO RemarkVOByID(string IDWP, string DOCUMENTNAME)
+        public static DataTable RemarkVOByID(string IDSUMMON, string DOCUMENTNAME)
         {
-            return new DBRemarkSUMMON().GetRemarkByIDSDOC(DOCUMENTNAME, IDWP);
+            return new DBRemarkSUMMON().GetRemarksByIDSDOC(DOCUMENTNAME, IDSUMMON);
         }
 
 

@@ -101,12 +101,32 @@ namespace SummonManager
             RVO.REMARK = DS.Tables["t"].Rows[0]["REMARK"].ToString();
             return RVO;
         }
-        internal WP_RVO GetRemarkByIDWPDOC(string DOCUMENTNAME,string IDWP)
+        internal DataTable GetRemarksByIDWPDOC(string DOCUMENTNAME,string IDWP)
         {
-            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..REMARKWP where IDWP = "+IDWP+" and DOCUMENTNAME='"+DOCUMENTNAME+"'";
+            DA.SelectCommand.CommandText = "select A.ID,W.WPNAME+' '+W.DECNUM WP,IDWP,DOCUMENTNAME, REMARK," +
+                                           " case when DOCUMENTNAME = 'COMPOSITION' then 'Состав изделия' else " +
+                                           " case when DOCUMENTNAME = 'DIMENSIONALDRAWING' then 'Габаритный чертёж' else " +
+                                           " case when DOCUMENTNAME = 'CONFIGURATION' then 'Конфигурация' else " +
+                                           " case when DOCUMENTNAME = 'WIRINGDIAGRAM' then 'Схема электрическая' else " +
+                                           " case when DOCUMENTNAME = 'TECHREQ' then 'Технические требования' else " +
+                                           " case when DOCUMENTNAME = 'SBORKA3D' then 'Сборка 3Д' else " +
+                                           " case when DOCUMENTNAME = 'MECHPARTS' then 'Проект механических деталей' else " +
+                                           " case when DOCUMENTNAME = 'SHILDS' then 'Шильды' else " +
+                                           " case when DOCUMENTNAME = 'PACKAGING' then 'Упаковка' else " +
+                                           " case when DOCUMENTNAME = 'SOFTWARE' then 'Программное обеспечение' else DOCUMENTNAME end end end end end end end end end end DOCUMENTNAME_RUS" +
+
+                                           " ,DATEREMARK,B.FIO creator,C.ROLENAME createrole, " +
+                                           " case when CLOSED=1 then 'Отработано' else 'Открыто' end CLOSED,CLOSINGCOMMENT,DATECLOSE,D.FIO closer,E.ROLENAME closerole " +
+                                           " from " + Base.BaseName + "..REMARKWP A" +
+                                           " left join " + Base.BaseName + "..USERS B on A.IDCREATOR = B.ID " +
+                                           " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID " +
+                                           " left join " + Base.BaseName + "..USERS D on A.IDCLOSER = D.ID " +
+                                           " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID " +
+                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID" +
+                                           " where IDWP = " + IDWP + " and DOCUMENTNAME='" + DOCUMENTNAME + "' and CLOSED = 0  ";
             int i = DA.Fill(DS, "t");
-            if (i==0) return null;
-            WP_RVO RVO = new WP_RVO();
+            //if (i==0) return null;
+            /*WP_RVO RVO = new WP_RVO();                  
             RVO.ID = DS.Tables["t"].Rows[0]["ID"].ToString();
             RVO.CLOSED = (bool)DS.Tables["t"].Rows[0]["CLOSED"];
             RVO.CLOSINGCOMMENT = DS.Tables["t"].Rows[0]["CLOSINGCOMMENT"].ToString();
@@ -117,7 +137,8 @@ namespace SummonManager
             RVO.IDCREATOR = DS.Tables["t"].Rows[0]["IDCREATOR"].ToString();
             RVO.IDWP = DS.Tables["t"].Rows[0]["IDWP"].ToString();
             RVO.REMARK = DS.Tables["t"].Rows[0]["REMARK"].ToString();
-            return RVO;
+            return RVO;*/
+            return DS.Tables["t"];
         }
 
         internal string RemarkExists(string idwp, string DOCUMENTNAME)

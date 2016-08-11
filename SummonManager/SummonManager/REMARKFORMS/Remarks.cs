@@ -146,8 +146,8 @@ namespace SummonManager
 
 
 
-            dgWP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgWP.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgSumm.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgSumm.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             dgSumm.Columns["IDS"].FillWeight = 70;
             dgSumm.Columns["IDS"].HeaderText = "№ извещения";

@@ -36,7 +36,11 @@
             this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chRequired = new System.Windows.Forms.CheckBox();
             this.bRemark = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.добавитьЕщёОдноЗамечаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отработатьСуществующиеЗамечанияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bPathDel
@@ -115,6 +119,27 @@
             this.bRemark.UseVisualStyleBackColor = true;
             this.bRemark.Click += new System.EventHandler(this.bRemark_Click);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьЕщёОдноЗамечаниеToolStripMenuItem,
+            this.отработатьСуществующиеЗамечанияToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(289, 70);
+            // 
+            // добавитьЕщёОдноЗамечаниеToolStripMenuItem
+            // 
+            this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Name = "добавитьЕщёОдноЗамечаниеToolStripMenuItem";
+            this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Text = "Добавить ещё одно замечание";
+            // 
+            // отработатьСуществующиеЗамечанияToolStripMenuItem
+            // 
+            this.отработатьСуществующиеЗамечанияToolStripMenuItem.Name = "отработатьСуществующиеЗамечанияToolStripMenuItem";
+            this.отработатьСуществующиеЗамечанияToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.отработатьСуществующиеЗамечанияToolStripMenuItem.Text = "Отработать существующие замечания";
+            this.отработатьСуществующиеЗамечанияToolStripMenuItem.Click += new System.EventHandler(this.WorkExistingRemarkToolStripMenuItem_Click);
+            // 
             // PathField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -129,6 +154,7 @@
             this.Name = "PathField";
             this.Size = new System.Drawing.Size(546, 28);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,6 +169,9 @@
         public System.Windows.Forms.Button bRemark;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem добавитьЕщёОдноЗамечаниеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отработатьСуществующиеЗамечанияToolStripMenuItem;
 
 
     }

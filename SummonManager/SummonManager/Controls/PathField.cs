@@ -224,7 +224,7 @@ namespace SummonManager.Controls
         string IDREMARK;
         private void SetRemarkIcons()
         {
-            if (PRODUCT != null)
+            if (PRODUCT != null) // этот контрол для Продукта
             {
                 DBRemarkWP dbr = new DBRemarkWP(UVO);
                 IDREMARK = dbr.RemarkExists(PRODUCT.GetID().ToString(), DOCUMENTNAME);
@@ -246,7 +246,7 @@ namespace SummonManager.Controls
                 }
 
             }
-            else
+            else  // а этот контрол для извещения. Объекты замечаний к продукту и извещению разные!
             {
                 DBRemarkSUMMON dbr = new DBRemarkSUMMON();
                 IDREMARK = dbr.RemarkExists(SVO.ID, DOCUMENTNAME);
@@ -257,6 +257,7 @@ namespace SummonManager.Controls
                     bRemark.BackgroundImage.Tag = "exclamation";
                     tt = new ToolTip();
                     tt.SetToolTip(this.bRemark, "Отработать замечание");
+
                 }
                 else
                 {
@@ -360,12 +361,12 @@ namespace SummonManager.Controls
 
         private void bRemark_Click(object sender, EventArgs e)
         {
-
-            if (bRemark.BackgroundImage.Tag.ToString() == "reply")
+            contextMenuStrip2.Tag = null;
+            if (bRemark.BackgroundImage.Tag.ToString() == "reply")//если надо добавить замечание
             {
 
 
-                if (PRODUCT != null)
+                if (PRODUCT != null)//если замечние по продукту
                 {
                     if (PRODUCT.GetProductType() != WPTYPE.WPNAMELIST)
                     {
@@ -378,7 +379,7 @@ namespace SummonManager.Controls
                     NewREMARKWP nrwp = new NewREMARKWP(RVO, null, this.UVO);
                     nrwp.ShowDialog();
                 }
-                else
+                else //если замечание по извещению
                 {
                     SummonRVO RVOS = new SummonRVO();
                     RVOS.DOCUMENTNAME = this.DOCUMENTNAME;
@@ -387,18 +388,41 @@ namespace SummonManager.Controls
                     nrwp.ShowDialog();
                 }
             }
-            else
+            else   //если надо отработать замечание
             {
-                if (PRODUCT != null)
+                if (PRODUCT != null) //если надо отработать замечание по продукту
                 {
-                    RemarkWork rw = new RemarkWork(IDREMARK, UVO,"WP");
-                    rw.ShowDialog();
+                    DBRemarkWP dbrwp = new DBRemarkWP(UVO);
+                    DataTable t = dbrwp.GetRemarksByIDWPDOC(this.DOCUMENTNAME, PRODUCT.GetID().ToString());
+                    if (t.Rows.Count == 0)
+                    {
+                        SetRemarkIcons();
+                        return;
+                    }
+                    else //так как замечание уже есть, то надо дать выбор добавлять ещё одно замечние или отрабатывать существующее
+                    {
+                        int x = 0;
+                        int y = bRemark.Height;
+                        contextMenuStrip2.Tag = t;
+                        contextMenuStrip2.Show(bRemark, x, y);
+                    }
                 }
-                else
+                else  //если надо отработать замечание по извещению
                 {
-                    RemarkWork rw = new RemarkWork(IDREMARK, UVO, "SUMMON");
-                    rw.ShowDialog();
-
+                    DBRemarkSUMMON dbrs = new DBRemarkSUMMON();
+                    DataTable t = dbrs.GetRemarksByIDSDOC(this.DOCUMENTNAME, SVO.ID);
+                    if (t.Rows.Count == 0)
+                    {
+                        SetRemarkIcons();
+                        return;
+                    }
+                    else     //так как замечание уже есть, то надо дать выбор добавлять ещё одно замечние или отрабатывать существующее
+                    {
+                        int x = 0;
+                        int y = bRemark.Height;
+                        contextMenuStrip2.Tag = t;
+                        contextMenuStrip2.Show(bRemark, x, y);
+                    }
                 }
             }
             SetRemarkIcons();
@@ -432,6 +456,54 @@ namespace SummonManager.Controls
         }
         private void tbPath_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void AddOneMoreRemarkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PRODUCT != null)
+            {
+                WP_RVO RVO = new WP_RVO();
+                RVO.DOCUMENTNAME = this.DOCUMENTNAME;
+                RVO.IDWP = PRODUCT.GetID().ToString();
+                NewREMARKWP nrwp = new NewREMARKWP(RVO, null, this.UVO);
+                nrwp.ShowDialog();
+            }
+            else
+            {
+                SummonRVO RVOS = new SummonRVO();
+                RVOS.DOCUMENTNAME = this.DOCUMENTNAME;
+                RVOS.IDSUMMON = SVO.ID;
+                NewREMARKWP nrwp = new NewREMARKWP(null, RVOS, this.UVO);
+                nrwp.ShowDialog();
+            }
+        }
+
+        private void WorkExistingRemarkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string RMType = "";
+            string id = "";
+            if (PRODUCT != null)
+            {
+                RMType = "WP";
+                id = PRODUCT.GetID().ToString();
+            }
+            else
+            {
+                RMType = "SUMMON";
+                id = SVO.ID;
+            }
+            DataTable t = (DataTable)contextMenuStrip2.Tag;
+            if (t.Rows.Count > 1)
+            {
+                ChooseRemarkToWork crtw = new ChooseRemarkToWork(this.DOCUMENTNAME, UVO, RMType, id);
+                crtw.ShowDialog();
+            }
+            else
+            {
+                RemarkWork rw = new RemarkWork(id, UVO, RMType);
+                rw.ShowDialog();
+            }
             
         }
         //tbPath.Image = Resources.document_open_disabled;

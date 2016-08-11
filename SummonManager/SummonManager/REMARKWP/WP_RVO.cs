@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SummonManager.CLASSES;
+using System.Data;
 
 namespace SummonManager
 {
@@ -28,9 +29,9 @@ namespace SummonManager
             return new DBRemarkWP().GetRemarkByID(id);
         }
 
-        public static WP_RVO RemarkVOByID(string IDWP,string DOCUMENTNAME)
+        public static DataTable RemarkVOByID(string IDWP,string DOCUMENTNAME)
         {
-            return new DBRemarkWP().GetRemarkByIDWPDOC(DOCUMENTNAME,IDWP);
+            return new DBRemarkWP().GetRemarksByIDWPDOC(DOCUMENTNAME,IDWP);
         }
 
 

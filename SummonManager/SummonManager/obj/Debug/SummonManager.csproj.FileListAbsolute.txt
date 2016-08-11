@@ -61,3 +61,4 @@ f:\projects\haltura\s\smngit\SummonManager\SummonManager\obj\Debug\SummonManager
 f:\projects\haltura\s\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.application
 f:\projects\haltura\s\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.exe
 f:\projects\haltura\s\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.pdb
+f:\projects\haltura\s\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.ChooseRemarkToWork.resources

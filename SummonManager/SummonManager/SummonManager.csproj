@@ -137,6 +137,12 @@
     <Compile Include="CLASSES\DBZhgutList.cs" />
     <Compile Include="CLASSES\IProduct\ZhgutVO.cs" />
     <Compile Include="CLASSES\UIWorks.cs" />
+    <Compile Include="REMARKFORMS\ChooseRemarkToWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="REMARKFORMS\ChooseRemarkToWork.Designer.cs">
+      <DependentUpon>ChooseRemarkToWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="REMARKWP\DBRemarkWP.cs" />
     <Compile Include="REMARKFORMS\RemarkWork.cs">
       <SubType>Form</SubType>
@@ -496,6 +502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Packing.resx">
       <DependentUpon>Packing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REMARKFORMS\ChooseRemarkToWork.resx">
+      <DependentUpon>ChooseRemarkToWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WP\EditWPN.resx">
       <DependentUpon>EditWPN.cs</DependentUpon>
