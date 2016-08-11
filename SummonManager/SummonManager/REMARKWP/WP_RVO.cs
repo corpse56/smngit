@@ -6,10 +6,10 @@ using SummonManager.CLASSES;
 
 namespace SummonManager
 {
-    public class RemarkSummonVO
+    public class WP_RVO
     {
         public string ID;
-        public string IDSUMMON;
+        public string IDWP;
         public string DOCUMENTNAME;
         public DateTime DATEREMARK;
         public string IDCREATOR;
@@ -19,18 +19,18 @@ namespace SummonManager
         public DateTime DATECLOSE;
         public string IDCLOSER;
 
-        public RemarkSummonVO()
+        public WP_RVO()
         {
 
         }
-        public static RemarkSummonVO RemarkVOByID(string id)
+        public static WP_RVO RemarkVOByID(string id)
         {
-            return new DBRemarkSUMMON().GetRemarkByID(id);
+            return new DBRemarkWP().GetRemarkByID(id);
         }
 
-        public static RemarkSummonVO RemarkVOByID(string IDWP, string DOCUMENTNAME)
+        public static WP_RVO RemarkVOByID(string IDWP,string DOCUMENTNAME)
         {
-            return new DBRemarkSUMMON().GetRemarkByIDWPDOC(DOCUMENTNAME, IDWP);
+            return new DBRemarkWP().GetRemarkByIDWPDOC(DOCUMENTNAME,IDWP);
         }
 
 

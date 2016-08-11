@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.rbFinishedRemarks = new System.Windows.Forms.RadioButton();
+            this.rbAllRemarks = new System.Windows.Forms.RadioButton();
+            this.rbMyRemarks = new System.Windows.Forms.RadioButton();
             this.bGoToWP = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.bWPWork = new System.Windows.Forms.Button();
@@ -39,9 +42,6 @@
             this.bSummWork = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgSumm = new System.Windows.Forms.DataGridView();
-            this.rbMyRemarks = new System.Windows.Forms.RadioButton();
-            this.rbAllRemarks = new System.Windows.Forms.RadioButton();
-            this.rbFinishedRemarks = new System.Windows.Forms.RadioButton();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -80,6 +80,47 @@
             this.splitContainer1.Size = new System.Drawing.Size(1121, 747);
             this.splitContainer1.SplitterDistance = 373;
             this.splitContainer1.TabIndex = 12;
+            // 
+            // rbFinishedRemarks
+            // 
+            this.rbFinishedRemarks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbFinishedRemarks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbFinishedRemarks.AutoSize = true;
+            this.rbFinishedRemarks.Location = new System.Drawing.Point(928, 4);
+            this.rbFinishedRemarks.Name = "rbFinishedRemarks";
+            this.rbFinishedRemarks.Size = new System.Drawing.Size(179, 26);
+            this.rbFinishedRemarks.TabIndex = 16;
+            this.rbFinishedRemarks.Text = "Показать отработанные";
+            this.rbFinishedRemarks.UseVisualStyleBackColor = true;
+            this.rbFinishedRemarks.CheckedChanged += new System.EventHandler(this.rbFinishedRemarks_CheckedChanged);
+            // 
+            // rbAllRemarks
+            // 
+            this.rbAllRemarks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbAllRemarks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbAllRemarks.AutoSize = true;
+            this.rbAllRemarks.Location = new System.Drawing.Point(815, 4);
+            this.rbAllRemarks.Name = "rbAllRemarks";
+            this.rbAllRemarks.Size = new System.Drawing.Size(107, 26);
+            this.rbAllRemarks.TabIndex = 16;
+            this.rbAllRemarks.Text = "Показать все";
+            this.rbAllRemarks.UseVisualStyleBackColor = true;
+            this.rbAllRemarks.CheckedChanged += new System.EventHandler(this.rbAllRemarks_CheckedChanged);
+            // 
+            // rbMyRemarks
+            // 
+            this.rbMyRemarks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbMyRemarks.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbMyRemarks.AutoSize = true;
+            this.rbMyRemarks.Checked = true;
+            this.rbMyRemarks.Location = new System.Drawing.Point(707, 4);
+            this.rbMyRemarks.Name = "rbMyRemarks";
+            this.rbMyRemarks.Size = new System.Drawing.Size(102, 26);
+            this.rbMyRemarks.TabIndex = 16;
+            this.rbMyRemarks.TabStop = true;
+            this.rbMyRemarks.Text = "Поазать мои";
+            this.rbMyRemarks.UseVisualStyleBackColor = true;
+            this.rbMyRemarks.CheckedChanged += new System.EventHandler(this.rbMyRemarks_CheckedChanged);
             // 
             // bGoToWP
             // 
@@ -198,44 +239,6 @@
             this.dgSumm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSumm.Size = new System.Drawing.Size(1092, 302);
             this.dgSumm.TabIndex = 12;
-            // 
-            // rbMyRemarks
-            // 
-            this.rbMyRemarks.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbMyRemarks.AutoSize = true;
-            this.rbMyRemarks.Checked = true;
-            this.rbMyRemarks.Location = new System.Drawing.Point(707, 4);
-            this.rbMyRemarks.Name = "rbMyRemarks";
-            this.rbMyRemarks.Size = new System.Drawing.Size(102, 26);
-            this.rbMyRemarks.TabIndex = 16;
-            this.rbMyRemarks.TabStop = true;
-            this.rbMyRemarks.Text = "Поазать мои";
-            this.rbMyRemarks.UseVisualStyleBackColor = true;
-            this.rbMyRemarks.CheckedChanged += new System.EventHandler(this.rbMyRemarks_CheckedChanged);
-            // 
-            // rbAllRemarks
-            // 
-            this.rbAllRemarks.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbAllRemarks.AutoSize = true;
-            this.rbAllRemarks.Location = new System.Drawing.Point(815, 4);
-            this.rbAllRemarks.Name = "rbAllRemarks";
-            this.rbAllRemarks.Size = new System.Drawing.Size(107, 26);
-            this.rbAllRemarks.TabIndex = 16;
-            this.rbAllRemarks.Text = "Показать все";
-            this.rbAllRemarks.UseVisualStyleBackColor = true;
-            this.rbAllRemarks.CheckedChanged += new System.EventHandler(this.rbAllRemarks_CheckedChanged);
-            // 
-            // rbFinishedRemarks
-            // 
-            this.rbFinishedRemarks.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbFinishedRemarks.AutoSize = true;
-            this.rbFinishedRemarks.Location = new System.Drawing.Point(928, 4);
-            this.rbFinishedRemarks.Name = "rbFinishedRemarks";
-            this.rbFinishedRemarks.Size = new System.Drawing.Size(179, 26);
-            this.rbFinishedRemarks.TabIndex = 16;
-            this.rbFinishedRemarks.Text = "Показать отработанные";
-            this.rbFinishedRemarks.UseVisualStyleBackColor = true;
-            this.rbFinishedRemarks.CheckedChanged += new System.EventHandler(this.rbFinishedRemarks_CheckedChanged);
             // 
             // Remarks
             // 

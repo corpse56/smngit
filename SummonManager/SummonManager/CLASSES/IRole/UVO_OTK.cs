@@ -81,11 +81,40 @@ namespace SummonManager
         {
             foreach (DataGridViewRow r in dgWP.Rows)
             {
-
                 r.Visible = false;
             }
 
         }
+        public override bool IsMyWPRemark(string DOCNAME)
+        {
+            return false;
 
+        }
+        public override void MyRemarksSmm(DataGridView dgSumm)
+        {
+            dgSumm.CurrentCell = null;
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
+                {
+                    if (r.Cells["DOCUMENTNAME"].Value.ToString() != "SERIAL")
+                    {
+                        r.Visible = false;
+                    }
+                    else
+                    {
+                        r.Visible = true;
+                    }
+                }
+                else
+                {
+                    r.Visible = false;
+                }
+            }
+        }
+        public override bool IsMySmmRemark(string DOCNAME)
+        {
+            return (DOCNAME != "SERIAL") ? false : true;
+        }	
     }
 }

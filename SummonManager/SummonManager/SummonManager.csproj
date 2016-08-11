@@ -137,14 +137,14 @@
     <Compile Include="CLASSES\DBZhgutList.cs" />
     <Compile Include="CLASSES\IProduct\ZhgutVO.cs" />
     <Compile Include="CLASSES\UIWorks.cs" />
-    <Compile Include="REMARK\DBRemarkWP.cs" />
-    <Compile Include="REMARK\RemarkWork.cs">
+    <Compile Include="REMARKWP\DBRemarkWP.cs" />
+    <Compile Include="REMARKFORMS\RemarkWork.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="REMARK\RemarkWork.Designer.cs">
+    <Compile Include="REMARKFORMS\RemarkWork.Designer.cs">
       <DependentUpon>RemarkWork.cs</DependentUpon>
     </Compile>
-    <Compile Include="REMARK\RemarkWPVO.cs" />
+    <Compile Include="REMARKWP\WP_RVO.cs" />
     <Compile Include="Controls\ColorSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -290,10 +290,10 @@
       <DependentUpon>Packing.cs</DependentUpon>
     </Compile>
     <Compile Include="CLASSES\DBPacking.cs" />
-    <Compile Include="EditWPN.cs">
+    <Compile Include="WP\EditWPN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditWPN.Designer.cs">
+    <Compile Include="WP\EditWPN.Designer.cs">
       <DependentUpon>EditWPN.cs</DependentUpon>
     </Compile>
     <Compile Include="EditUser.cs">
@@ -308,10 +308,10 @@
     <Compile Include="NewUser.Designer.cs">
       <DependentUpon>NewUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewWPN.cs">
+    <Compile Include="WP\NewWPN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewWPN.Designer.cs">
+    <Compile Include="WP\NewWPN.Designer.cs">
       <DependentUpon>NewWPN.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\SummonNotes.cs">
@@ -326,10 +326,10 @@
     <Compile Include="Controls\SummonTransfer.Designer.cs">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
     </Compile>
-    <Compile Include="REMARK\Remarks.cs">
+    <Compile Include="REMARKFORMS\Remarks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="REMARK\Remarks.Designer.cs">
+    <Compile Include="REMARKFORMS\Remarks.Designer.cs">
       <DependentUpon>Remarks.cs</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
@@ -497,7 +497,7 @@
     <EmbeddedResource Include="Packing.resx">
       <DependentUpon>Packing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWPN.resx">
+    <EmbeddedResource Include="WP\EditWPN.resx">
       <DependentUpon>EditWPN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditUser.resx">
@@ -506,7 +506,7 @@
     <EmbeddedResource Include="NewUser.resx">
       <DependentUpon>NewUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewWPN.resx">
+    <EmbeddedResource Include="WP\NewWPN.resx">
       <DependentUpon>NewWPN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SummonNotes.resx">
@@ -515,10 +515,10 @@
     <EmbeddedResource Include="Controls\SummonTransfer.resx">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="REMARK\RemarkWork.resx">
+    <EmbeddedResource Include="REMARKFORMS\RemarkWork.resx">
       <DependentUpon>RemarkWork.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="REMARK\Remarks.resx">
+    <EmbeddedResource Include="REMARKFORMS\Remarks.resx">
       <DependentUpon>Remarks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
@@ -567,19 +567,19 @@
     <EmbeddedResource Include="VersionHistory.resx">
       <DependentUpon>VersionHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WPName.resx">
+    <EmbeddedResource Include="WP\WPName.resx">
       <DependentUpon>WPName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWPCategory.resx">
+    <EmbeddedResource Include="Categories\EditWPCategory.resx">
       <DependentUpon>EditWPCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewCategory.resx">
+    <EmbeddedResource Include="Categories\NewCategory.resx">
       <DependentUpon>NewCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewSubCategory.resx">
+    <EmbeddedResource Include="Categories\NewSubCategory.resx">
       <DependentUpon>NewSubCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWPSubCategory.resx">
+    <EmbeddedResource Include="Categories\EditWPSubCategory.resx">
       <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewCABLE.resx">
@@ -591,7 +591,7 @@
     <EmbeddedResource Include="PickIntoPackage.resx">
       <DependentUpon>PickIntoPackage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="REMARK\NewREMARKWP.resx">
+    <EmbeddedResource Include="REMARKFORMS\NewREMARKWP.resx">
       <DependentUpon>NewREMARKWP.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -632,34 +632,34 @@
     <Compile Include="VersionHistory.Designer.cs">
       <DependentUpon>VersionHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="WPName.cs">
+    <Compile Include="WP\WPName.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WPName.Designer.cs">
+    <Compile Include="WP\WPName.Designer.cs">
       <DependentUpon>WPName.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWPCategory.cs">
+    <Compile Include="Categories\EditWPCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditWPCategory.Designer.cs">
+    <Compile Include="Categories\EditWPCategory.Designer.cs">
       <DependentUpon>EditWPCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewCategory.cs">
+    <Compile Include="Categories\NewCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewCategory.Designer.cs">
+    <Compile Include="Categories\NewCategory.Designer.cs">
       <DependentUpon>NewCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewSubCategory.cs">
+    <Compile Include="Categories\NewSubCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewSubCategory.Designer.cs">
+    <Compile Include="Categories\NewSubCategory.Designer.cs">
       <DependentUpon>NewSubCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWPSubCategory.cs">
+    <Compile Include="Categories\EditWPSubCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditWPSubCategory.Designer.cs">
+    <Compile Include="Categories\EditWPSubCategory.Designer.cs">
       <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="NewCABLE.cs">
@@ -680,14 +680,14 @@
     <Compile Include="PickIntoPackage.Designer.cs">
       <DependentUpon>PickIntoPackage.cs</DependentUpon>
     </Compile>
-    <Compile Include="REMARK\NewREMARKWP.cs">
+    <Compile Include="REMARKFORMS\NewREMARKWP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="REMARK\NewREMARKWP.Designer.cs">
+    <Compile Include="REMARKFORMS\NewREMARKWP.Designer.cs">
       <DependentUpon>NewREMARKWP.cs</DependentUpon>
     </Compile>
     <Compile Include="REMARKSUMMON\DBRemarkSUMMON.cs" />
-    <Compile Include="REMARKSUMMON\RemarkSummonVO.cs" />
+    <Compile Include="REMARKSUMMON\SummonRVO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />

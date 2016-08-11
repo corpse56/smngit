@@ -14,7 +14,6 @@ namespace SummonManager
     public class UVO_BUH  :  IRole
     {
 
-
         public override string GetRoleName()
         {
             return "Бухгалтерия";
@@ -61,7 +60,20 @@ namespace SummonManager
                 r.Visible = false;
             }
         }
-
-
+        public override bool IsMyWPRemark(string DOCNAME)
+        {
+            return false;
+        }
+        public override void MyRemarksSmm(DataGridView dgSumm)
+        {
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                r.Visible = false;
+            }
+        }
+        public override bool IsMySmmRemark(string DOCNAME)
+        {
+            return false;
+        }	
     }
 }

@@ -15,11 +15,11 @@ namespace SummonManager
 {
     public partial class NewREMARKWP : Form
     {
-        RemarkWPVO RVO;
-        RemarkSummonVO RVOS;
+        WP_RVO RVO;
+        SummonRVO RVOS;
         IRole UVO;
 
-        public NewREMARKWP(RemarkWPVO rvo,RemarkSummonVO rvos,IRole uvo)
+        public NewREMARKWP(WP_RVO rvo,SummonRVO rvos,IRole uvo)
         {
             this.RVO = rvo;
             this.RVOS = rvos;

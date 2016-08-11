@@ -16,7 +16,7 @@ namespace SummonManager
         public string comtext;
         public bool result = false;
 
-        RemarkWPVO RVO;
+        WP_RVO RVO;
         IRole UVO;
         string RemarkType;
         //string IDREMARK;
@@ -38,7 +38,7 @@ namespace SummonManager
 
             if (this.RemarkType == "WP")
             {
-                RVO = RemarkWPVO.RemarkVOByID(this.ID);
+                RVO = WP_RVO.RemarkVOByID(this.ID);
                 DBRemarkWP dbr = new DBRemarkWP(UVO);
                 RVO.CLOSED = true;
                 RVO.CLOSINGCOMMENT = textBox1.Text;
@@ -48,7 +48,7 @@ namespace SummonManager
             }
             else
             {
-                RemarkSummonVO RVO = RemarkSummonVO.RemarkVOByID(this.ID);
+                SummonRVO RVO = SummonRVO.RemarkVOByID(this.ID);
                 DBRemarkSUMMON dbr = new DBRemarkSUMMON();
                 RVO.CLOSED = true;
                 RVO.CLOSINGCOMMENT = textBox1.Text;

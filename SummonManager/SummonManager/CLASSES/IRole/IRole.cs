@@ -325,6 +325,47 @@ namespace SummonManager.CLASSES.IRole_namespace
                 }
             }
         }
+
+
+        public virtual bool IsMyWPRemark(string DOCNAME)
+        {
+            throw new Exception("Нельзя использовать функцию базового класса!");
+            //return false;
+        }
+
+        public virtual void MyRemarksSmm(DataGridView dgSumm)
+        {
+            
+        }
+        public virtual bool IsMySmmRemark(string DOCNAME)
+        {
+            throw new Exception("Нельзя использовать функцию базового класса!");
+        }
+
+        internal void AllRemarksSmm(DataGridView dgSumm)
+        {
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                r.Visible = true;
+            }
+        }
+
+        internal void FinishedRemarksSmm(DataGridView dgSumm)
+        {
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                if (r.Cells["CLOSED"].Value.ToString().Contains("Отработано"))
+                {
+                    r.Visible = true;
+                }
+                else
+                {
+                    r.Visible = false;
+                }
+            }
+        }
+
+
     }
 
     public class UserFactory

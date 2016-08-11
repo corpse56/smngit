@@ -30,7 +30,7 @@ namespace SummonManager
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
-        public void AddNew(RemarkSummonVO RVO)
+        public void AddNew(SummonRVO RVO)
         {
             DA.InsertCommand.Parameters.AddWithValue("DATEREMARK", RVO.DATEREMARK);
             DA.InsertCommand.Parameters.AddWithValue("DOCUMENTNAME", RVO.DOCUMENTNAME);
@@ -45,7 +45,7 @@ namespace SummonManager
             DA.InsertCommand.Connection.Close();
         }
 
-        internal void Edit(RemarkSummonVO RVO)
+        internal void Edit(SummonRVO RVO)
         {
             DA.UpdateCommand.Parameters.AddWithValue("ID", RVO.ID);
             DA.UpdateCommand.Parameters.AddWithValue("CLOSED", RVO.CLOSED);
@@ -68,12 +68,12 @@ namespace SummonManager
             DA.UpdateCommand.Connection.Close();
         }
 
-        internal RemarkSummonVO GetRemarkByID(string id)
+        internal SummonRVO GetRemarkByID(string id)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..REMARKSUMMON where ID = "+id;
             int i = DA.Fill(DS, "t");
             if (i==0) return null;
-            RemarkSummonVO RVO = new RemarkSummonVO();
+            SummonRVO RVO = new SummonRVO();
             RVO.ID = id;
             RVO.CLOSED = (bool)DS.Tables["t"].Rows[0]["CLOSED"];
             RVO.CLOSINGCOMMENT = DS.Tables["t"].Rows[0]["CLOSINGCOMMENT"].ToString();
@@ -86,12 +86,12 @@ namespace SummonManager
             RVO.REMARK = DS.Tables["t"].Rows[0]["REMARK"].ToString();
             return RVO;
         }
-        internal RemarkSummonVO GetRemarkByIDWPDOC(string DOCUMENTNAME, string IDSUMMON)
+        internal SummonRVO GetRemarkByIDSDOC(string DOCUMENTNAME, string IDSUMMON)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..REMARKSUMMON where IDSUMMON = " + IDSUMMON + " and DOCUMENTNAME='" + DOCUMENTNAME + "'";
             int i = DA.Fill(DS, "t");
             if (i==0) return null;
-            RemarkSummonVO RVO = new RemarkSummonVO();
+            SummonRVO RVO = new SummonRVO();
             RVO.ID = DS.Tables["t"].Rows[0]["ID"].ToString();
             RVO.CLOSED = (bool)DS.Tables["t"].Rows[0]["CLOSED"];
             RVO.CLOSINGCOMMENT = DS.Tables["t"].Rows[0]["CLOSINGCOMMENT"].ToString();

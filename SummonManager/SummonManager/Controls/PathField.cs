@@ -372,7 +372,7 @@ namespace SummonManager.Controls
                         MessageBox.Show("Замечания для жгутов и кабелей ещё не реализовано. Замечания можно добавлять к полям-путям сущности \"Извещение\" и сущности \"Изделие\"");
                         return;
                     }
-                    RemarkWPVO RVO = new RemarkWPVO();
+                    WP_RVO RVO = new WP_RVO();
                     RVO.DOCUMENTNAME = this.DOCUMENTNAME;
                     RVO.IDWP = PRODUCT.GetID().ToString();
                     NewREMARKWP nrwp = new NewREMARKWP(RVO, null, this.UVO);
@@ -380,7 +380,7 @@ namespace SummonManager.Controls
                 }
                 else
                 {
-                    RemarkSummonVO RVOS = new RemarkSummonVO();
+                    SummonRVO RVOS = new SummonRVO();
                     RVOS.DOCUMENTNAME = this.DOCUMENTNAME;
                     RVOS.IDSUMMON = SVO.ID;
                     NewREMARKWP nrwp = new NewREMARKWP(null, RVOS, this.UVO);

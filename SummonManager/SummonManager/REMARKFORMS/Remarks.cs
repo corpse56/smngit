@@ -41,18 +41,6 @@ namespace SummonManager
 
         }
 
-        private void bWPWork_Click(object sender, EventArgs e)
-        {
-            if (dgWP.SelectedRows.Count != 1)
-            {
-                MessageBox.Show("Не выбрано ни одной строки!");
-                return;
-            }
-            RemarkWork rw = new RemarkWork(dgWP.SelectedRows[0].Cells["ID"].Value.ToString(),UVO,"WP");
-            rw.ShowDialog();
-
-            Remarks_Load(sender, e);
-        }
 
         private void bGoToWP_Click(object sender, EventArgs e)
         {  
@@ -87,34 +75,42 @@ namespace SummonManager
         private void Remarks_Load(object sender, EventArgs e)
         {
             DBRemarkWP dbr = new DBRemarkWP(UVO);
-            dgWP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgWP.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            
+            dgWP.DataSource = dbr.GetAll();
+
+            DBRemarkSUMMON dbrs = new DBRemarkSUMMON();
+            dgSumm.DataSource = dbrs.GetAll();
+        
 
 
-            //dgSummon.Columns["qty"].FillWeight = 50;
             if (rbAllRemarks.Checked)
             {
-                UVO.MyRemarksWP(dgWP);
-            }
-            if (rbMyRemarks.Checked)
-            {
                 UVO.AllRemarksWP(dgWP);
+                UVO.AllRemarksSmm(dgSumm);
             }
-            if (rbFinishedRemarks.Checked)
+            else if (rbMyRemarks.Checked)
+            {
+                UVO.MyRemarksWP(dgWP);
+                UVO.MyRemarksSmm(dgSumm);
+            }
+            else if (rbFinishedRemarks.Checked)
             {
                 UVO.FinishedRemarksWP(dgWP);
+                UVO.FinishedRemarksSmm(dgSumm);
+            }
+            else
+            {
+                UVO.AllRemarksWP(dgWP);
+                UVO.AllRemarksSmm(dgSumm);
             }
 
-            //if (chbWPFinished.Checked) HideFinishedWP();
-            //if (chbWPMY.Checked) UVO.MyRemarksWP(dgWP);
 
+            dgWP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgWP.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgWP.Columns["WP"].FillWeight = 70;
             dgWP.Columns["WP"].HeaderText = "№ изделия";
             dgWP.Columns["IDWP"].Visible = false;
             dgWP.Columns["DOCUMENTNAME"].Visible = false;
             dgWP.Columns["ID"].Visible = false;
-
             dgWP.Columns["DOCUMENTNAME_RUS"].FillWeight = 100;
             dgWP.Columns["DOCUMENTNAME_RUS"].HeaderText = "Документ";
             dgWP.Columns["REMARK"].FillWeight = 200;
@@ -149,11 +145,10 @@ namespace SummonManager
             dgWP.Columns["closerole"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
-            DBRemarkSUMMON dbrs = new DBRemarkSUMMON();
+
             dgWP.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgWP.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            dgSumm.DataSource = dbrs.GetAll();
             dgSumm.Columns["IDS"].FillWeight = 70;
             dgSumm.Columns["IDS"].HeaderText = "№ извещения";
             dgSumm.Columns["IDSUMMON"].Visible = false;
@@ -193,20 +188,29 @@ namespace SummonManager
             dgSumm.Columns["closerole"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private void HideFinishedWP()
+        private void bWPWork_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow r in dgWP.Rows)
+            if (dgWP.SelectedRows.Count != 1)
             {
-                if (r.Cells["CLOSED"].Value.ToString() == "Отработано")
-                {
-                    r.Visible = false;
-                }
+                MessageBox.Show("Не выбрано ни одной строки!");
+                return;
             }
-        }
+            if (dgWP.SelectedRows[0].Cells["CLOSED"].Value.ToString() == "Отработано")
+            {
+                MessageBox.Show("Нельзя отработать уже отработанное замечание!");
+                return;
+            }
+            if (!UVO.IsMyWPRemark(dgWP.SelectedRows[0].Cells["DOCUMENTNAME"].Value.ToString()) && (dgWP.SelectedRows[0].Cells["CLOSED"].Value.ToString() != "Отработано"))
+            {
+                MessageBox.Show("Нельзя отработать замечание по документу, за который вы не ответственны!");
+                return;
+            }
 
-        private void HideFinished()
-        {
-            throw new NotImplementedException();
+            RemarkWork rw = new RemarkWork(dgWP.SelectedRows[0].Cells["ID"].Value.ToString(), UVO, "WP");
+            rw.ShowDialog();
+
+
+            Remarks_Load(sender, e);
         }
 
         private void bSummWork_Click(object sender, EventArgs e)
@@ -216,6 +220,17 @@ namespace SummonManager
                 MessageBox.Show("Не выбрано ни одной строки!");
                 return;
             }
+            if (dgSumm.SelectedRows[0].Cells["CLOSED"].Value.ToString() == "Отработано")
+            {
+                MessageBox.Show("Нельзя отработать уже отработанное замечание!");
+                return;
+            }
+            if (!UVO.IsMySmmRemark(dgSumm.SelectedRows[0].Cells["DOCUMENTNAME"].Value.ToString()) && (dgWP.SelectedRows[0].Cells["CLOSED"].Value.ToString() != "Отработано"))
+            {
+                MessageBox.Show("Нельзя отработать замечание по документу, за который вы не ответственны!");
+                return;
+            }
+
             RemarkWork rw = new RemarkWork(dgSumm.SelectedRows[0].Cells["ID"].Value.ToString(), UVO, "SUMMON");
             rw.ShowDialog();
 

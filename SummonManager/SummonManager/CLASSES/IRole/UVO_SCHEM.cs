@@ -51,17 +51,38 @@ namespace SummonManager
         {
             foreach (DataGridViewRow r in dgWP.Rows)
             {
-                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "WIRINGDIAGRAM"))
+                if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
                 {
-                    r.Visible = false;
+                    if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "WIRINGDIAGRAM"))
+                    {
+                        r.Visible = false;
+                    }
+                    else
+                    {
+                        r.Visible = true;
+                    }
                 }
                 else
                 {
-                    r.Visible = true;
+                    r.Visible = false;
                 }
-                //r.Visible = !((r.Cells["DOCUMENTNAME"].Value.ToString() != "WIRINGDIAGRAM"));
             }
         }
+        public override bool IsMyWPRemark(string DOCNAME)
+        {
+            return (DOCNAME != "WIRINGDIAGRAM") ? false : true;
 
+        }
+        public override void MyRemarksSmm(DataGridView dgSumm)
+        {
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                r.Visible = false;
+            }
+        }
+        public override bool IsMySmmRemark(string DOCNAME)
+        {
+            return false;
+        }	
     }
 }

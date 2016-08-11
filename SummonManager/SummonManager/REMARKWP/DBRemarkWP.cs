@@ -43,7 +43,7 @@ namespace SummonManager
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
-        public void AddNew(RemarkWPVO RVO)
+        public void AddNew(WP_RVO RVO)
         {
             DA.InsertCommand.Parameters.AddWithValue("DATEREMARK", RVO.DATEREMARK);
             DA.InsertCommand.Parameters.AddWithValue("DOCUMENTNAME", RVO.DOCUMENTNAME);
@@ -58,7 +58,7 @@ namespace SummonManager
             DA.InsertCommand.Connection.Close();
         }
 
-        internal void Edit(RemarkWPVO RVO)
+        internal void Edit(WP_RVO RVO)
         {
             DA.UpdateCommand.Parameters.AddWithValue("ID", RVO.ID);
             DA.UpdateCommand.Parameters.AddWithValue("CLOSED", RVO.CLOSED);
@@ -81,12 +81,12 @@ namespace SummonManager
             DA.UpdateCommand.Connection.Close();
         }
     
-        internal RemarkWPVO GetRemarkByID(string id)
+        internal WP_RVO GetRemarkByID(string id)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..REMARKWP where ID = "+id;
             int i = DA.Fill(DS, "t");
             if (i==0) return null;
-            RemarkWPVO RVO = new RemarkWPVO();
+            WP_RVO RVO = new WP_RVO();
             RVO.ID = id;
             RVO.CLOSED = (bool)DS.Tables["t"].Rows[0]["CLOSED"];
             RVO.CLOSINGCOMMENT = DS.Tables["t"].Rows[0]["CLOSINGCOMMENT"].ToString();
@@ -101,12 +101,12 @@ namespace SummonManager
             RVO.REMARK = DS.Tables["t"].Rows[0]["REMARK"].ToString();
             return RVO;
         }
-        internal RemarkWPVO GetRemarkByIDWPDOC(string DOCUMENTNAME,string IDWP)
+        internal WP_RVO GetRemarkByIDWPDOC(string DOCUMENTNAME,string IDWP)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..REMARKWP where IDWP = "+IDWP+" and DOCUMENTNAME='"+DOCUMENTNAME+"'";
             int i = DA.Fill(DS, "t");
             if (i==0) return null;
-            RemarkWPVO RVO = new RemarkWPVO();
+            WP_RVO RVO = new WP_RVO();
             RVO.ID = DS.Tables["t"].Rows[0]["ID"].ToString();
             RVO.CLOSED = (bool)DS.Tables["t"].Rows[0]["CLOSED"];
             RVO.CLOSINGCOMMENT = DS.Tables["t"].Rows[0]["CLOSINGCOMMENT"].ToString();

@@ -79,7 +79,39 @@ namespace SummonManager
                 r.Visible = false;
             }
         }
+        public override bool IsMyWPRemark(string DOCNAME)
+        {
+            return false;
 
-
+        }
+        public override void MyRemarksSmm(DataGridView dgSumm)
+        {
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
+                {
+                    if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "PASSPORT") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "MANUAL") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "PACKINGLIST"))
+                    {
+                        r.Visible = false;
+                    }
+                    else
+                    {
+                        r.Visible = true;
+                    }
+                }
+                else
+                {
+                    r.Visible = false;
+                }
+            }
+        }
+        public override bool IsMySmmRemark(string DOCNAME)
+        {
+            return ((DOCNAME != "PASSPORT") &&
+                   (DOCNAME != "MANUAL") &&
+                   (DOCNAME != "PACKINGLIST")) ? false : true;
+        }
     }
 }

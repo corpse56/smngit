@@ -58,22 +58,67 @@ namespace SummonManager
         }
         public override void MyRemarksWP(DataGridView dgWP)
         {
+            dgWP.CurrentCell = null;
             foreach (DataGridViewRow r in dgWP.Rows)
             {
-                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "DIMESIONALDRAWING") ||
-                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "SBORKA3D") ||
-                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "MECHPARTS") ||
-                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "SHILDS") ||
-                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "PACKAGING") )
+                if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
                 {
-                    r.Visible = false;
+                    if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "DIMESIONALDRAWING") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "SBORKA3D") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "MECHPARTS") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "SHILDS") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "PACKAGING"))
+                    {
+                        r.Visible = false;
+                    }
+                    else
+                    {
+                        r.Visible = true;
+                    }
                 }
                 else
                 {
-                    r.Visible = true;
+                    r.Visible = false;
                 }
+                
 
             }
         }
+        public override bool IsMyWPRemark(string DOCNAME)
+        {
+            return ((DOCNAME != "DIMESIONALDRAWING") &&
+                    (DOCNAME != "SBORKA3D") &&
+                    (DOCNAME != "MECHPARTS") &&
+                    (DOCNAME != "SHILDS") &&
+                    (DOCNAME != "PACKAGING")) ? false : true;
+            
+        }
+
+        public override void MyRemarksSmm(DataGridView dgSumm)
+        {
+            dgSumm.CurrentCell = null;
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
+                {
+                    if (r.Cells["DOCUMENTNAME"].Value.ToString() != "PLANKA")
+                    {
+                        r.Visible = false;
+                    }
+                    else
+                    {
+                        r.Visible = true;
+                    }
+                }
+                else
+                {
+                    r.Visible = false;
+                }
+            }
+        }
+        public override bool IsMySmmRemark(string DOCNAME)
+        {
+            return (DOCNAME != "PLANKA") ? false : true;
+        }	
     }
 }

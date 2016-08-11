@@ -49,18 +49,42 @@ namespace SummonManager
         {
             foreach (DataGridViewRow r in dgWP.Rows)
             {
-                if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "TECHREQ") ||
-                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "COMPOSITION") ||
-                    (r.Cells["DOCUMENTNAME"].Value.ToString() != "CONFIGURATION"))
+                if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
                 {
-                    r.Visible = false;
+                    if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "TECHREQ") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "COMPOSITION") &&
+                        (r.Cells["DOCUMENTNAME"].Value.ToString() != "CONFIGURATION"))
+                    {
+                        r.Visible = false;
+                    }
+                    else
+                    {
+                        r.Visible = true;
+                    }
                 }
                 else
                 {
-                    r.Visible = true;
+                    r.Visible = false;
                 }
             }
         }
+        public override bool IsMyWPRemark(string DOCNAME)
+        {
+            return ((DOCNAME != "TECHREQ") &&
+                   (DOCNAME != "COMPOSITION") &&
+                   (DOCNAME != "CONFIGURATION")) ? false : true;
 
+        }
+        public override void MyRemarksSmm(DataGridView dgSumm)
+        {
+            foreach (DataGridViewRow r in dgSumm.Rows)
+            {
+                r.Visible = false;
+            }
+        }
+        public override bool IsMySmmRemark(string DOCNAME)
+        {
+            return false;
+        }	
     }
 }

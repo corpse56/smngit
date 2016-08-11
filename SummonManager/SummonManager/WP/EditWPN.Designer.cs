@@ -208,8 +208,11 @@
             // 
             // pfDimDrawing
             // 
+            this.pfDimDrawing.bDelVisible = false;
+            this.pfDimDrawing.bPathVisible = false;
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfDimDrawing.FullPath = "<нет>";
+            this.pfDimDrawing.ISPATH = false;
             this.pfDimDrawing.Location = new System.Drawing.Point(225, 165);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
@@ -219,8 +222,11 @@
             // 
             // pfComposition
             // 
+            this.pfComposition.bDelVisible = false;
+            this.pfComposition.bPathVisible = false;
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfComposition.FullPath = "<нет>";
+            this.pfComposition.ISPATH = false;
             this.pfComposition.Location = new System.Drawing.Point(225, 129);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";
@@ -259,7 +265,7 @@
             this.MaximizeBox = false;
             this.Name = "EditWPN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Изменение наименования изделия";
+            this.Text = "Изменение изделия";
             this.Load += new System.EventHandler(this.EditWPN_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

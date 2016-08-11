@@ -32,6 +32,12 @@ namespace SummonManager
             dgNote.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgNote.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgNote.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+
+        }
+
+        private void SummonNotes_Load(object sender, EventArgs e)
+        {
             DBSummonNotes DBSN = new DBSummonNotes();
             dgNote.DataSource = DBSN.GetAllNotesByIDSummon(ID);
 
@@ -46,12 +52,6 @@ namespace SummonManager
             dgNote.Columns["FIO"].Width = 90;
             dgNote.Columns["NOTE"].HeaderText = "Примечание";
             dgNote.Columns["NOTE"].Width = 260;
-
-        }
-
-        private void SummonNotes_Load(object sender, EventArgs e)
-        {
-
         }
         public void Reload()
         {
