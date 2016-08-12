@@ -34,13 +34,15 @@
             this.tbPath = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chRequired = new System.Windows.Forms.CheckBox();
             this.bRemark = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.добавитьЕщёОдноЗамечаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отработатьСуществующиеЗамечанияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chRequired = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bPathDel
@@ -78,6 +80,7 @@
             this.tbPath.Name = "tbPath";
             this.tbPath.Size = new System.Drawing.Size(382, 22);
             this.tbPath.TabIndex = 26;
+            this.tbPath.TextChanged += new System.EventHandler(this.tbPath_TextChanged);
             this.tbPath.MouseLeave += new System.EventHandler(this.tbPath_MouseLeave);
             this.tbPath.Click += new System.EventHandler(this.tbPath_Click);
             this.tbPath.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbPath_MouseClick);
@@ -97,16 +100,6 @@
             this.copyToClipboardToolStripMenuItem.Text = "Скопировать путь в буфер обмена";
             this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
             // 
-            // chRequired
-            // 
-            this.chRequired.AutoSize = true;
-            this.chRequired.Location = new System.Drawing.Point(10, 7);
-            this.chRequired.Name = "chRequired";
-            this.chRequired.Size = new System.Drawing.Size(15, 14);
-            this.chRequired.TabIndex = 27;
-            this.chRequired.UseVisualStyleBackColor = true;
-            this.chRequired.CheckedChanged += new System.EventHandler(this.chRequired_CheckedChanged);
-            // 
             // bRemark
             // 
             this.bRemark.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -125,13 +118,14 @@
             this.добавитьЕщёОдноЗамечаниеToolStripMenuItem,
             this.отработатьСуществующиеЗамечанияToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(289, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(289, 48);
             // 
             // добавитьЕщёОдноЗамечаниеToolStripMenuItem
             // 
             this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Name = "добавитьЕщёОдноЗамечаниеToolStripMenuItem";
             this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Text = "Добавить ещё одно замечание";
+            this.добавитьЕщёОдноЗамечаниеToolStripMenuItem.Click += new System.EventHandler(this.AddOneMoreRemarkToolStripMenuItem_Click);
             // 
             // отработатьСуществующиеЗамечанияToolStripMenuItem
             // 
@@ -140,11 +134,29 @@
             this.отработатьСуществующиеЗамечанияToolStripMenuItem.Text = "Отработать существующие замечания";
             this.отработатьСуществующиеЗамечанияToolStripMenuItem.Click += new System.EventHandler(this.WorkExistingRemarkToolStripMenuItem_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Fuchsia;
+            this.panel1.Controls.Add(this.chRequired);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(24, 21);
+            this.panel1.TabIndex = 29;
+            // 
+            // chRequired
+            // 
+            this.chRequired.AutoSize = true;
+            this.chRequired.Location = new System.Drawing.Point(5, 3);
+            this.chRequired.Name = "chRequired";
+            this.chRequired.Size = new System.Drawing.Size(15, 14);
+            this.chRequired.TabIndex = 28;
+            this.chRequired.UseVisualStyleBackColor = true;
+            // 
             // PathField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chRequired);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbPath);
             this.Controls.Add(this.bRemark);
             this.Controls.Add(this.bPathDel);
@@ -155,6 +167,8 @@
             this.Size = new System.Drawing.Size(546, 28);
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,7 +178,6 @@
 
         public System.Windows.Forms.Button bPathDel;
         public System.Windows.Forms.Button bPath;
-        private System.Windows.Forms.CheckBox chRequired;
         public System.Windows.Forms.TextBox tbPath;
         public System.Windows.Forms.Button bRemark;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -172,6 +185,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem добавитьЕщёОдноЗамечаниеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отработатьСуществующиеЗамечанияToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox chRequired;
 
 
     }

@@ -279,7 +279,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(593, 424);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 16);
+            this.label12.Size = new System.Drawing.Size(146, 16);
             this.label12.TabIndex = 5;
             this.label12.Text = "Коммерческий отдел";
             // 

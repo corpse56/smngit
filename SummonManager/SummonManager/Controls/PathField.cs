@@ -24,6 +24,8 @@ namespace SummonManager.Controls
             //tbPath.Text = "<нет>";
             PaintRed();
         }
+
+       
         public void PaintRed()
         {
             if ((chRequired.Checked) && (tbPath.Text == "<нет>")
@@ -160,10 +162,12 @@ namespace SummonManager.Controls
                 if (value)
                 {
                     chRequired.Visible = true;
+                    panel1.Visible = true;
                 }
                 else
                 {
                     chRequired.Visible = false;
+                    panel1.Visible = false;
                 }
             }
         }
@@ -216,10 +220,31 @@ namespace SummonManager.Controls
                 
             //}
             SetRemarkIcons();
+            SetYellow();
 
             //this.tbPath.
             //tbPath.Text = this.FileName;
             //SetIcons();
+        }
+        private void SetYellow()
+        {
+            if (this.FullPath == "<нет>")
+            {
+                panel1.BackColor = this.BackColor;
+                return;
+            }
+            FileInfo fi = new FileInfo(this.FullPath);
+
+            if (!fi.Exists)
+            {
+                //tbPath.BackColor = Color.LightYellow;
+                panel1.BackColor = Color.Yellow;
+            }
+            else
+            {
+                panel1.BackColor = this.BackColor;
+
+            }
         }
         string IDREMARK;
         private void SetRemarkIcons()
@@ -378,6 +403,7 @@ namespace SummonManager.Controls
                     RVO.IDWP = PRODUCT.GetID().ToString();
                     NewREMARKWP nrwp = new NewREMARKWP(RVO, null, this.UVO);
                     nrwp.ShowDialog();
+                    SetRemarkIcons();
                 }
                 else //если замечание по извещению
                 {
@@ -386,6 +412,7 @@ namespace SummonManager.Controls
                     RVOS.IDSUMMON = SVO.ID;
                     NewREMARKWP nrwp = new NewREMARKWP(null, RVOS, this.UVO);
                     nrwp.ShowDialog();
+                    SetRemarkIcons();
                 }
             }
             else   //если надо отработать замечание
@@ -425,7 +452,6 @@ namespace SummonManager.Controls
                     }
                 }
             }
-            SetRemarkIcons();
         }
 
         private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -445,14 +471,6 @@ namespace SummonManager.Controls
                     Process.Start(@"explorer.exe", @"/select, " + this.FullPath);
                 }
             }
-            //else
-            //{
-            //    if (e.Button == MouseButtons.Right)
-            //    {
-            //        contextMenuStrip1.Show(e.Location.X, e.Location.Y);
-
-            //    }
-            //}
         }
         private void tbPath_Click(object sender, EventArgs e)
         {
@@ -477,6 +495,8 @@ namespace SummonManager.Controls
                 NewREMARKWP nrwp = new NewREMARKWP(null, RVOS, this.UVO);
                 nrwp.ShowDialog();
             }
+            SetRemarkIcons();
+
         }
 
         private void WorkExistingRemarkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -501,11 +521,38 @@ namespace SummonManager.Controls
             }
             else
             {
-                RemarkWork rw = new RemarkWork(id, UVO, RMType);
+                if (RMType == "WP")
+                {
+                    if (!UVO.IsMyWPRemark(this.DOCUMENTNAME))
+                    {
+                        MessageBox.Show("Нельзя отработать замечание по документу, за который вы не ответственны!");
+                        return;
+                    }
+                }
+                else
+                {
+                    if (!UVO.IsMySmmRemark(this.DOCUMENTNAME))
+                    {
+                        MessageBox.Show("Нельзя отработать замечание по документу, за который вы не ответственны!");
+                        return;
+                    }
+                }
+
+                RemarkWork rw = new RemarkWork(t.Rows[0]["ID"].ToString(), UVO, RMType);
                 rw.ShowDialog();
             }
-            
+            SetRemarkIcons();
+
         }
+
+        private void tbPath_TextChanged(object sender, EventArgs e)
+        {
+            SetYellow();
+        }
+
+       
+
+
         //tbPath.Image = Resources.document_open_disabled;
         //tbPath.Enabled = false;
         //tbPath.Image = Resources.document_open;

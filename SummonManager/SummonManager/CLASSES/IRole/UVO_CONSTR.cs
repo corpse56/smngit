@@ -63,7 +63,7 @@ namespace SummonManager
             {
                 if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
                 {
-                    if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "DIMESIONALDRAWING") &&
+                    if ((r.Cells["DOCUMENTNAME"].Value.ToString() != "DIMENSIONALDRAWING") &&
                         (r.Cells["DOCUMENTNAME"].Value.ToString() != "SBORKA3D") &&
                         (r.Cells["DOCUMENTNAME"].Value.ToString() != "MECHPARTS") &&
                         (r.Cells["DOCUMENTNAME"].Value.ToString() != "SHILDS") &&
@@ -86,7 +86,7 @@ namespace SummonManager
         }
         public override bool IsMyWPRemark(string DOCNAME)
         {
-            return ((DOCNAME != "DIMESIONALDRAWING") &&
+            return ((DOCNAME != "DIMENSIONALDRAWING") &&
                     (DOCNAME != "SBORKA3D") &&
                     (DOCNAME != "MECHPARTS") &&
                     (DOCNAME != "SHILDS") &&

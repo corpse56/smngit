@@ -482,6 +482,7 @@
             this.dgSummon.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgSummon_SortCompare);
             this.dgSummon.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_ColumnHeaderMouseClick);
             this.dgSummon.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_CellMouseDown);
+            this.dgSummon.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgSummon_CellPainting);
             this.dgSummon.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_CellMouseDoubleClick);
             this.dgSummon.SelectionChanged += new System.EventHandler(this.dgSummon_SelectionChanged);
             // 

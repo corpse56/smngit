@@ -75,32 +75,51 @@ namespace SummonManager
         private void Remarks_Load(object sender, EventArgs e)
         {
             DBRemarkWP dbr = new DBRemarkWP(UVO);
-            dgWP.DataSource = dbr.GetAll();
+            //BindingSource bsm = new BindingSource();
+            //bsm.DataSource = dbr.GetAll();
+            //dgWP.DataSource = dbr.GetAll();
 
             DBRemarkSUMMON dbrs = new DBRemarkSUMMON();
-            dgSumm.DataSource = dbrs.GetAll();
+            //dgSumm.DataSource = dbrs.GetAll();
         
 
 
             if (rbAllRemarks.Checked)
             {
-                UVO.AllRemarksWP(dgWP);
-                UVO.AllRemarksSmm(dgSumm);
+                dgWP.DataSource = dbr.GetAll();
+                dgSumm.DataSource = dbrs.GetAll();
+                //UVO.AllRemarksWP(dgWP);
+                //UVO.AllRemarksSmm(dgSumm);
             }
             else if (rbMyRemarks.Checked)
             {
+                dgWP.DataSource = dbr.GetAll();
+                dgSumm.DataSource = dbrs.GetAll();
                 UVO.MyRemarksWP(dgWP);
                 UVO.MyRemarksSmm(dgSumm);
             }
             else if (rbFinishedRemarks.Checked)
             {
-                UVO.FinishedRemarksWP(dgWP);
-                UVO.FinishedRemarksSmm(dgSumm);
+                //BindingSource bs = new BindingSource();
+                //bs.DataSource = dbr.GetFinished();
+                //dgWP.DataSource = null;
+                dgWP.DataSource = dbr.GetFinished();
+
+
+                //BindingSource bs1 = new BindingSource();
+                //bs1.DataSource = dbrs.GetFinished();
+                dgSumm.DataSource = dbrs.GetFinished();
+
+                //UVO.FinishedRemarksWP(dgWP);
+                //UVO.FinishedRemarksSmm(dgSumm);
+
             }
             else
             {
-                UVO.AllRemarksWP(dgWP);
-                UVO.AllRemarksSmm(dgSumm);
+                dgWP.DataSource = dbr.GetAll();
+                dgSumm.DataSource = dbrs.GetAll();
+                //UVO.AllRemarksWP(dgWP);
+                //UVO.AllRemarksSmm(dgSumm);
             }
 
 
@@ -241,18 +260,21 @@ namespace SummonManager
 
         private void rbMyRemarks_CheckedChanged(object sender, EventArgs e)
         {
-            Remarks_Load(sender, e);
+            if (rbMyRemarks.Checked)
+                Remarks_Load(sender, e);
         }
 
         private void rbAllRemarks_CheckedChanged(object sender, EventArgs e)
         {
-            Remarks_Load(sender, e);
+            if (rbAllRemarks.Checked)
+                Remarks_Load(sender, e);
 
         }
 
         private void rbFinishedRemarks_CheckedChanged(object sender, EventArgs e)
         {
-            Remarks_Load(sender, e);
+            if (rbFinishedRemarks.Checked)
+                Remarks_Load(sender, e);
 
         }
 

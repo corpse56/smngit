@@ -39,7 +39,32 @@ namespace SummonManager
                                            " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID "+
                                            " left join " + Base.BaseName + "..USERS D on A.IDCLOSER = D.ID " +
                                            " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID "+
-                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID";
+                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID where CLOSED = 0";
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
+        public DataTable GetFinished()
+        {
+            DA.SelectCommand.CommandText = "select A.ID,W.WPNAME+' '+W.DECNUM WP,IDWP,DOCUMENTNAME, REMARK," +
+                                           " case when DOCUMENTNAME = 'COMPOSITION' then 'Состав изделия' else " +
+                                           " case when DOCUMENTNAME = 'DIMENSIONALDRAWING' then 'Габаритный чертёж' else " +
+                                           " case when DOCUMENTNAME = 'CONFIGURATION' then 'Конфигурация' else " +
+                                           " case when DOCUMENTNAME = 'WIRINGDIAGRAM' then 'Схема электрическая' else " +
+                                           " case when DOCUMENTNAME = 'TECHREQ' then 'Технические требования' else " +
+                                           " case when DOCUMENTNAME = 'SBORKA3D' then 'Сборка 3Д' else " +
+                                           " case when DOCUMENTNAME = 'MECHPARTS' then 'Проект механических деталей' else " +
+                                           " case when DOCUMENTNAME = 'SHILDS' then 'Шильды' else " +
+                                           " case when DOCUMENTNAME = 'PACKAGING' then 'Упаковка' else " +
+                                           " case when DOCUMENTNAME = 'SOFTWARE' then 'Программное обеспечение' else DOCUMENTNAME end end end end end end end end end end DOCUMENTNAME_RUS" +
+
+                                           " ,DATEREMARK,B.FIO creator,C.ROLENAME createrole, " +
+                                           " case when CLOSED=1 then 'Отработано' else 'Открыто' end CLOSED,CLOSINGCOMMENT,DATECLOSE,D.FIO closer,E.ROLENAME closerole " +
+                                           " from " + Base.BaseName + "..REMARKWP A" +
+                                           " left join " + Base.BaseName + "..USERS B on A.IDCREATOR = B.ID " +
+                                           " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID " +
+                                           " left join " + Base.BaseName + "..USERS D on A.IDCLOSER = D.ID " +
+                                           " left join " + Base.BaseName + "..ROLES E on D.ROLE = E.ID " +
+                                           " left join " + Base.BaseName + "..WPNAMELIST W on A.IDWP = W.ID where CLOSED = 1";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
@@ -180,7 +205,7 @@ namespace SummonManager
             return DS.Tables["t"];
         }
 
-        internal object GetFinished()
+        /*internal object GetFinished()
         {
             DA.SelectCommand.CommandText = "select A.ID,W.WPNAME+' '+W.DECNUM WP,IDWP,DOCUMENTNAME, REMARK," +
                                            " case when DOCUMENTNAME = 'COMPOSITION' then 'Состав изделия' else " +
@@ -205,6 +230,6 @@ namespace SummonManager
                                            " where A.CLOSED = 1";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
-        }
+        }*/
     }
 }

@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using SummonManager.CLASSES;
 using SummonManager.CLASSES.IRole_namespace;
+using SummonManager.Properties;
 
 namespace SummonManager
 {
@@ -205,6 +206,7 @@ namespace SummonManager
             {
                 dgSummon.Columns["id"].Visible = false;
                 dgSummon.Columns["ids"].HeaderText = "Номер извещения";
+                dgSummon.Columns["remark_exist"].HeaderText = "Заме чание";
                 dgSummon.Columns["contract_type"].HeaderText = "Тип договора";
                 dgSummon.Columns["wname"].HeaderText = "Наименование изделия";
                 dgSummon.Columns["cust"].HeaderText = "Заказчик";
@@ -236,6 +238,7 @@ namespace SummonManager
                 dgSummon.Columns["paint_shemotehnik"].Visible = false;
                 dgSummon.Columns["paint_OTD"].Visible = false;
                 dgSummon.Columns["passd"].Visible = false;
+                dgSummon.Columns["remark_exist_paint"].Visible = false;
 
 
                 //dgSummon.Columns["qty"].Width = 50;
@@ -263,7 +266,7 @@ namespace SummonManager
                 dgSummon.Columns["sts"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgSummon.Columns["subst"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgSummon.Columns["contract_type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+                dgSummon.Columns["remark_exist"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 dgSummon.Columns["qty"].FillWeight = 50;
                 dgSummon.Columns["techreq"].FillWeight = 130;
@@ -277,12 +280,16 @@ namespace SummonManager
                 dgSummon.Columns["sts"].FillWeight = 100;
                 dgSummon.Columns["subst"].FillWeight = 100;
                 dgSummon.Columns["contract_type"].FillWeight = 60;
-                
+                dgSummon.Columns["remark_exist"].FillWeight = 30;
             }
             foreach (DataGridViewRow r in dgSummon.Rows)
             {
                 r.Cells["techreq"].Tag = r.Cells["techreq"].Value;
-                r.Cells["techreq"].Value = r.Cells["techreq"].Tag.ToString().Substring(r.Cells["techreq"].Tag.ToString().LastIndexOf("\\") + 1); 
+                r.Cells["techreq"].Value = r.Cells["techreq"].Tag.ToString().Substring(r.Cells["techreq"].Tag.ToString().LastIndexOf("\\") + 1);
+                /*if ((int)r.Cells["remark_exist"].Value == 1)
+                {
+                    r.Cells["remark_exist"].
+                }*/
             }
             sw.Stop();
             //MessageBox.Show("dgSummon.FillWeight=" + (sw.ElapsedMilliseconds / 100.0).ToString());
@@ -1353,6 +1360,22 @@ namespace SummonManager
         {
             Remarks r = new Remarks(UVO);
             r.ShowDialog();
+        }
+
+        private void dgSummon_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.ColumnIndex == 3 && (int)dgSummon.Rows[e.RowIndex].Cells["remark_exist_paint"].Value == 1)
+            {
+                if ((e.PaintParts & DataGridViewPaintParts.Background) != DataGridViewPaintParts.None)
+                {
+                    e.Graphics.DrawImage(Resources.exclamation, e.CellBounds);
+                }
+                if (!e.Handled)
+                {
+                    e.Handled = true;
+                    e.PaintContent(e.CellBounds);
+                }
+            }
         }
 
        
