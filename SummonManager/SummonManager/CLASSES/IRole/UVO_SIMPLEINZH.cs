@@ -47,6 +47,7 @@ namespace SummonManager
         }
         public override void MyRemarksWP(DataGridView dgWP)
         {
+            dgWP.CurrentCell = null;
             foreach (DataGridViewRow r in dgWP.Rows)
             {
                 if (r.Cells["CLOSED"].Value.ToString() == "Открыто")
@@ -77,6 +78,7 @@ namespace SummonManager
         }
         public override void MyRemarksSmm(DataGridView dgSumm)
         {
+            dgSumm.CurrentCell = null;
             foreach (DataGridViewRow r in dgSumm.Rows)
             {
                 r.Visible = false;

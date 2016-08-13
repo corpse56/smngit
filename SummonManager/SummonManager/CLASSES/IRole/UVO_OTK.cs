@@ -79,6 +79,7 @@ namespace SummonManager
         }
         public override void MyRemarksWP(DataGridView dgWP)
         {
+            dgWP.CurrentCell = null;
             foreach (DataGridViewRow r in dgWP.Rows)
             {
                 r.Visible = false;

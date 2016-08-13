@@ -16,7 +16,8 @@ namespace SummonManager
 {
     public struct Base
     {
-        public static string BaseName = "ALPHA";
+        public static string BaseName = "ALPHANEXT";//пилим новую структуру
+
     }
     public partial class MainF : Form
     {
@@ -30,8 +31,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.16";
-        public static int VersionNumber = 216;
+        public static string ProgramVersion = "2.17";
+        public static int VersionNumber = 217;
         //работаем над системой замечаний
         public MainF()
         {
