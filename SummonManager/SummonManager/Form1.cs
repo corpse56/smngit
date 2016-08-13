@@ -16,8 +16,7 @@ namespace SummonManager
 {
     public struct Base
     {
-        public static string BaseName = "ALPHANEXT";//пилим новую структуру
-
+        public static string BaseName = "ALPHA";
     }
     public partial class MainF : Form
     {
