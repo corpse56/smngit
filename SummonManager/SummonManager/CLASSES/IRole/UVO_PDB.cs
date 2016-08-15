@@ -71,19 +71,19 @@ namespace SummonManager
         }
         public override void MyRemarksWP(DataGridView dgWP)
         {
+            dgWP.CurrentCell = null;
             foreach (DataGridViewRow r in dgWP.Rows)
             {
                 r.Visible = false;
-                
             }
         }
         public override bool IsMyWPRemark(string DOCNAME)
         {
             return false;
-
         }
         public override void MyRemarksSmm(DataGridView dgSumm)
         {
+            dgSumm.CurrentCell = null;
             foreach (DataGridViewRow r in dgSumm.Rows)
             {
                 r.Visible = false;

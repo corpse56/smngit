@@ -113,12 +113,12 @@
             this.rbMyRemarks.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbMyRemarks.AutoSize = true;
             this.rbMyRemarks.Checked = true;
-            this.rbMyRemarks.Location = new System.Drawing.Point(707, 4);
+            this.rbMyRemarks.Location = new System.Drawing.Point(700, 4);
             this.rbMyRemarks.Name = "rbMyRemarks";
-            this.rbMyRemarks.Size = new System.Drawing.Size(102, 26);
+            this.rbMyRemarks.Size = new System.Drawing.Size(109, 26);
             this.rbMyRemarks.TabIndex = 16;
             this.rbMyRemarks.TabStop = true;
-            this.rbMyRemarks.Text = "Поазать мои";
+            this.rbMyRemarks.Text = "Показать мои";
             this.rbMyRemarks.UseVisualStyleBackColor = true;
             this.rbMyRemarks.CheckedChanged += new System.EventHandler(this.rbMyRemarks_CheckedChanged);
             // 
