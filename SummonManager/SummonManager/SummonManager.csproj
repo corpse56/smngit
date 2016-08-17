@@ -108,7 +108,7 @@
       <DependentUpon>Cause.cs</DependentUpon>
     </Compile>
     <Compile Include="CLASSES\IProduct\CableVO.cs" />
-    <Compile Include="CLASSES\DBCableList.cs" />
+    <Compile Include="CLASSES\DBProduct\DBCableList.cs" />
     <Compile Include="CLASSES\DBCategory.cs" />
     <Compile Include="CLASSES\DBVersion.cs" />
     <Compile Include="CLASSES\IProduct\IProduct.cs" />
@@ -134,9 +134,10 @@
     <Compile Include="CLASSES\StatusStripIndicator.cs" />
     <Compile Include="CLASSES\IProduct\WPNameVO.cs" />
     <Compile Include="CLASSES\DBSubCategory.cs" />
-    <Compile Include="CLASSES\DBZhgutList.cs" />
+    <Compile Include="CLASSES\DBProduct\DBZhgutList.cs" />
     <Compile Include="CLASSES\IProduct\ZhgutVO.cs" />
     <Compile Include="CLASSES\UIWorks.cs" />
+    <Compile Include="CLASSES\DBProduct.cs" />
     <Compile Include="REMARKFORMS\ChooseRemarkToWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,7 +359,7 @@
       <DependentUpon>ShowReport.cs</DependentUpon>
     </Compile>
     <Compile Include="CLASSES\DBAccept.cs" />
-    <Compile Include="CLASSES\DBWPName.cs" />
+    <Compile Include="CLASSES\DBProduct\DBWPName.cs" />
     <Compile Include="Finished.cs">
       <SubType>Form</SubType>
     </Compile>
