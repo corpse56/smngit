@@ -1,13 +1,43 @@
+USE [ALPHANEXT]
+GO
+
+/****** Object:  Table [dbo].[PRODUCTS]    Script Date: 08/17/2016 14:13:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PRODUCTS](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[PRODUCTTYPE] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_PRODUCTS] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+
+
+-------------------------------------------------------------------
+
 alter table ALPHANEXT..WPNAMELIST add IDNEW int
 update ALPHANEXT..WPNAMELIST set IDNEW = ID
 
-
 --таблицы для которых надо удалить а потом добавить снова те же внешние ключи:
 --remarkwp
+alter table ALPHANEXT..REMARKWP drop constraint FK_REMARKWP_WPNAMELIST
+
 --runcard
---cicuitboards
+alter table ALPHANEXT..RUNCARDS drop constraint FK_RUNCARDS_WPNAMELIST
+--cicuitboards 
+alter table ALPHANEXT..CIRCUITBOARDS drop constraint FK_CIRCUITBOARDS_WPNAMELIST
 
-
+alter table ALPHANEXT..WPNAMELIST drop constraint PK_WPNAMELIST
 alter table ALPHANEXT..WPNAMELIST drop column ID
 
 EXEC sp_RENAME 'ALPHANEXT..WPNAMELIST.IDNEW' , 'ID', 'COLUMN'
@@ -16,11 +46,81 @@ alter table ALPHANEXT..WPNAMELIST alter column ID int not null
 alter table ALPHANEXT..WPNAMELIST add primary key (ID)
 --добавить внештние ключи в !!!!
 --remarkwp
+ALTER TABLE ALPHANEXT..REMARKWP ADD CONSTRAINT FK_REMARKWP_PRODUCTS FOREIGN KEY (IDWP) REFERENCES ALPHANEXT..PRODUCTS(ID)
+
 --runcard
+ALTER TABLE ALPHANEXT..RUNCARDS ADD CONSTRAINT FK_RUNCARDS_PRODUCTS FOREIGN KEY (IDWP) REFERENCES ALPHANEXT..PRODUCTS(ID)
+
 --cicuitboards
+ALTER TABLE ALPHANEXT..CIRCUITBOARDS ADD CONSTRAINT FK_CIRCUITBOARDS_PRODUCTS FOREIGN KEY (IDWP) REFERENCES ALPHANEXT..PRODUCTS(ID)
+
+---------------------------кабели-----------------------------------------
+alter table ALPHANEXT..CABLELIST add IDNEW int
+update ALPHANEXT..CABLELIST set IDNEW = ID + 1000
+update ALPHANEXT..SUMMON set IDWP = IDWP+1000 where WPTYPE = 'CABLELIST'
+update ALPHANEXT..CABLES set IDCABLE = IDCABLE+1000
+alter table ALPHANEXT..CABLES drop constraint FK_CABLES_CABLELIST
+alter table ALPHANEXT..CABLELIST drop constraint PK_CABLELIST
+alter table ALPHANEXT..CABLELIST drop column ID
+
+EXEC sp_RENAME 'ALPHANEXT..CABLELIST.IDNEW' , 'ID', 'COLUMN'
+
+alter table ALPHANEXT..CABLELIST alter column ID int not null
+alter table ALPHANEXT..CABLELIST add primary key (ID)
+ALTER TABLE ALPHANEXT..CABLES ADD CONSTRAINT FK_CABLELIST FOREIGN KEY (IDCABLE) REFERENCES ALPHANEXT..CABLELIST(ID)
+
+
+-----------------------------жгуты-------------------------------------------
+alter table ALPHANEXT..ZHGUTLIST add IDNEW int
+update ALPHANEXT..ZHGUTLIST set IDNEW = ID + 2000
+update ALPHANEXT..SUMMON set IDWP = IDWP+2000 where WPTYPE = 'ZHGUTLIST'
+update ALPHANEXT..ZHGUTS set IDZHGUT = IDZHGUT+2000
+alter table ALPHANEXT..ZHGUTS drop constraint FK_ZHGUTS_ZHGUTLIST
+alter table ALPHANEXT..ZHGUTLIST drop constraint PK_ZHGUTLIST
+alter table ALPHANEXT..ZHGUTLIST drop column ID
+
+EXEC sp_RENAME 'ALPHANEXT..ZHGUTLIST.IDNEW' , 'ID', 'COLUMN'
+
+alter table ALPHANEXT..ZHGUTLIST alter column ID int not null
+alter table ALPHANEXT..ZHGUTLIST add primary key (ID)
+ALTER TABLE ALPHANEXT..ZHGUTS ADD CONSTRAINT FK_ZHGUTLIST FOREIGN KEY (IDZHGUT) REFERENCES ALPHANEXT..ZHGUTLIST(ID)
+
+--------------вставляем продукты в PRODUCTS----
+set identity_insert ALPHANEXT..PRODUCTS on
+go
+insert into ALPHANEXT..PRODUCTS (ID,PRODUCTTYPE)
+select ID,'WPNAMELIST' from ALPHANEXT..WPNAMELIST
+
+insert into ALPHANEXT..PRODUCTS (ID,PRODUCTTYPE)
+select ID,'CABLELIST' from ALPHANEXT..CABLELIST
+
+insert into ALPHANEXT..PRODUCTS (ID,PRODUCTTYPE)
+select ID,'ZHGUTLIST' from ALPHANEXT..ZHGUTLIST
+
+set identity_insert ALPHANEXT..PRODUCTS off
+--------------------------------------------------
+--добавляем FK на жгуты кабеля в комплекты кабелей и жгутов
+
+--нужно вставить в продукты ID
+ALTER TABLE ALPHANEXT..CABLES ADD CONSTRAINT FK_PRODUCT_CABLE FOREIGN KEY (IDWP) REFERENCES ALPHANEXT..PRODUCTS(ID)
+
+--нужно вставить в продукты ID
+ALTER TABLE ALPHANEXT..ZHGUTS ADD CONSTRAINT FK_PRODUCT_ZHGUT FOREIGN KEY (IDWP) REFERENCES ALPHANEXT..PRODUCTS(ID)
+
+--добавляем FK на summon
+ALTER TABLE ALPHANEXT..SUMMON add CONSTRAINT FK_SUMMON_PRODUCT FOREIGN KEY (IDWP) REFERENCES ALPHANEXT..PRODUCTS(ID)
 
 
 
 
+--создать FK CURSTATUS
+--создать FK CURSUBSTATUS
+--создать FK CATEGORYLIST
+--создать FK CUSTOMERDEPTLIST
+--создать FK CUSTOMERS
+--создать FK PACKINGLIST
+--создать FK PREFERENCES
+--создать FK PURCHASEDMATERIALS
+--создать FK на PRODUCTS_SUMMON
 --создать FK в таблице NOTES!!!!
 --создать FK в таблице NOTIFICATIONS!!!!
