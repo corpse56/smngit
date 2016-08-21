@@ -13,7 +13,12 @@ namespace SummonManager
 
         public DataTable GetAll(int IDCat)
         {
-            DA.SelectCommand.CommandText = "select ID,SUBCATNAME,IDCATEGORY from " + Base.BaseName + "..SUBCATEGORYLIST where IDCATEGORY = "+IDCat;
+            DA.SelectCommand.CommandText = "select ID,SUBCATNAME,IDCATEGORY,0 srt from " + Base.BaseName + "..SUBCATEGORYLIST where   SUBCATNAME = 'ВСЕ' and IDCATEGORY = " + IDCat+
+                                           " union all" +
+                                           " select ID,SUBCATNAME,IDCATEGORY,1 srt from " + Base.BaseName + "..SUBCATEGORYLIST where  IDCATEGORY = " + IDCat + "  and SUBCATNAME = 'НЕ ПРИСВОЕНО'" +
+                                           " union all" +
+                                           " select ID,SUBCATNAME,IDCATEGORY,2 srt from " + Base.BaseName + "..SUBCATEGORYLIST where  IDCATEGORY = " + IDCat + " and SUBCATNAME !='НЕ ПРИСВОЕНО' and SUBCATNAME != 'ВСЕ' order by srt,SUBCATNAME";
+
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
@@ -65,7 +70,10 @@ namespace SummonManager
 
         internal object GetAllExceptAll(int idCat)
         {
-            DA.SelectCommand.CommandText = "select ID,SUBCATNAME,IDCATEGORY from " + Base.BaseName + "..SUBCATEGORYLIST where SUBCATNAME != 'Все' and IDCATEGORY = " + idCat;
+            DA.SelectCommand.CommandText = " select ID,SUBCATNAME,IDCATEGORY,1 srt from " + Base.BaseName + "..SUBCATEGORYLIST where  IDCATEGORY = " + idCat + "  and SUBCATNAME = 'НЕ ПРИСВОЕНО'" +
+                                           " union all" +
+                                           " select ID,SUBCATNAME,IDCATEGORY,2 srt from " + Base.BaseName + "..SUBCATEGORYLIST where  IDCATEGORY = " + idCat + " and SUBCATNAME !='НЕ ПРИСВОЕНО' and SUBCATNAME != 'ВСЕ' order by srt,SUBCATNAME";
+
             int i = DA.Fill(DS, "t");
             return DS.Tables["t"];
         }

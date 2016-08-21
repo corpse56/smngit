@@ -449,7 +449,7 @@ namespace SummonManager
                 cbCAT.DisplayMember = "CATEGORYNAME";
                 cbCAT.DataSource = dbc.GetAll();
                 //cbCAT.SelectedValue = dbc.GetSubCatNE_PRISVOENO();
-                cbCAT.SelectedIndex = 1;
+                cbCAT.SelectedIndex = 0;
                 FillDGV_WPNAMELIST();
 
             }
@@ -460,7 +460,7 @@ namespace SummonManager
                 cbCAT.DisplayMember = "CATEGORYNAME";
                 cbCAT.DataSource = dbc.GetAll();
                 //cbCAT.SelectedValue = 2;
-                cbCAT.SelectedIndex = 1;
+                cbCAT.SelectedIndex = 0;
                 FillDGV_ZHGUTLIST();
 
             }
@@ -471,7 +471,7 @@ namespace SummonManager
                 cbCAT.DisplayMember = "CATEGORYNAME";
                 cbCAT.DataSource = dbc.GetAll();
                 //cbCAT.SelectedValue = 2;
-                cbCAT.SelectedIndex = 1;
+                cbCAT.SelectedIndex = 0;
                 FillDGV_CABLELIST();
 
             }
@@ -494,7 +494,7 @@ namespace SummonManager
                 cbSubCat.DataSource = dbs.GetAll(Convert.ToInt32(cbCAT.SelectedValue));
                 //cbSubCat.SelectedItem = cbCAT.Items[0];
                 if (cbCAT.Text != "")
-                    cbSubCat.SelectedIndex = 1;
+                    cbSubCat.SelectedIndex = 0;
             }
             switch (cbPRODUCTTYPE.SelectedIndex)
             {

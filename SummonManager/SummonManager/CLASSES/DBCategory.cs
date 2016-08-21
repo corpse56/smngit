@@ -17,7 +17,11 @@ namespace SummonManager
         public DataTable GetAll()
         {
             DA.SelectCommand.Parameters.AddWithValue("Entity", this.ENTITY);
-            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity";
+            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME,0 srt from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity and CATEGORYNAME = 'ВСЕ'"+
+                                           " union all"+
+                                           " select ID,CATEGORYNAME,1 srt from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity  and CATEGORYNAME = 'НЕ ПРИСВОЕНО'"+
+                                           " union all"+
+                                           " select ID,CATEGORYNAME,2 srt from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity and CATEGORYNAME !='НЕ ПРИСВОЕНО' and CATEGORYNAME != 'ВСЕ' order by srt,CATEGORYNAME";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
@@ -54,8 +58,9 @@ namespace SummonManager
         internal object GetAllExceptAll()
         {
             DA.SelectCommand.Parameters.AddWithValue("Entity", this.ENTITY);
-            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where CATEGORYNAME != 'ВСЕ' and ENTITY = @Entity";
-            DA.Fill(DS, "t");
+            DA.SelectCommand.CommandText =  " select ID,CATEGORYNAME,1 srt from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity  and CATEGORYNAME = 'НЕ ПРИСВОЕНО'" +
+                                            " union all" +
+                                            " select ID,CATEGORYNAME,2 srt from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity and CATEGORYNAME !='НЕ ПРИСВОЕНО' and CATEGORYNAME != 'ВСЕ' order by srt,CATEGORYNAME"; DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
 

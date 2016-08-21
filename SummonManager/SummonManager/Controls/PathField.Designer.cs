@@ -151,6 +151,7 @@
             this.chRequired.Size = new System.Drawing.Size(15, 14);
             this.chRequired.TabIndex = 28;
             this.chRequired.UseVisualStyleBackColor = true;
+            this.chRequired.CheckedChanged += new System.EventHandler(this.chRequired_CheckedChanged);
             // 
             // PathField
             // 

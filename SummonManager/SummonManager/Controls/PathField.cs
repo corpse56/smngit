@@ -130,7 +130,7 @@ namespace SummonManager.Controls
                 else
                 {
                     if (tmpPATH != "<нет>")
-                    this.FullPath = tmpPATH;
+                        this.FullPath = tmpPATH;
                 }
                 PaintRed();
             }
