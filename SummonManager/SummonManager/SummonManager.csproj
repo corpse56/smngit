@@ -577,6 +577,9 @@
     <EmbeddedResource Include="VersionHistory.resx">
       <DependentUpon>VersionHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WP\SummonsOnProduct.resx">
+      <DependentUpon>SummonsOnProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WP\WPName.resx">
       <DependentUpon>WPName.cs</DependentUpon>
     </EmbeddedResource>
@@ -592,10 +595,10 @@
     <EmbeddedResource Include="Categories\EditWPSubCategory.resx">
       <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewCABLE.resx">
+    <EmbeddedResource Include="WP\NewCABLE.resx">
       <DependentUpon>NewCABLE.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewZHGUT.resx">
+    <EmbeddedResource Include="WP\NewZHGUT.resx">
       <DependentUpon>NewZHGUT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PickIntoPackage.resx">
@@ -642,6 +645,12 @@
     <Compile Include="VersionHistory.Designer.cs">
       <DependentUpon>VersionHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="WP\SummonsOnProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WP\SummonsOnProduct.Designer.cs">
+      <DependentUpon>SummonsOnProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="WP\WPName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -672,16 +681,16 @@
     <Compile Include="Categories\EditWPSubCategory.Designer.cs">
       <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewCABLE.cs">
+    <Compile Include="WP\NewCABLE.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewCABLE.Designer.cs">
+    <Compile Include="WP\NewCABLE.Designer.cs">
       <DependentUpon>NewCABLE.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewZHGUT.cs">
+    <Compile Include="WP\NewZHGUT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewZHGUT.Designer.cs">
+    <Compile Include="WP\NewZHGUT.Designer.cs">
       <DependentUpon>NewZHGUT.cs</DependentUpon>
     </Compile>
     <Compile Include="PickIntoPackage.cs">

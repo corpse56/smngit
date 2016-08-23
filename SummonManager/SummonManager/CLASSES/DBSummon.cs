@@ -508,5 +508,19 @@ namespace SummonManager
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
         }
+
+        internal object GetSummonsOnProductID(string IDPRODUCT)
+        {
+            StringBuilder ct = new StringBuilder();
+            ct.AppendFormat("select IDS,ID from {0}..SUMMON ", Base.BaseName);
+            //ct.AppendFormat("left join A");
+            ct.AppendFormat(" where IDWP = {0}", IDPRODUCT);
+            //ct.AppendFormat();
+            //ct.AppendFormat();
+            DA.SelectCommand.CommandText = ct.ToString();//"select * from " + Base.BaseName + "..SUMMON where IDWP = " + IDPRODUCT;
+            DS = new DataSet();
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
     }
 }

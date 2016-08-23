@@ -294,7 +294,7 @@ namespace SummonManager
                                            " SHILDSREQ=@SHILDSREQ,  PACKAGINGREQ=@PACKAGINGREQ," +
                                            " PASSPORTREQ=@PASSPORTREQ, MANUALREQ=@MANUALREQ, PACKINGLISTREQ=@PACKINGLISTREQ, SOFTWAREREQ=@SOFTWAREREQ, " +
                                            " CABLELISTREQ=@CABLELISTREQ,ZHGUTLISTREQ=@ZHGUTLISTREQ, RUNCARDLISTREQ=@RUNCARDLISTREQ,CIRCUITBOARDLISTREQ=@CIRCUITBOARDLISTREQ " +
-                                            " , LENGTH=@LENGTH WIDTH=@WIDTH, HEIGHT=@HEIGHT, WEIGHT=@WEIGHT " +
+                                            " , LENGTH=@LENGTH, WIDTH=@WIDTH, HEIGHT=@HEIGHT, WEIGHT=@WEIGHT " +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

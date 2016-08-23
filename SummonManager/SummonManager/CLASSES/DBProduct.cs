@@ -33,5 +33,21 @@ namespace SummonManager
             DA.DeleteCommand.ExecuteNonQuery();
             DA.DeleteCommand.Connection.Close();
         }
+
+        internal string GetProductName(string IDPRODUCT)
+        {
+            StringBuilder ct = new StringBuilder();
+            ct.AppendFormat(" select ISNULL(B.WPNAME,ISNULL(C.CABLENAME,ISNULL(D.ZHGUTNAME,'<нет имени. это странно>'))) pname from {0}..PRODUCTS A", Base.BaseName);
+            ct.AppendFormat(" left join WPNAMELIST B on A.ID = B.ID");
+            ct.AppendFormat(" left join CABLELIST C on A.ID = C.ID");
+            ct.AppendFormat(" left join ZHGUTLIST D on A.ID = D.ID");
+            ct.AppendFormat(" where A.ID = {0}", IDPRODUCT);
+            //ct.AppendFormat();
+            //ct.AppendFormat();
+            DA.SelectCommand.CommandText = ct.ToString();//"select * from " + Base.BaseName + "..SUMMON where IDWP = " + IDPRODUCT;
+            DS = new DataSet();
+            DA.Fill(DS, "t");
+            return DS.Tables["t"].Rows[0]["pname"].ToString();
+        }
     }
 }
