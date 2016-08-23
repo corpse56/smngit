@@ -190,3 +190,4 @@ d:\projects\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.exe.manif
 d:\projects\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.application
 d:\projects\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.exe
 d:\projects\smngit\SummonManager\SummonManager\obj\Debug\SummonManager.pdb
+f:\projects\haltura\sss\smngit\SummonManager\SummonManager\bin\Debug\SummonManager.exe.config
