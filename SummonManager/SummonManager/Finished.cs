@@ -87,6 +87,13 @@ namespace SummonManager
             dgSummon.Columns["paint_OTD"].Visible = false;
             dgSummon.Columns["paint_shemotehnik"].Visible = false;
 
+            dgSummon.Columns["remark_exist_paint"].Visible = false;
+            dgSummon.Columns["remark_exist"].Visible = false;
+            dgSummon.Columns["contract_type"].Visible = false;
+
+            
+                
+                
             //dgSummon.Columns["qty"].Width = 50;
             //dgSummon.Columns["cause"].Width = 130;
             //dgSummon.Columns["passd"].Width = 85;

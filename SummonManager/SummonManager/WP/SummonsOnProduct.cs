@@ -45,7 +45,13 @@ namespace SummonManager
                 return;
             }
             SummonVO SVO = SummonVO.SummonVOByID(dgSummOnProd.SelectedRows[0].Cells["ID"].Value.ToString());
+
+            
             ShowSummon ss = new ShowSummon(this.UVO, SVO);
+            if (SVO.STATUSNAME == "Завершено")
+            {
+                ss = new ShowSummon(new UVO_DIRECTOR(), SVO);
+            }
             ss.ShowDialog();
         }
 

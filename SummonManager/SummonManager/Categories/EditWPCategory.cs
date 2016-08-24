@@ -24,6 +24,7 @@ namespace SummonManager
             dgWP.Columns["ID"].Visible = false;
             dgWP.Columns["CATEGORYNAME"].HeaderText = "Наименование категории";
             dgWP.Columns["CATEGORYNAME"].Width = 200;
+            dgWP.Columns["srt"].Visible = false;
             switch (this.ENTITY)
             {
                 case "WPNAMELIST":
@@ -91,9 +92,10 @@ namespace SummonManager
                 new DBCategory(this.ENTITY).Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
                 MessageBox.Show("Категория успешно удалена!");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Вы не можете удалить эту категорию, так как существуют изделия с такой категорией!");
+
+                MessageBox.Show("Вы не можете удалить эту категорию, так как существуют изделия с такой категорией! "+ex.Message);
                 return;
             }
 

@@ -200,10 +200,13 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.cbCustDept.DisplayMember = "DEPTNAME";
             ss.cbCustDept.DataSource = dbc.GetDeptsByIDCustomer(ss.cbCustomers.SelectedValue.ToString());
             ss.cbCustDept.SelectedValue = ss.SVO.IDCUSTOMERDEPT;
-            if ((ss.Tag == null) )
+            if (ss.SVO.STATUSNAME != "Завершено")
             {
-                DBSummon dbs = new DBSummon();
-                dbs.AddSummonView(ss.SVO, this);
+                if ((ss.Tag == null))
+                {
+                    DBSummon dbs = new DBSummon();
+                    dbs.AddSummonView(ss.SVO, this);
+                }
             }
             //ss.dtpApproxAtLoad = ss.SVO.PASSDATE;
 

@@ -75,6 +75,30 @@ namespace SummonManager
 
             ss.chbBillPayed.Enabled = true;
             ss.chbDocsRdy.Enabled = true;
+
+            ss.pfPLANKA.Enabled = true;
+            ss.pfPLANKA.ACCESSMODE = "EDIT";
+            ss.pfPLANKA.RequiredEnabled = true;
+
+            ss.pfSERIAL.Enabled = true;
+            ss.pfSERIAL.ACCESSMODE = "EDIT";
+            ss.pfSERIAL.RequiredEnabled = true;
+
+            ss.pfPASSPORT.Enabled = true;
+            ss.pfPASSPORT.ACCESSMODE = "EDIT";
+            ss.pfPASSPORT.RequiredEnabled = true;
+
+            ss.pfMANUAL.Enabled = true;
+            ss.pfMANUAL.ACCESSMODE = "EDIT";
+            ss.pfMANUAL.RequiredEnabled = true;
+
+            ss.pfPACKINGLIST.Enabled = true;
+            ss.pfPACKINGLIST.ACCESSMODE = "EDIT";
+            ss.pfPACKINGLIST.RequiredEnabled = true;
+
+            ss.chbBillPayed.Enabled = true;
+            ss.chbDocsRdy.Enabled = true;
+
         }
         public override void MyRemarksWP(DataGridView dgWP)
         {

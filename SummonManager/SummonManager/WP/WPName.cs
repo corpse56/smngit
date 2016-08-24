@@ -382,6 +382,11 @@ namespace SummonManager
         }
         private void bEditSubCategory_Click(object sender, EventArgs e)//редактирование подкатегорий
         {
+            if (cbCAT.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите категорию!");
+                return;
+            }
             int id = (int)cbCAT.SelectedValue;
             if ((cbCAT.Text.ToUpper() == "ВСЕ") || (cbCAT.Text.ToUpper() == "НЕ ПРИСВОЕНО"))
             {
