@@ -145,7 +145,7 @@ namespace SummonManager
             wp.WPType                   = WPTYPE.CABLELIST;
             wp.WPName                   = tbName.Text;
             wp.IDCat                    = Convert.ToInt32(cbCategory.SelectedValue);
-            wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? 0 : (int)cbSubCategory.SelectedValue;
+            wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat) : (int)cbSubCategory.SelectedValue;
             wp.DecNum                   = tbDecNum.Text;
             wp.DIMENDRAWING             = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath; ;
             wp.CLENGTH                  = tbCLENGTH.Text;

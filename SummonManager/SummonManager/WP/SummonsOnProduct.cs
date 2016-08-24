@@ -48,5 +48,11 @@ namespace SummonManager
             ShowSummon ss = new ShowSummon(this.UVO, SVO);
             ss.ShowDialog();
         }
+
+        private void dgSummOnProd_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            button2_Click(sender, e);
+        }
     }
 }

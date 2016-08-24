@@ -71,7 +71,7 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("ID", ID);
             DA.InsertCommand.Parameters.AddWithValue("WPNAME", p.WPName);
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
-            DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", (p.IDSubCat == 0) ? 2 : p.IDSubCat);
+            DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", (p.IDSubCat == 0) ? new DBSubCategory().GetIDNotAwardedByIDCat(p.IDCat) : p.IDSubCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
             DA.InsertCommand.Parameters.AddWithValue("WIRINGDIAGRAM", ((object)p.WIRINGDIAGRAM) ?? DBNull.Value);
             DA.InsertCommand.Parameters.AddWithValue("TECHREQ", ((object)p.TECHREQ) ?? DBNull.Value);
@@ -186,7 +186,7 @@ namespace SummonManager
             wp.ID = (int)r["ID"];
             wp.WPName = r["WPNAME"].ToString();
             wp.IDCat= (int)r["IDCATEGORY"];
-            wp.IDSubCat = (r["IDSUBCAT"] == DBNull.Value) ? 2 : (int)r["IDSUBCAT"];
+            wp.IDSubCat = (r["IDSUBCAT"] == DBNull.Value) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat) : (int)r["IDSUBCAT"];
             wp.DecNum = r["DECNUM"].ToString();
             wp.WIRINGDIAGRAM = r["WIRINGDIAGRAM"].ToString();
             wp.TECHREQ = r["TECHREQ"].ToString();

@@ -136,7 +136,7 @@ namespace SummonManager
                 MessageBox.Show("Извещение не выбрано!");
                 return;
             }
-            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
+            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
             sh.ShowDialog();
         }
 

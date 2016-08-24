@@ -15,7 +15,7 @@ namespace SummonManager
         public string TECHREQPATH;
         public int QUANTITY;
         public DateTime PTIME;
-        public string ACCEPTANCE;
+        //public string ACCEPTANCE;
         public string IDCUSTOMER;
         public string CONTRACT;
         public string PAYSTATUS;
@@ -25,7 +25,7 @@ namespace SummonManager
         public string NOTE;
         public string NOTEPDB;
         public int IDSTATUS;
-        public int IDCURSTATUS;
+        //public int IDCURSTATUS;
         public DateTime CREATED;
         //fields for report
         
@@ -52,7 +52,7 @@ namespace SummonManager
             VO.FillReportFields();
 
             this.IDS = VO.IDS;
-            this.ACCEPTANCE = VO.ACCEPTANCE;
+            //this.ACCEPTANCE = VO.ACCEPTANCE;
             this.CONTRACT = VO.CONTRACT;
             this.CREATED = VO.CREATED;
             this.CUSTOMERCONTACT = VO.CUSTOMERCONTACT;
@@ -66,7 +66,7 @@ namespace SummonManager
             this.DEPTNAME = VO.DEPTNAME;
             this.DELIVERY = VO.DELIVERY;
             this.IDACCEPT = VO.IDACCEPT;
-            this.IDCURSTATUS = VO.IDCURSTATUS;
+            //this.IDCURSTATUS = VO.IDCURSTATUS;
             this.IDCUSTOMER = VO.IDCUSTOMER;
             this.PAYSTATUS = VO.PAYSTATUS;
             this.IDSTATUS = VO.IDSTATUS;

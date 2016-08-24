@@ -47,6 +47,7 @@
             this.dgSummOnProd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSummOnProd.Size = new System.Drawing.Size(459, 455);
             this.dgSummOnProd.TabIndex = 0;
+            this.dgSummOnProd.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummOnProd_CellMouseDoubleClick);
             // 
             // button1
             // 

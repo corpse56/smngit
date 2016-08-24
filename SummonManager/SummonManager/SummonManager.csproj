@@ -228,7 +228,6 @@
       <DependentUpon>CrystalReport2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CLASSES\DBMountingKit.cs" />
     <Compile Include="fAddCustomerDept.cs">
       <SubType>Form</SubType>
     </Compile>

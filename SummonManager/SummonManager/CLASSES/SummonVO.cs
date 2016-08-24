@@ -13,7 +13,7 @@ namespace SummonManager
         //public string WPNAME;
         public int QUANTITY;
         public DateTime PTIME;
-        public string ACCEPTANCE;
+        //public string ACCEPTANCE;
         public string IDCUSTOMER;
         public string CONTRACT;
         public string PAYSTATUS;
@@ -23,7 +23,7 @@ namespace SummonManager
         public string NOTE;
         public string NOTEPDB;
         public int IDSTATUS;
-        public int IDCURSTATUS;
+        //public int IDCURSTATUS;
         public DateTime CREATED;
         public int IDPACKING;
         public int IDCUSTOMERDEPT;
