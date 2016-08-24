@@ -9,12 +9,13 @@ using System.Windows.Forms;
 using SummonManager.CLASSES;
 using SummonManager.Controls;
 using SummonManager.CLASSES.IRole_namespace;
+using System.Data.SqlClient;
 
 namespace SummonManager
 {
-    public partial class NewZHGUT : Form
+    public partial class NewCABLE : Form
     {
-        ZhgutVO Clone, EditWP,ViewWP;
+        CableVO Clone, EditWP, ViewWP;
         //ACCESSMODE: NEW,NEWCLONE,EDIT
         //NEW - форма переделывается под добавление нового изделия; EDIT - форма переделывается под редактирование; NEWCLONE - добавление на основе существующего
         private string AccessMode = "";
@@ -24,7 +25,7 @@ namespace SummonManager
         bool RequireEnabled = false;
 
 
-        public NewZHGUT(ZhgutVO wp, string accessmode_, IRole uvo)
+        public NewCABLE(CableVO wp, string accessmode_, IRole uvo)
         {
             InitializeComponent();
 
@@ -58,7 +59,7 @@ namespace SummonManager
 
         }
 
-        private void InitVIEWONLY(ZhgutVO wp)
+        private void InitVIEWONLY(CableVO wp)
         {
             ViewWP = wp;
             RequireVisible = true;
@@ -70,29 +71,35 @@ namespace SummonManager
             cbSubCategory.Enabled = false;
             tbDecNum.Text = wp.DecNum;
             tbDecNum.Enabled = false;
+            tbCLENGTH.Text = wp.CLENGTH;
+            tbCLENGTH.Enabled = false;
             tbNote.Text = wp.NOTE;
             tbNote.Enabled = false;
-            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "ZHGUTPATH",null,wp);
+            tbCONNECTORS.Text = wp.CONECTORS;
+            tbCONNECTORS.Enabled = false;
+            pfDimDrawing.Init(wp.DIMENDRAWING, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "DIMENSIONALDRAWING_CABLE", null, wp);
 
         }
 
-        private void InitEDIT(ZhgutVO wp)
+        private void InitEDIT(CableVO wp)
         {
             EditWP = wp;
             tbName.Text = wp.WPName;
             cbCategory.SelectedValue = wp.IDCat;
             cbSubCategory.SelectedValue = wp.IDSubCat;
             tbDecNum.Text = wp.DecNum;
+            tbCONNECTORS.Text = wp.CONECTORS;
+            tbCLENGTH.Text = wp.CLENGTH;
             tbNote.Text = wp.NOTE;
 
-            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, "EDIT",UVO, "ZHGUTPATH",null,wp);
+            pfDimDrawing.Init(wp.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, "EDIT", UVO, "DIMENSIONALDRAWING_CABLE", null, wp);
 
 
             //AllocateRoles();
 
         }
 
-        private void InitNEWCLONE(ZhgutVO clone)
+        private void InitNEWCLONE(CableVO clone)
         {
             if (clone.WPName != "")
             {
@@ -107,7 +114,9 @@ namespace SummonManager
                 tbDecNum.Text = Clone.DecNum;
                 cbCategory.SelectedValue = Clone.IDCat;//CHECK!!!!!!!!
                 cbSubCategory.SelectedValue = Clone.IDSubCat;//CHECK!!!!!!!!!
-                pfZHGUTPATH.Init(Clone.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO,"ZHGUTPATH",null,Clone);
+                pfDimDrawing.Init(Clone.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "DIMENSIONALDRAWING_CABLE", null, Clone);
+                tbCONNECTORS.Text = Clone.CONECTORS;
+                tbCLENGTH.Text = Clone.CLENGTH;
                 tbNote.Text = Clone.NOTE;
                 //AllocateRoles();
             }
@@ -115,7 +124,7 @@ namespace SummonManager
 
         private void InitNEW()
         {
-            pfZHGUTPATH.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO,"ZHGUTPATH",null,new ZhgutVO());
+            pfDimDrawing.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO, "DIMENSIONALDRAWING_CABLE",null,new CableVO());
         }
 
 
@@ -126,40 +135,61 @@ namespace SummonManager
 
         private void button2_Click(object sender, EventArgs e)//save
         {
-            ZhgutVO wp = new ZhgutVO();
+            CableVO wp = new CableVO();
             if (tbName.Text == "")
             {
                 MessageBox.Show("Введите наименование!");
                 return;
             }
             
-            wp.WPType                   = WPTYPE.ZHGUTLIST;
+            wp.WPType                   = WPTYPE.CABLELIST;
             wp.WPName                   = tbName.Text;
             wp.IDCat                    = Convert.ToInt32(cbCategory.SelectedValue);
-            wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? 0 : (int)cbSubCategory.SelectedValue;
+            wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat) : (int)cbSubCategory.SelectedValue;
             wp.DecNum                   = tbDecNum.Text;
-            wp.ZHGUTPATH                = (pfZHGUTPATH.FullPath == "<нет>") ? null : pfZHGUTPATH.FullPath; ;
+            wp.DIMENDRAWING             = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath; ;
+            wp.CLENGTH                  = tbCLENGTH.Text;
+            wp.CONECTORS                = tbCONNECTORS.Text;
             wp.NOTE                     = tbNote.Text;
 
-            DBZhgutList dbc = new DBZhgutList();
+            DBCableList dbc = new DBCableList();
             if (AccessMode == "EDIT")
             {
                 wp.ID = EditWP.ID;
-                dbc.EditZhgut(wp);
+                dbc.EditCable(wp);
 
-                MessageBox.Show("Жгут успешно сохранён!");
+                MessageBox.Show("Кабель успешно сохранён!");
             }
             if ((AccessMode == "NEW") || (AccessMode == "NEWCLONE"))
             {
-                dbc.AddNewZhgut(wp);
-                MessageBox.Show("Жгут успешно добавлен!");
+                try
+                {
+                    dbc.AddNewCable(wp);
+                }
+                catch (SqlException exc)
+                {
+                    if (exc.Message.ToLower().Contains("unique"))
+                    {
+                        MessageBox.Show("Значение децимального номера должно быть уникальным среди всех кабелей!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка базы данных. Невозможно добавить кабель");
+                    }
+                    return;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка базы данных. Невозможно добавить кабель");
+                }
+                MessageBox.Show("Кабель успешно добавлен!");
             }
             Close();
         }
 
         private void NewWPN_Load(object sender, EventArgs e)
         {
-            DBCategory dbc = new DBCategory("ZHGUTLIST");
+            DBCategory dbc = new DBCategory("CABLELIST");
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "CATEGORYNAME";
             cbCategory.DataSource = dbc.GetAllExceptAll();

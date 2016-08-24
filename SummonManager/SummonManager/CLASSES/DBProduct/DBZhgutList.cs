@@ -134,7 +134,9 @@ namespace SummonManager.CLASSES
 
         internal void AddNewZhgut(ZhgutVO p)
         {
+            int ID = new DBProduct().AddNewProduct(p);
             DA.InsertCommand.Parameters.Clear();
+            DA.InsertCommand.Parameters.AddWithValue("ID", ID);
             DA.InsertCommand.Parameters.AddWithValue("ZHGUTNAME", p.WPName);
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
@@ -148,9 +150,9 @@ namespace SummonManager.CLASSES
             //wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
 
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..ZHGUTLIST " +
-                                           " (ZHGUTNAME,IDCATEGORY,IDSUBCAT,DECNUM,ZHGUTPATH, " +
+                                           " (ID,ZHGUTNAME,IDCATEGORY,IDSUBCAT,DECNUM,ZHGUTPATH, " +
                                            " NOTE,CREATED)      " +
-                                           " values (@ZHGUTNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@ZHGUTPATH, " +
+                                           " values (@ID,@ZHGUTNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@ZHGUTPATH, " +
                                            " @NOTE,@CREATED)      ";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();

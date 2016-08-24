@@ -221,6 +221,11 @@ namespace SummonManager.Controls
             //}
             SetRemarkIcons();
             SetYellow();
+            if ((this.ACCESSMODE == "NEW") || (this.ACCESSMODE == "NEWCLONE"))
+            {
+                bRemark.Enabled = false;
+            }
+
 
             //this.tbPath.
             //tbPath.Text = this.FileName;

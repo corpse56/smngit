@@ -86,5 +86,22 @@ namespace SummonManager
             DA.Fill(DS, "t");
             return DS.Tables["t"].Rows[0]["SUBCATNAME"].ToString();
         }
+
+        internal int GetIDNotAwardedByIDCat(int idcat)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("select ID from {0}..SUBCATEGORYLIST where IDCATEGORY = {1} and SUBCATNAME = '{2}'", Base.BaseName, idcat,"НЕ ПРИСВОЕНО");
+            DA.SelectCommand.CommandText = sb.ToString();
+            int i = DA.Fill(DS, "t");
+            if (i == 0)
+            {
+                return 102;//это ID подкатегории НЕ ПРИСВОЕНО в категории ВСЕ
+            }
+            else
+            {
+                return Convert.ToInt32(DS.Tables["t"].Rows[0]["ID"].ToString());
+            }
+        }
     }
 }

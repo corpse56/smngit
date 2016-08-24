@@ -95,11 +95,17 @@ namespace SummonManager
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("После удаления подкатегории все изделия этой подкатегории получат пустую подкатегорию! Вы действительно хотите удалить подкатегорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (dr == DialogResult.Yes)
+            //DialogResult dr = MessageBox.Show("После удаления подкатегории все изделия этой подкатегории получат пустую подкатегорию! Вы действительно хотите удалить подкатегорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            //if (dr == DialogResult.Yes)
+            try
             {
                 new DBSubCategory().Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
                 MessageBox.Show("Подкатегория успешно удалена!");
+            }
+            catch
+            {
+                MessageBox.Show("Вы не можете удалить эту подкатегорию, так как существуют изделия с такой подкатегорией!");
+                return;
             }
             dgWP.DataSource = new DBSubCategory().GetAll(IDCat);
 

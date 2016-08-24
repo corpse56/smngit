@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgWP = new System.Windows.Forms.DataGridView();
             this.cbPRODUCTTYPE = new SummonManager.RComboBox();
+            this.bSummonsOnProduct = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,11 +224,23 @@
             this.cbPRODUCTTYPE.TabIndex = 4;
             this.cbPRODUCTTYPE.SelectedIndexChanged += new System.EventHandler(this.cbPRODUCTTYPE_SelectedIndexChanged);
             // 
+            // bSummonsOnProduct
+            // 
+            this.bSummonsOnProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bSummonsOnProduct.Location = new System.Drawing.Point(491, 456);
+            this.bSummonsOnProduct.Name = "bSummonsOnProduct";
+            this.bSummonsOnProduct.Size = new System.Drawing.Size(176, 23);
+            this.bSummonsOnProduct.TabIndex = 13;
+            this.bSummonsOnProduct.Text = "Извещения по изделию";
+            this.bSummonsOnProduct.UseVisualStyleBackColor = true;
+            this.bSummonsOnProduct.Click += new System.EventHandler(this.bSummonsOnProduct_Click);
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 483);
+            this.Controls.Add(this.bSummonsOnProduct);
             this.Controls.Add(this.dgWP);
             this.Controls.Add(this.bView);
             this.Controls.Add(this.bEditSubCategory);
@@ -274,5 +287,6 @@
         private SummonManager.RComboBox cbPRODUCTTYPE;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgWP;
+        private System.Windows.Forms.Button bSummonsOnProduct;
     }
 }

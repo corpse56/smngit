@@ -43,14 +43,14 @@ namespace SummonManager
         {
             this.SaveSummon(SVO);
             DBCurStatus dbcs = new DBCurStatus();
-            dbcs.AddNewCurstatus(SVO.IDS, UVO.id);
+            dbcs.AddNewCurstatus(SVO.ID, UVO.id);
         }
 
         internal void SaveNewSummon(SummonVO SVO, IRole UVO)
         {
             this.SaveSummon(SVO);
             DBCurStatus dbcs = new DBCurStatus();
-            dbcs.SaveNewCurstatus(SVO.IDS, UVO.id);
+            dbcs.SaveNewCurstatus(SVO.ID, UVO.id);
         }
 
         internal SummonVO GetSummonByIDS(string ids)
@@ -82,7 +82,7 @@ namespace SummonManager
         {
             SummonVO SVO = new SummonVO();
             SVO.ID = dataRow["ID"].ToString();
-            SVO.ACCEPTANCE = dataRow["ACCEPTANCE"].ToString();
+            //SVO.ACCEPTANCE = dataRow["ACCEPTANCE"].ToString();
             SVO.CONTRACT = dataRow["CONTRACT"].ToString();
             SVO.CREATED = (DateTime)dataRow["CREATED"];
             SVO.DELIVERY = dataRow["DELIVERY"].ToString();
@@ -160,8 +160,8 @@ namespace SummonManager
         {
             DA.UpdateCommand.Parameters.Add("ID", SqlDbType.Int);
             DA.UpdateCommand.Parameters["ID"].Value = SVO.ID;
-            DA.UpdateCommand.Parameters.Add("ACCEPTANCE", SqlDbType.NVarChar);
-            DA.UpdateCommand.Parameters["ACCEPTANCE"].Value = SVO.ACCEPTANCE;
+            //DA.UpdateCommand.Parameters.Add("ACCEPTANCE", SqlDbType.NVarChar);
+            //DA.UpdateCommand.Parameters["ACCEPTANCE"].Value = SVO.ACCEPTANCE;
             DA.UpdateCommand.Parameters.Add("CONTRACT", SqlDbType.NVarChar);
             DA.UpdateCommand.Parameters["CONTRACT"].Value = SVO.CONTRACT;
             DA.UpdateCommand.Parameters.Add("CREATED", SqlDbType.DateTime);
@@ -247,7 +247,7 @@ namespace SummonManager
 
 
             //если что-то добавляешь сюда , то добавь и в функцию get summon by ids
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
             "NOTE=@NOTE,PTIME=@PTIME,QUANTITY=@QUANTITY,SHIPPING=@SHIPPING,SISP=@SISP,  " +
             " IDWP = @IDWP,IDACCEPT = @IDACCEPT,IDPACKING = @IDPACKING, CREATED = @CREATED " +
             " , IDCUSTOMERDEPT = @IDCUSTOMERDEPT, VIEWED = @VIEWED , IDS = @IDS " +
@@ -292,21 +292,23 @@ namespace SummonManager
             //                               " left join " + Base.BaseName + "..STATUSLIST B on A.STATID = B.ID " +
             //                               " left join " + Base.BaseName + "..USERS C on A.IDUSER = C.ID " +
             //                               " where A.IDS = '" + ids+"'";
-            DA.SelectCommand.CommandText = "select A.IDS ids,B.SNAME sts, A.CAUSE cause, A.CHANGED chg, C.FIO fio, DATEDIFF(minute, A.CHANGED,N.CHANGED) ts " +
+            DA.SelectCommand.CommandText = "select S.IDS ids,B.SNAME sts, A.CAUSE cause, A.CHANGED chg, C.FIO fio, DATEDIFF(minute, A.CHANGED,N.CHANGED) ts " +
              "from " + Base.BaseName + "..CURSTATUS A  " +
              " left join " + Base.BaseName + "..STATUSLIST B on A.STATID = B.ID  " +
              " left join " + Base.BaseName + "..USERS C on A.IDUSER = C.ID  " +
-             " left join " + Base.BaseName + "..CURSTATUS N on N.IDS = A.IDS  " +
-             " where A.IDS = '" + ids + "'  " +
+             " left join " + Base.BaseName + "..CURSTATUS N on N.IDSUMMON = A.IDSUMMON  " +
+             " left join " + Base.BaseName + "..SUMMON S on S.ID = A.IDSUMMON  " +
+             " where A.IDSUMMON = '" + ids + "'  " +
              " and N.ID = (select MIN(NN.ID) from " + Base.BaseName + "..CURSTATUS NN  " +
-			 "             where NN.IDS = A.IDS and NN.ID > A.ID) "+
+			 "             where NN.IDSUMMON = A.IDSUMMON and NN.ID > A.ID) "+
             "union all "+
-            "select A.IDS ids,B.SNAME sts, A.CAUSE cause, A.CHANGED chg, C.FIO fio , DATEDIFF(minute,  A.CHANGED,GETDATE()) ts "+
+            "select S.IDS ids,B.SNAME sts, A.CAUSE cause, A.CHANGED chg, C.FIO fio , DATEDIFF(minute,  A.CHANGED,GETDATE()) ts "+
             " from " + Base.BaseName + "..CURSTATUS A  " +
             "  left join " + Base.BaseName + "..STATUSLIST B on A.STATID = B.ID  " +
             "  left join " + Base.BaseName + "..USERS C on A.IDUSER = C.ID  " +
-            "  where A.IDS = '" + ids + "' " +
-            " and A.ID = (select MAX(ID) from  " + Base.BaseName + "..CURSTATUS AA where AA.IDS =  '" + ids + "')";
+             " left join " + Base.BaseName + "..SUMMON S on S.ID = A.IDSUMMON  " +
+            "  where A.IDSUMMON = '" + ids + "' " +
+            " and A.ID = (select MAX(ID) from  " + Base.BaseName + "..CURSTATUS AA where AA.IDSUMMON =  '" + ids + "')";
             DS = new DataSet();
             DA.Fill(DS, "t");
             return DS.Tables["t"];
@@ -322,18 +324,18 @@ namespace SummonManager
             "select distinct B.SNAME sts, DATEDIFF(minute, A.CHANGED,N.CHANGED) ts,B.ID id  " +
             "from " + Base.BaseName + "..STATUSLIST B  " +
             " join " + Base.BaseName + "..CURSTATUS A  on A.STATID = B.ID " +
-            " left join " + Base.BaseName + "..CURSTATUS N on N.IDS = A.IDS   " +
-            "left join " + Base.BaseName + "..SUMMON S on S.IDS = A.IDS   " +
+            " left join " + Base.BaseName + "..CURSTATUS N on N.IDSUMMON = A.IDSUMMON   " +
+            "left join " + Base.BaseName + "..SUMMON S on S.ID = A.IDSUMMON   " +
             "where cast(cast(S.CREATED as varchar(11)) as datetime) between '" + dstart.ToString("yyyyMMdd") + "' and  '" + dend.ToString("yyyyMMdd") + "' " +
             "and B.ID != 13 and B.ID != 14 and N.ID = (select MIN(NN.ID) from " + Base.BaseName + "..CURSTATUS NN   " +
-            "             where NN.IDS = A.IDS and NN.ID > A.ID)  " +
+            "             where NN.IDSUMMON = A.IDSUMMON and NN.ID > A.ID)  " +
             "union all  " +
             "select distinct B.SNAME sts,  DATEDIFF(minute,  A.CHANGED,GETDATE()) ts,B.ID id " +
             "from " + Base.BaseName + "..STATUSLIST B  " +
             " join " + Base.BaseName + "..CURSTATUS A  on A.STATID = B.ID   " +
-            " left join " + Base.BaseName + "..SUMMON S on S.IDS = A.IDS   " +
+            " left join " + Base.BaseName + "..SUMMON S on S.ID = A.IDSUMMON   " +
             "where cast(cast(S.CREATED as varchar(11)) as datetime) between '" + dstart.ToString("yyyyMMdd") + "' and  '" + dend.ToString("yyyyMMdd") + "' " +
-            " and B.ID != 13 and B.ID != 14 and A.ID = (select MAX(ID) from  " + Base.BaseName + "..CURSTATUS AA where AA.IDS =  A.IDS) " +
+            " and B.ID != 13 and B.ID != 14 and A.ID = (select MAX(ID) from  " + Base.BaseName + "..CURSTATUS AA where AA.IDSUMMON =  A.IDSUMMON) " +
             " ), " +
             " F1 as " +
             " ( " +
@@ -507,6 +509,20 @@ namespace SummonManager
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
+        }
+
+        internal object GetSummonsOnProductID(string IDPRODUCT)
+        {
+            StringBuilder ct = new StringBuilder();
+            ct.AppendFormat("select IDS,ID from {0}..SUMMON ", Base.BaseName);
+            //ct.AppendFormat("left join A");
+            ct.AppendFormat(" where IDWP = {0}", IDPRODUCT);
+            //ct.AppendFormat();
+            //ct.AppendFormat();
+            DA.SelectCommand.CommandText = ct.ToString();//"select * from " + Base.BaseName + "..SUMMON where IDWP = " + IDPRODUCT;
+            DS = new DataSet();
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
         }
     }
 }

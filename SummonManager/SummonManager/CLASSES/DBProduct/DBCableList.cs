@@ -136,7 +136,9 @@ namespace SummonManager.CLASSES
 
         internal void AddNewCable(CableVO p)
         {
+            int ID = new DBProduct().AddNewProduct(p);
             DA.InsertCommand.Parameters.Clear();
+            DA.InsertCommand.Parameters.AddWithValue("ID", ID);
             DA.InsertCommand.Parameters.AddWithValue("CABLENAME", p.WPName);
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
@@ -152,9 +154,9 @@ namespace SummonManager.CLASSES
             //wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
 
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CABLELIST " +
-                                           " (CABLENAME,IDCATEGORY,IDSUBCAT,DECNUM,DIMENSIONALDRAWING,CLENGTH,CONNECTORS, " +
+                                           " (ID,CABLENAME,IDCATEGORY,IDSUBCAT,DECNUM,DIMENSIONALDRAWING,CLENGTH,CONNECTORS, " +
                                            " NOTE,CREATED)      " +
-                                           " values (@CABLENAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@DIMENSIONALDRAWING,@CLENGTH,@CONNECTORS, " +
+                                           " values (@ID,@CABLENAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@DIMENSIONALDRAWING,@CLENGTH,@CONNECTORS, " +
                                            " @NOTE,@CREATED)      ";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();

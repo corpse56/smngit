@@ -29,9 +29,9 @@ namespace SummonManager
         public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
-        public int RefreshTime;
-        public static string ProgramVersion = "2.19";
-        public static int VersionNumber = 219;
+        public int RefreshTime
+        public static string ProgramVersion = "2.20";
+        public static int VersionNumber = 220;
         //работаем над системой замечаний
         public MainF()
         {
@@ -428,7 +428,8 @@ namespace SummonManager
                 MessageBox.Show("Извещение не выбрано!");
                 return;
             }
-            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
+
+            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
             sh.ShowDialog();
         }
         public void HistoryMenuItem_Click(object sender, EventArgs e)
@@ -447,7 +448,8 @@ namespace SummonManager
                 MessageBox.Show("Извещение не выбрано!");
                 return;
             }
-            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
+
+            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
             sh.ShowDialog();
         }
         private void просмотрИсторииСтатусовToolStripMenuItem_Click(object sender, EventArgs e)

@@ -145,7 +145,7 @@ namespace SummonManager
             {
                 return;
             }
-            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            /*if (cbPRODUCTTYPE.SelectedIndex == 0)
             {
                 DBWPName dbwp = new DBWPName();
                 if (dbwp.Exists(dgWP.SelectedRows[0].Cells["ID"].Value.ToString()))
@@ -154,6 +154,7 @@ namespace SummonManager
                     return;
                 }
                 dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                
             }
             if (cbPRODUCTTYPE.SelectedIndex == 1)
             {
@@ -188,6 +189,16 @@ namespace SummonManager
                 {
                     MessageBox.Show("Вы не можете удалить это наименование, поскольку оно присутствует в комплекте для изделия.");
                 }
+            }*/
+            try
+            {
+                DBProduct dbp = new DBProduct();
+                dbp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Вы не можете удалить этот продукт, так как существуют извещения на этот продукт!");
+                return;
             }
 
 
@@ -598,6 +609,18 @@ namespace SummonManager
             {
                 bEdit_Click(sender, e);
             }
+        }
+
+        private void bSummonsOnProduct_Click(object sender, EventArgs e)
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите изделие!");
+                return;
+            }
+            SummonsOnProduct sop = new SummonsOnProduct(dgWP.SelectedRows[0].Cells["ID"].Value.ToString(), this.UVO);
+            sop.ShowDialog();
+
         }
 
 

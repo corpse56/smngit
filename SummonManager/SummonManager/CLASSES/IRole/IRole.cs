@@ -235,7 +235,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             SVO = SummonVO.SummonVOByID(ss.SVO.ID);
             SVO.ID = ss.SVO.ID;
             SVO.IDS = ss.tbIDS.Text;
-            SVO.ACCEPTANCE = ss.cbAccept.Text;
+            //SVO.ACCEPTANCE = ss.cbAccept.Text;
             SVO.CONTRACT = ss.tbCONTRACT.Text;
             SVO.CREATED = ss.SVO.CREATED;
             SVO.DELIVERY = ss.tbDELIVERY.Text;

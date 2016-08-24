@@ -65,10 +65,13 @@ namespace SummonManager
 
         internal void AddNewWP(WPNameVO p)
         {
+            int ID = new DBProduct().AddNewProduct(p);
+
             DA.InsertCommand.Parameters.Clear();
+            DA.InsertCommand.Parameters.AddWithValue("ID", ID);
             DA.InsertCommand.Parameters.AddWithValue("WPNAME", p.WPName);
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
-            DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
+            DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", (p.IDSubCat == 0) ? new DBSubCategory().GetIDNotAwardedByIDCat(p.IDCat) : p.IDSubCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
             DA.InsertCommand.Parameters.AddWithValue("WIRINGDIAGRAM", ((object)p.WIRINGDIAGRAM) ?? DBNull.Value);
             DA.InsertCommand.Parameters.AddWithValue("TECHREQ", ((object)p.TECHREQ) ?? DBNull.Value);
@@ -117,13 +120,13 @@ namespace SummonManager
             //wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
 
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPNAMELIST "+
-                                           " (WPNAME,IDCATEGORY,IDSUBCAT,DECNUM,WIRINGDIAGRAM,TECHREQ,COMPOSITION,CONFIGURATION,DIMENSIONALDRAWING,SBORKA3D, " +
+                                           " (ID,WPNAME,IDCATEGORY,IDSUBCAT,DECNUM,WIRINGDIAGRAM,TECHREQ,COMPOSITION,CONFIGURATION,DIMENSIONALDRAWING,SBORKA3D, " +
                                            " MECHPARTS,SHILDS,PACKAGING,MANUAL,PASSPORT,PACKINGLIST,POWERSUPPLY,NOTE,CREATED,      "+
                                            " COMPOSITIONREQ,DIMENSIONALDRAWINGREQ,CONFIGURATIONREQ,WIRINGDIAGRAMREQ," +
                                            " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PACKAGINGREQ,PASSPORTREQ, "+
                                            " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ "+
                                            " ,LENGTH,WIDTH,HEIGHT,WEIGHT) " +
-                                           " values (@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
+                                           " values (@ID,@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
                                            " @MECHPARTS,@SHILDS,@PACKAGING,@MANUAL, @PASSPORT,@PACKINGLIST,@POWERSUPPLY,@NOTE,@CREATED,      " +
                                            " @COMPOSITIONREQ,@DIMENSIONALDRAWINGREQ,@CONFIGURATIONREQ,@WIRINGDIAGRAMREQ," +
                                            " @TECHREQREQ,@SBORKA3DREQ,@MECHPARTSREQ,@SHILDSREQ,@PACKAGINGREQ,@PASSPORTREQ, " +
@@ -183,7 +186,7 @@ namespace SummonManager
             wp.ID = (int)r["ID"];
             wp.WPName = r["WPNAME"].ToString();
             wp.IDCat= (int)r["IDCATEGORY"];
-            wp.IDSubCat = (r["IDSUBCAT"] == DBNull.Value) ? 0 : (int)r["IDSUBCAT"];
+            wp.IDSubCat = (r["IDSUBCAT"] == DBNull.Value) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat) : (int)r["IDSUBCAT"];
             wp.DecNum = r["DECNUM"].ToString();
             wp.WIRINGDIAGRAM = r["WIRINGDIAGRAM"].ToString();
             wp.TECHREQ = r["TECHREQ"].ToString();

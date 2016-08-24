@@ -359,30 +359,35 @@ namespace SummonManager
         public bool done = false;
         private bool Change()
         {
-            
 
-            if ((SVO.IDSTATUS == 12) && ((SVO.IDSUBST != 0) && (SVO.IDSUBST != 17)))
+            if (cbStatus.Text == "")
+            {
+                MessageBox.Show("Выберите статус!");
+                return false;
+            }
+            else if ((SVO.IDSTATUS == 12) && (SVO.IDSUBST != 0) && (SVO.IDSUBST != 17) && (UVO.Role != Roles.Admin))
             {
                 if (MessageBox.Show("Субстатус ещё не закрыт! Вы действительно хотите закрыть извещение?",
                     "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return false;
             }
-            else
-                if ((SVO.IDSTATUS == 12) && (!SVO.BILLPAYED))
+            else if ((SVO.IDSTATUS == 12) && (!SVO.BILLPAYED) && (UVO.Role != Roles.Admin))
             {
                 if (MessageBox.Show("Счёт по этому извещению ещё не оплачен! Вы действительно хотите закрыть извещение?",
                     "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
                     return false;
+                }
             }
-            else
-            if ((SVO.IDSTATUS == 12) && (!SVO.DOCSREADY))
+            else if ((SVO.IDSTATUS == 12) && (!SVO.DOCSREADY) && (UVO.Role != Roles.Admin))
             {
                 if (MessageBox.Show("Документы по этому извещению ещё не готовы! Вы действительно хотите закрыть извещение?",
                     "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
                     return false;
+                }
             }
-            else
-            if (MessageBox.Show("Вы действительно хотите изменить статус этого извещения на '" + cbStatus.Text + "'?",
+            else if (MessageBox.Show("Вы действительно хотите изменить статус этого извещения на '" + cbStatus.Text + "'?",
                 "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return false;

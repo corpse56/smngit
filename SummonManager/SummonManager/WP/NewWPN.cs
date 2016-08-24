@@ -284,6 +284,10 @@ namespace SummonManager
             }
             packCABLE.RequiredEnabled = true;
             packZHGUT.RequiredEnabled = true;
+            tbLENGTH.Enabled = false;
+            tbWIDTH.Enabled = false;
+            tbHEIGHT.Enabled = false;
+            tbWEIGHT.Enabled = false;
 
         }
 
@@ -335,6 +339,10 @@ namespace SummonManager
             }
             packCABLE.RequiredEnabled = true;
             packZHGUT.RequiredEnabled = true;
+            tbLENGTH.Enabled = false;
+            tbWIDTH.Enabled = false;
+            tbHEIGHT.Enabled = false;
+            tbWEIGHT.Enabled = false;
 
         }
 
@@ -404,7 +412,7 @@ namespace SummonManager
             //wp.ID = (int)r["ID"];
             wp.WPName                   = tbName.Text;
             wp.IDCat                    = Convert.ToInt32(cbCategory.SelectedValue);
-            wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? 0 : (int)cbSubCategory.SelectedValue;
+            wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat)  : (int)cbSubCategory.SelectedValue;
             wp.DecNum                   = tbDecNum.Text;
             wp.WIRINGDIAGRAM            = (pfWIRINGDIAGRAM.FullPath == "<нет>") ? null : pfWIRINGDIAGRAM.FullPath;
             wp.TECHREQ                  = (pfTECHREQ.FullPath == "<нет>") ? null : pfTECHREQ.FullPath;

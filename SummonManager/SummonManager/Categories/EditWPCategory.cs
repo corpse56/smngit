@@ -84,12 +84,19 @@ namespace SummonManager
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("После удаления категории все изделия этой категории получат категорию \"НЕ ПРИСВОЕНО\", а также удалятся все подкатегории этой категории! Вы действительно хотите удалить категорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (dr == DialogResult.Yes)
+            //DialogResult dr = MessageBox.Show("После удаления категории все изделия этой категории получат категорию \"НЕ ПРИСВОЕНО\", а также удалятся все подкатегории этой категории! Вы действительно хотите удалить категорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            //if (dr == DialogResult.Yes)
+            try
             {
                 new DBCategory(this.ENTITY).Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
                 MessageBox.Show("Категория успешно удалена!");
             }
+            catch
+            {
+                MessageBox.Show("Вы не можете удалить эту категорию, так как существуют изделия с такой категорией!");
+                return;
+            }
+
             dgWP.DataSource = new DBCategory(this.ENTITY).GetAll();
 
         }

@@ -14,15 +14,15 @@ namespace SummonManager
 
         public void AddNewCurstatus(string IDS,string iduser)
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                                           " values ('"+IDS+"',1,'Новое','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDSUMMON,STATID,CAUSE,CHANGED,IDUSER) " +
+                                           " values ("+IDS+",1,'Новое','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                                           " values ('" + IDS + "',3,'-','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDSUMMON,STATID,CAUSE,CHANGED,IDUSER) " +
+                                           " values (" + IDS + ",3,'-','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set IDSTATUS = 3 where IDS = '" + IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set IDSTATUS = 3 where ID = " + IDS;
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
@@ -31,12 +31,12 @@ namespace SummonManager
 
         internal void SaveNewCurstatus(string IDS, string iduser)
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                                           " values ('" + IDS + "',1,'Новое','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDSUMMON,STATID,CAUSE,CHANGED,IDUSER) " +
+                                           " values (" + IDS + ",1,'Новое','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set IDSTATUS = 1 where IDS = '" + IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set IDSTATUS = 1 where ID = " + IDS;
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
@@ -45,30 +45,30 @@ namespace SummonManager
 
         internal void ChangeStatus(SummonVO SVO, int idstatus, string cause, string iduser)
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                      " values ('" + SVO.IDS + "'," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDSUMMON,STATID,CAUSE,CHANGED,IDUSER) " +
+                      " values (" + SVO.ID + "," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.Parameters.Add("cause", System.Data.SqlDbType.NVarChar);
             DA.InsertCommand.Parameters["cause"].Value = cause;
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
             DA.InsertCommand.Parameters.Remove(DA.InsertCommand.Parameters["cause"]);
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = " + idstatus.ToString() + " where IDS = '" + SVO.IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = " + idstatus.ToString() + " where ID = " + SVO.ID;
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
         }
         internal void ChangeStatus(SummonVO SVO, int idstatus, string iduser)
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                      " values ('" + SVO.IDS + "'," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDSUMMON,STATID,CAUSE,CHANGED,IDUSER) " +
+                      " values (" + SVO.ID + "," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.Parameters.Add("cause", System.Data.SqlDbType.NVarChar);
             DA.InsertCommand.Parameters["cause"].Value = "";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
             DA.InsertCommand.Parameters.Remove(DA.InsertCommand.Parameters["cause"]);
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = " + idstatus.ToString() + " where IDS = '" + SVO.IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = " + idstatus.ToString() + " where ID = " + SVO.ID;
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
@@ -336,15 +336,15 @@ namespace SummonManager
 
         internal void ChangeSubStatus(SummonVO SVO, int idstatus, string iduser)
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSUBSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                      " values ('" + SVO.IDS + "'," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSUBSTATUS (IDSUMMON,STATID,CAUSE,CHANGED,IDUSER) " +
+                      " values (" + SVO.ID + "," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.Parameters.Add("cause", System.Data.SqlDbType.NVarChar);
             DA.InsertCommand.Parameters["cause"].Value = "";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
             DA.InsertCommand.Parameters.Remove(DA.InsertCommand.Parameters["cause"]);
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSUBST = " + idstatus.ToString() + " where IDS = '" + SVO.IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSUBST = " + idstatus.ToString() + " where ID = " + SVO.ID;
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();

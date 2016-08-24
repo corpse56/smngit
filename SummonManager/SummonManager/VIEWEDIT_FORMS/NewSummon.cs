@@ -133,7 +133,7 @@ namespace SummonManager
             SummonVO SVO = new SummonVO();
             SVO.ID = this.IDNEWSUMMON.ToString();
             SVO.IDS = dbs.GetNextNumber();
-            SVO.ACCEPTANCE = cbAccept.Text;
+            //SVO.ACCEPTANCE = cbAccept.Text;
             SVO.CONTRACT = tbCONTRACT.Text;
             SVO.CREATED = DateTime.Now;
             SVO.DELIVERY = tbDELIVERY.Text;
@@ -195,7 +195,7 @@ namespace SummonManager
             SummonVO SVO = new SummonVO();
             SVO.ID = this.IDNEWSUMMON.ToString();
             SVO.IDS = dbs.GetNextNumber();
-            SVO.ACCEPTANCE = cbAccept.Text;
+            //SVO.ACCEPTANCE = cbAccept.Text;
             SVO.CONTRACT = tbCONTRACT.Text;
             SVO.CREATED = DateTime.Now;
             SVO.DELIVERY = tbDELIVERY.Text;
