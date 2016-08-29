@@ -41,7 +41,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cbSubCategory = new System.Windows.Forms.ComboBox();
-            this.pfZHGUTPATH = new SummonManager.Controls.PathField();
+            this.pfDimDrawing = new SummonManager.Controls.PathField();
             this.SuspendLayout();
             // 
             // tbName
@@ -128,9 +128,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 135);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 16);
+            this.label5.Size = new System.Drawing.Size(133, 16);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Жгут изготовление";
+            this.label5.Text = "Сборочный чертёж";
             // 
             // label8
             // 
@@ -159,24 +159,26 @@
             this.cbSubCategory.Size = new System.Drawing.Size(601, 24);
             this.cbSubCategory.TabIndex = 4;
             // 
-            // pfZHGUTPATH
+            // pfDimDrawing
             // 
-            this.pfZHGUTPATH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfZHGUTPATH.FullPath = "<нет>";
-            this.pfZHGUTPATH.ISPATH = true;
-            this.pfZHGUTPATH.Location = new System.Drawing.Point(295, 129);
-            this.pfZHGUTPATH.Margin = new System.Windows.Forms.Padding(4);
-            this.pfZHGUTPATH.Name = "pfZHGUTPATH";
-            this.pfZHGUTPATH.Required = false;
-            this.pfZHGUTPATH.Size = new System.Drawing.Size(601, 32);
-            this.pfZHGUTPATH.TabIndex = 6;
+            this.pfDimDrawing.bDelVisible = true;
+            this.pfDimDrawing.bPathVisible = true;
+            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfDimDrawing.FullPath = "<нет>";
+            this.pfDimDrawing.ISPATH = false;
+            this.pfDimDrawing.Location = new System.Drawing.Point(295, 129);
+            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
+            this.pfDimDrawing.Name = "pfDimDrawing";
+            this.pfDimDrawing.Required = false;
+            this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
+            this.pfDimDrawing.TabIndex = 6;
             // 
             // NewZHGUT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 266);
-            this.Controls.Add(this.pfZHGUTPATH);
+            this.Controls.Add(this.pfDimDrawing);
             this.Controls.Add(this.cbSubCategory);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.label8);
@@ -216,7 +218,7 @@
         private System.Windows.Forms.TextBox tbNote;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
-        private SummonManager.Controls.PathField pfZHGUTPATH;
+        private SummonManager.Controls.PathField pfDimDrawing;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbSubCategory;
     }

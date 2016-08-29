@@ -77,7 +77,7 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
-            PreviousState ps = new PreviousState(dgSummon,"");
+            PreviousState ps = new PreviousState(dgSummon);
 
             ShowSummon ss = new ShowSummon(mf.UVO,svo);
             ss.ShowDialog();
@@ -264,7 +264,7 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
-            PreviousState ps = new PreviousState(dgSummon, "");
+            PreviousState ps = new PreviousState(dgSummon);
 
             ShowSummon ss = new ShowSummon(mf.UVO, svo);
             ss.ShowDialog();

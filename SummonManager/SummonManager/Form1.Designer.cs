@@ -81,6 +81,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bkwReloadData = new System.ComponentModel.BackgroundWorker();
+            this.tscbFilter = new System.Windows.Forms.ToolStripComboBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -305,6 +306,7 @@
             this.tsbRemark,
             this.toolStripSeparator2,
             this.toolStripLabel1,
+            this.tscbFilter,
             this.TStbs,
             this.toolStripSeparator3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -431,8 +433,8 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(198, 36);
-            this.toolStripLabel1.Text = "Фильтр по наименованию:";
+            this.toolStripLabel1.Size = new System.Drawing.Size(63, 36);
+            this.toolStripLabel1.Text = "Фильтр:";
             // 
             // TStbs
             // 
@@ -548,6 +550,17 @@
             // 
             this.bkwReloadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkwReloadData_DoWork);
             // 
+            // tscbFilter
+            // 
+            this.tscbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tscbFilter.Items.AddRange(new object[] {
+            "Наименование",
+            "Заказчик",
+            "№ извещения"});
+            this.tscbFilter.Name = "tscbFilter";
+            this.tscbFilter.Size = new System.Drawing.Size(121, 39);
+            this.tscbFilter.SelectedIndexChanged += new System.EventHandler(this.tscbFilter_SelectedIndexChanged);
+            // 
             // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -633,6 +646,7 @@
         private System.Windows.Forms.ToolStripButton tsbWorkPart;
         private System.ComponentModel.BackgroundWorker bkwReloadData;
         private System.Windows.Forms.ToolStripButton tsbRemark;
+        private System.Windows.Forms.ToolStripComboBox tscbFilter;
     }
 }
 

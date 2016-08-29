@@ -30,7 +30,7 @@ namespace SummonManager.CLASSES
         public string CONECTORS;
         public string CLENGTH;
         public string NOTE;
-
+        public string MECHPARTS;
 
         string IProduct.GetName()
         {
@@ -77,7 +77,7 @@ namespace SummonManager.CLASSES
 
             PathField pf = new PathField();
             pf.Tag = Roles.Inzhener;
-            pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "DIMENSIONALDRAWING",null,wp);
+            pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "DIMENSIONALDRAWING_CABLE",null,wp);
             pf.bDelVisible = false;
             pf.bPathVisible = false;
             pf.tbPath.Width += 150;
@@ -86,6 +86,18 @@ namespace SummonManager.CLASSES
             pf.bRemark.Visible = false;
 
             UIWorks.AddToTLP(TLP, "Сборочный чертёж", pf);
+
+            pf = new PathField();
+            pf.Tag = Roles.Inzhener;
+            pf.Init(wp.MECHPARTS, true, false, false, true, Roles.Inzhener, "VIEWONLY", UVO, "MECHPARTS_CABLE", null, wp);
+            pf.bDelVisible = false;
+            pf.bPathVisible = false;
+            pf.tbPath.Width += 150;
+            pf.tbPath.Dock = DockStyle.Fill;
+            pf.Dock = DockStyle.Fill;
+            pf.bRemark.Visible = false;
+
+            UIWorks.AddToTLP(TLP, "Проект мех. деталей", pf);
 
             tb = new TextBox();
             tb.Text = wp.CONECTORS;

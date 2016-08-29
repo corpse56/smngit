@@ -72,7 +72,7 @@ namespace SummonManager
             tbDecNum.Enabled = false;
             tbNote.Text = wp.NOTE;
             tbNote.Enabled = false;
-            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "ZHGUTPATH",null,wp);
+            pfDimDrawing.Init(wp.ZHGUTPATH, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "ZHGUTPATH",null,wp);
 
         }
 
@@ -85,7 +85,7 @@ namespace SummonManager
             tbDecNum.Text = wp.DecNum;
             tbNote.Text = wp.NOTE;
 
-            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, "EDIT",UVO, "ZHGUTPATH",null,wp);
+            pfDimDrawing.Init(wp.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, "EDIT",UVO, "ZHGUTPATH",null,wp);
 
 
             //AllocateRoles();
@@ -107,7 +107,7 @@ namespace SummonManager
                 tbDecNum.Text = Clone.DecNum;
                 cbCategory.SelectedValue = Clone.IDCat;//CHECK!!!!!!!!
                 cbSubCategory.SelectedValue = Clone.IDSubCat;//CHECK!!!!!!!!!
-                pfZHGUTPATH.Init(Clone.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO,"ZHGUTPATH",null,Clone);
+                pfDimDrawing.Init(Clone.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO,"ZHGUTPATH",null,Clone);
                 tbNote.Text = Clone.NOTE;
                 //AllocateRoles();
             }
@@ -115,7 +115,7 @@ namespace SummonManager
 
         private void InitNEW()
         {
-            pfZHGUTPATH.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO,"ZHGUTPATH",null,new ZhgutVO());
+            pfDimDrawing.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO,"ZHGUTPATH",null,new ZhgutVO());
         }
 
 
@@ -138,7 +138,7 @@ namespace SummonManager
             wp.IDCat                    = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat) : (int)cbSubCategory.SelectedValue;
             wp.DecNum                   = tbDecNum.Text;
-            wp.ZHGUTPATH                = (pfZHGUTPATH.FullPath == "<нет>") ? null : pfZHGUTPATH.FullPath; ;
+            wp.ZHGUTPATH                = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath; ;
             wp.NOTE                     = tbNote.Text;
 
             DBZhgutList dbc = new DBZhgutList();

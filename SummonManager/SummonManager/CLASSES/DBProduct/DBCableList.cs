@@ -48,6 +48,7 @@ namespace SummonManager.CLASSES
             CVO.IDSubCat = (r["IDSUBCAT"] == DBNull.Value) ? 0 : (int)r["IDSUBCAT"];
             CVO.DecNum = r["DECNUM"].ToString();
             CVO.DIMENDRAWING = r["DIMENSIONALDRAWING"].ToString();
+            CVO.MECHPARTS = r["MECHPARTS"].ToString();
             CVO.CONECTORS = r["CONNECTORS"].ToString();
             CVO.CLENGTH = r["CLENGTH"].ToString();
             CVO.NOTE = r["NOTE"].ToString();
@@ -119,13 +120,14 @@ namespace SummonManager.CLASSES
             DA.UpdateCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.UpdateCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
             DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MECHPARTS", ((object)p.MECHPARTS) ?? DBNull.Value);
             DA.UpdateCommand.Parameters.AddWithValue("CLENGTH", p.CLENGTH);
             DA.UpdateCommand.Parameters.AddWithValue("CONNECTORS", p.CONECTORS);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.NOTE);
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..CABLELIST set CABLENAME  = @CABLENAME,IDCATEGORY = @IDCATEGORY,IDSUBCAT = @IDSUBCAT,DECNUM = @DECNUM, " +
-                                           " DIMENSIONALDRAWING=@DIMENSIONALDRAWING, " +
+                                           " DIMENSIONALDRAWING=@DIMENSIONALDRAWING, MECHPARTS=@MECHPARTS, " +
                                            " CLENGTH=@CLENGTH, CONNECTORS=@CONNECTORS," +
                                            " NOTE = @NOTE   "+
                                             " where ID = @ID";
@@ -144,6 +146,7 @@ namespace SummonManager.CLASSES
             DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
             DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("MECHPARTS", ((object)p.MECHPARTS) ?? DBNull.Value);
             DA.InsertCommand.Parameters.AddWithValue("CLENGTH", p.CLENGTH);
             DA.InsertCommand.Parameters.AddWithValue("CONNECTORS", p.CONECTORS);
             DA.InsertCommand.Parameters.AddWithValue("NOTE", p.NOTE);
@@ -154,9 +157,9 @@ namespace SummonManager.CLASSES
             //wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
 
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CABLELIST " +
-                                           " (ID,CABLENAME,IDCATEGORY,IDSUBCAT,DECNUM,DIMENSIONALDRAWING,CLENGTH,CONNECTORS, " +
+                                           " (ID,CABLENAME,IDCATEGORY,IDSUBCAT,DECNUM,DIMENSIONALDRAWING,MECHPARTS,CLENGTH,CONNECTORS, " +
                                            " NOTE,CREATED)      " +
-                                           " values (@ID,@CABLENAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@DIMENSIONALDRAWING,@CLENGTH,@CONNECTORS, " +
+                                           " values (@ID,@CABLENAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@DIMENSIONALDRAWING,@MECHPARTS,@CLENGTH,@CONNECTORS, " +
                                            " @NOTE,@CREATED)      ";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
@@ -198,6 +201,16 @@ namespace SummonManager.CLASSES
             DA.DeleteCommand.Connection.Open();
             DA.DeleteCommand.ExecuteNonQuery();
             DA.DeleteCommand.Connection.Close();
+        }
+
+        internal bool ExistsInPackage(int IDWP, int IDCable)
+        {
+            DA.SelectCommand.CommandText = "select * from " +
+                                            Base.BaseName + "..CABLES A " +
+                                           " where A.IDWP = " + IDWP + " and A.IDCABLE = "+ IDCable;
+            DS = new DataSet();
+            int h = DA.Fill(DS, "t");
+            return (h > 0) ? true : false;
         }
     }
 }

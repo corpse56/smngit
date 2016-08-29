@@ -43,9 +43,13 @@
             this.bView = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgWP = new System.Windows.Forms.DataGridView();
-            this.cbPRODUCTTYPE = new SummonManager.RComboBox();
             this.bSummonsOnProduct = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.tbFilter = new System.Windows.Forms.TextBox();
+            this.cbPRODUCTTYPE = new SummonManager.RComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bClose
@@ -155,11 +159,11 @@
             // 
             // bEditSubCategory
             // 
-            this.bEditSubCategory.Location = new System.Drawing.Point(711, 65);
+            this.bEditSubCategory.Location = new System.Drawing.Point(491, 105);
             this.bEditSubCategory.Name = "bEditSubCategory";
-            this.bEditSubCategory.Size = new System.Drawing.Size(368, 23);
+            this.bEditSubCategory.Size = new System.Drawing.Size(214, 23);
             this.bEditSubCategory.TabIndex = 10;
-            this.bEditSubCategory.Text = "Редактировать подкатегории выбранной категории";
+            this.bEditSubCategory.Text = "Редактировать подкатегории";
             this.bEditSubCategory.UseVisualStyleBackColor = true;
             this.bEditSubCategory.Click += new System.EventHandler(this.bEditSubCategory_Click);
             // 
@@ -210,6 +214,51 @@
             this.dgWP.TabIndex = 12;
             this.dgWP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWP_CellDoubleClick);
             // 
+            // bSummonsOnProduct
+            // 
+            this.bSummonsOnProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bSummonsOnProduct.Location = new System.Drawing.Point(491, 456);
+            this.bSummonsOnProduct.Name = "bSummonsOnProduct";
+            this.bSummonsOnProduct.Size = new System.Drawing.Size(176, 23);
+            this.bSummonsOnProduct.TabIndex = 13;
+            this.bSummonsOnProduct.Text = "Извещения по изделию";
+            this.bSummonsOnProduct.UseVisualStyleBackColor = true;
+            this.bSummonsOnProduct.Click += new System.EventHandler(this.bSummonsOnProduct_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tbFilter);
+            this.groupBox1.Controls.Add(this.cbFilter);
+            this.groupBox1.Location = new System.Drawing.Point(886, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(315, 77);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Фильтр";
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "Наименование",
+            "Децимальный номер",
+            "ТТ"});
+            this.cbFilter.Location = new System.Drawing.Point(6, 21);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(303, 24);
+            this.cbFilter.TabIndex = 0;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
+            // 
+            // tbFilter
+            // 
+            this.tbFilter.Location = new System.Drawing.Point(6, 50);
+            this.tbFilter.Name = "tbFilter";
+            this.tbFilter.Size = new System.Drawing.Size(303, 22);
+            this.tbFilter.TabIndex = 1;
+            this.tbFilter.TextChanged += new System.EventHandler(this.tbFilter_TextChanged);
+            // 
             // cbPRODUCTTYPE
             // 
             this.cbPRODUCTTYPE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -224,22 +273,12 @@
             this.cbPRODUCTTYPE.TabIndex = 4;
             this.cbPRODUCTTYPE.SelectedIndexChanged += new System.EventHandler(this.cbPRODUCTTYPE_SelectedIndexChanged);
             // 
-            // bSummonsOnProduct
-            // 
-            this.bSummonsOnProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bSummonsOnProduct.Location = new System.Drawing.Point(491, 456);
-            this.bSummonsOnProduct.Name = "bSummonsOnProduct";
-            this.bSummonsOnProduct.Size = new System.Drawing.Size(176, 23);
-            this.bSummonsOnProduct.TabIndex = 13;
-            this.bSummonsOnProduct.Text = "Извещения по изделию";
-            this.bSummonsOnProduct.UseVisualStyleBackColor = true;
-            this.bSummonsOnProduct.Click += new System.EventHandler(this.bSummonsOnProduct_Click);
-            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 483);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bSummonsOnProduct);
             this.Controls.Add(this.dgWP);
             this.Controls.Add(this.bView);
@@ -264,6 +303,8 @@
             this.Text = "Справочник продуктов";
             this.Load += new System.EventHandler(this.WPName_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,5 +329,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgWP;
         private System.Windows.Forms.Button bSummonsOnProduct;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tbFilter;
+        private System.Windows.Forms.ComboBox cbFilter;
     }
 }

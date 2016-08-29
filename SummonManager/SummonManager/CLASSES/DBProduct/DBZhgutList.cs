@@ -196,6 +196,16 @@ namespace SummonManager.CLASSES
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
-        }        
+        }
+
+        internal bool ExistsInPackage(int IDWP, int IDZHGUT)
+        {
+            DA.SelectCommand.CommandText = "select * from " +
+                                            Base.BaseName + "..ZHGUTS A " +
+                                           " where A.IDWP = " + IDWP + " and A.IDZHGUT = " + IDZHGUT;
+            DS = new DataSet();
+            int h = DA.Fill(DS, "t");
+            return (h > 0) ? true : false;
+        }
     }
 }

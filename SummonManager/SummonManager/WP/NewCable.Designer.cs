@@ -43,9 +43,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cbSubCategory = new System.Windows.Forms.ComboBox();
-            this.pfDimDrawing = new SummonManager.Controls.PathField();
             this.tbCONNECTORS = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pfMechParts = new SummonManager.Controls.PathField();
+            this.pfDimDrawing = new SummonManager.Controls.PathField();
             this.SuspendLayout();
             // 
             // tbName
@@ -57,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(825, 289);
+            this.button1.Location = new System.Drawing.Point(821, 337);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -67,7 +69,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(734, 289);
+            this.button2.Location = new System.Drawing.Point(730, 337);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 2;
@@ -121,14 +123,14 @@
             // 
             // tbCLENGTH
             // 
-            this.tbCLENGTH.Location = new System.Drawing.Point(299, 197);
+            this.tbCLENGTH.Location = new System.Drawing.Point(295, 232);
             this.tbCLENGTH.Name = "tbCLENGTH";
             this.tbCLENGTH.Size = new System.Drawing.Size(601, 22);
             this.tbCLENGTH.TabIndex = 1;
             // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(299, 225);
+            this.tbNote.Location = new System.Drawing.Point(295, 260);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(601, 58);
@@ -155,7 +157,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 228);
+            this.label8.Location = new System.Drawing.Point(12, 263);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 16);
             this.label8.TabIndex = 3;
@@ -179,20 +181,9 @@
             this.cbSubCategory.Size = new System.Drawing.Size(601, 24);
             this.cbSubCategory.TabIndex = 4;
             // 
-            // pfDimDrawing
-            // 
-            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfDimDrawing.FullPath = "<нет>";
-            this.pfDimDrawing.Location = new System.Drawing.Point(295, 129);
-            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
-            this.pfDimDrawing.Name = "pfDimDrawing";
-            this.pfDimDrawing.Required = false;
-            this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
-            this.pfDimDrawing.TabIndex = 6;
-            // 
             // tbCONNECTORS
             // 
-            this.tbCONNECTORS.Location = new System.Drawing.Point(299, 169);
+            this.tbCONNECTORS.Location = new System.Drawing.Point(295, 204);
             this.tbCONNECTORS.Name = "tbCONNECTORS";
             this.tbCONNECTORS.Size = new System.Drawing.Size(601, 22);
             this.tbCONNECTORS.TabIndex = 1;
@@ -200,23 +191,62 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 172);
+            this.label4.Location = new System.Drawing.Point(12, 235);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Соединители";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 165);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(208, 16);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Проект механических деталей";
+            // 
+            // pfMechParts
+            // 
+            this.pfMechParts.bDelVisible = true;
+            this.pfMechParts.bPathVisible = true;
+            this.pfMechParts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfMechParts.FullPath = "<нет>";
+            this.pfMechParts.ISPATH = false;
+            this.pfMechParts.Location = new System.Drawing.Point(295, 165);
+            this.pfMechParts.Margin = new System.Windows.Forms.Padding(4);
+            this.pfMechParts.Name = "pfMechParts";
+            this.pfMechParts.Required = false;
+            this.pfMechParts.Size = new System.Drawing.Size(601, 32);
+            this.pfMechParts.TabIndex = 6;
+            // 
+            // pfDimDrawing
+            // 
+            this.pfDimDrawing.bDelVisible = true;
+            this.pfDimDrawing.bPathVisible = true;
+            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfDimDrawing.FullPath = "<нет>";
+            this.pfDimDrawing.ISPATH = false;
+            this.pfDimDrawing.Location = new System.Drawing.Point(295, 129);
+            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
+            this.pfDimDrawing.Name = "pfDimDrawing";
+            this.pfDimDrawing.Required = false;
+            this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
+            this.pfDimDrawing.TabIndex = 6;
+            // 
             // NewCABLE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 322);
+            this.ClientSize = new System.Drawing.Size(913, 378);
+            this.Controls.Add(this.pfMechParts);
             this.Controls.Add(this.pfDimDrawing);
             this.Controls.Add(this.cbSubCategory);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
@@ -262,5 +292,7 @@
         private System.Windows.Forms.ComboBox cbSubCategory;
         private System.Windows.Forms.TextBox tbCONNECTORS;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private SummonManager.Controls.PathField pfMechParts;
     }
 }

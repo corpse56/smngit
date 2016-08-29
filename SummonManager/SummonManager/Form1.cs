@@ -24,14 +24,14 @@ namespace SummonManager
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         
-        //public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.20";
-        public static int VersionNumber = 220;
+        public static string ProgramVersion = "2.21";
+        public static int VersionNumber = 221;
         //работаем над системой замечаний
         public MainF()
         {
@@ -181,7 +181,7 @@ namespace SummonManager
             sw.Start();
             if (!InitialReload)
             {
-                ps = new PreviousState(dgSummon,TStbs.Text);
+                ps = new PreviousState(dgSummon);
             }
             sw.Stop();
             //MessageBox.Show("ps = new PreviousState(dgSummon,TStbs.Text);" + (sw.ElapsedMilliseconds / 100.0).ToString());
@@ -342,7 +342,7 @@ namespace SummonManager
             InitialReload = false;
             sw.Stop();
             PaintDG();
-
+            TStbs_TextChanged(new object(),new EventArgs());
             //MessageBox.Show("ps.Restore();" + (sw.ElapsedMilliseconds / 100.0).ToString());
 
         }
@@ -479,7 +479,7 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
-            PreviousState ps = new PreviousState(dgSummon,TStbs.Text);
+            PreviousState ps = new PreviousState(dgSummon);
 
             ShowSummon ss = new ShowSummon(UVO, svo);
             ss.ShowDialog();
@@ -584,7 +584,8 @@ namespace SummonManager
                 this.BringToFront();
                 CheckVersion();
             }
-            
+            if (tscbFilter != null)
+                tscbFilter.SelectedIndex = 0;
 
         }
 
@@ -1179,6 +1180,25 @@ namespace SummonManager
 
         private void TStbs_TextChanged(object sender, EventArgs e)
         {
+            switch (tscbFilter.Text)
+            {
+                case "Наименование":
+                    FilterByColumnName("wname");
+                    break;
+                case "Заказчик":
+                    FilterByColumnName("cust");
+                    break;
+                case "№ извещения":
+                    FilterByColumnName("ids");
+                    break;
+                case "":
+                    return;
+                    
+            }
+        
+        }
+        private void FilterByColumnName(string cname)
+        {
             dgSummon.CurrentCell = null;
             foreach (DataGridViewRow r in dgSummon.Rows)
             {
@@ -1187,7 +1207,7 @@ namespace SummonManager
                     r.Visible = true;
                     continue;
                 }
-                if (!r.Cells["wname"].Value.ToString().ToLower().Contains(TStbs.Text.ToLower()))
+                if (!r.Cells[cname].Value.ToString().ToLower().Contains(TStbs.Text.ToLower()))
                 {
                     r.Visible = false;
                 }
@@ -1198,7 +1218,6 @@ namespace SummonManager
 
             }
         }
-
 
         private void dgSummon_SelectionChanged(object sender, EventArgs e)
         {
@@ -1378,6 +1397,11 @@ namespace SummonManager
                     e.PaintContent(e.CellBounds);
                 }
             }
+        }
+
+        private void tscbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TStbs_TextChanged(sender, e);
         }
 
        

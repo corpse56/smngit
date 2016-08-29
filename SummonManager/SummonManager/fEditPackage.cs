@@ -40,11 +40,21 @@ namespace SummonManager
             if (WPT == WPTYPE.CABLELIST)
             {
                 DBCableList dbc = new DBCableList();
+                if (dbc.ExistsInPackage(IDWP, pick.PickedID))
+                {
+                    MessageBox.Show("Такой кабель уже присутствует в комплекте!");
+                    return;
+                }
                 dbc.AddToPackage(IDWP, pick.PickedID, pick.getCount());
             }
             if (WPT == WPTYPE.ZHGUTLIST)
             {
                 DBZhgutList dbz = new DBZhgutList();
+                if (dbz.ExistsInPackage(IDWP, pick.PickedID))
+                {
+                    MessageBox.Show("Такой жгут уже присутствует в комплекте!");
+                    return;
+                }
                 dbz.AddToPackage(IDWP, pick.PickedID, pick.getCount());
             }
             fEditExtCablePack_Load(sender, e);

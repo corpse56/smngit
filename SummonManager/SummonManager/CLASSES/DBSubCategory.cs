@@ -96,7 +96,7 @@ namespace SummonManager
             int i = DA.Fill(DS, "t");
             if (i == 0)
             {
-                return 102;//это ID подкатегории НЕ ПРИСВОЕНО в категории ВСЕ
+                return 2;//это ID подкатегории НЕ ПРИСВОЕНО в категории ВСЕ
             }
             else
             {

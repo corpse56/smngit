@@ -78,7 +78,7 @@ namespace SummonManager
             tbCONNECTORS.Text = wp.CONECTORS;
             tbCONNECTORS.Enabled = false;
             pfDimDrawing.Init(wp.DIMENDRAWING, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "DIMENSIONALDRAWING_CABLE", null, wp);
-
+            pfMechParts.Init(wp.MECHPARTS, true, false, false, RequireEnabled, Roles.Constructor, "VIEWONLY", UVO, "MECHPARTS_CABLE", null, wp);
         }
 
         private void InitEDIT(CableVO wp)
@@ -93,6 +93,7 @@ namespace SummonManager
             tbNote.Text = wp.NOTE;
 
             pfDimDrawing.Init(wp.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, "EDIT", UVO, "DIMENSIONALDRAWING_CABLE", null, wp);
+            pfMechParts.Init(wp.MECHPARTS, true, true, false, RequireEnabled, Roles.Constructor, "EDIT", UVO, "MECHPARTS_CABLE", null, wp);
 
 
             //AllocateRoles();
@@ -115,6 +116,7 @@ namespace SummonManager
                 cbCategory.SelectedValue = Clone.IDCat;//CHECK!!!!!!!!
                 cbSubCategory.SelectedValue = Clone.IDSubCat;//CHECK!!!!!!!!!
                 pfDimDrawing.Init(Clone.DIMENDRAWING, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "DIMENSIONALDRAWING_CABLE", null, Clone);
+                pfMechParts.Init(Clone.MECHPARTS, true, true, false, RequireEnabled, Roles.Constructor, "NEWCLONE", UVO, "MECHPARTS_CABLE", null, Clone);
                 tbCONNECTORS.Text = Clone.CONECTORS;
                 tbCLENGTH.Text = Clone.CLENGTH;
                 tbNote.Text = Clone.NOTE;
@@ -124,7 +126,8 @@ namespace SummonManager
 
         private void InitNEW()
         {
-            pfDimDrawing.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO, "DIMENSIONALDRAWING_CABLE",null,new CableVO());
+            pfDimDrawing.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO, "DIMENSIONALDRAWING_CABLE", null, new CableVO());
+            pfMechParts.Init("", true, true, false, RequireEnabled, Roles.Constructor, "NEW", UVO, "MECHPARTS_CABLE", null, new CableVO());
         }
 
 
@@ -147,7 +150,8 @@ namespace SummonManager
             wp.IDCat                    = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat                 = (cbSubCategory.SelectedValue == null) ? new DBSubCategory().GetIDNotAwardedByIDCat(wp.IDCat) : (int)cbSubCategory.SelectedValue;
             wp.DecNum                   = tbDecNum.Text;
-            wp.DIMENDRAWING             = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath; ;
+            wp.DIMENDRAWING             = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath;
+            wp.MECHPARTS                = (pfMechParts.FullPath == "<нет>") ? null : pfMechParts.FullPath;
             wp.CLENGTH                  = tbCLENGTH.Text;
             wp.CONECTORS                = tbCONNECTORS.Text;
             wp.NOTE                     = tbNote.Text;

@@ -68,6 +68,8 @@ namespace SummonManager
 
         private void bAdd_Click(object sender, EventArgs e)//добавить
         {
+            PreviousState ps = new PreviousState(dgWP);
+            
             if (cbPRODUCTTYPE.SelectedIndex == 0)
             {
                 NewWPN nwp = new NewWPN(null, "NEW", UVO);
@@ -87,12 +89,15 @@ namespace SummonManager
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
+            ps.Restore();
 
             //MessageBox.Show("Успешно добавлено!");
         }
 
         private void bEdit_Click(object sender, EventArgs e)//редактировать
         {
+            PreviousState ps = new PreviousState(dgWP);
+
             if (cbPRODUCTTYPE.SelectedIndex == 0)
             {
                 NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "EDIT", UVO);
@@ -111,11 +116,13 @@ namespace SummonManager
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
-
+            ps.Restore();
         }
 
         private void bClone_Click(object sender, EventArgs e)//клонировать
         {
+            PreviousState ps = new PreviousState(dgWP);
+
             if (cbPRODUCTTYPE.SelectedIndex == 0)
             {
                 NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "NEWCLONE", UVO);
@@ -135,7 +142,7 @@ namespace SummonManager
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
-
+            ps.Restore();
         }
 
         private void bDelete_Click(object sender, EventArgs e)//удалить
@@ -197,12 +204,13 @@ namespace SummonManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Вы не можете удалить этот продукт, так как существуют извещения на этот продукт!");
+                MessageBox.Show("Вы не можете удалить этот продукт, так как существуют извещения на этот продукт, либо продукт является жгутом или кабелем и присутствует в комплетке рабочего изделия!");
                 return;
             }
 
-
+            PreviousState ps = new PreviousState(dgWP);
             cbCAT_SelectedIndexChanged(sender, e);
+            ps.Restore();
         }
         public void SetPermissions()
         {
@@ -262,7 +270,8 @@ namespace SummonManager
             {
                 SetPermissions();
             }
-
+            if (cbFilter != null)
+                cbFilter.SelectedIndex = 0;
 
         }
 
@@ -458,6 +467,8 @@ namespace SummonManager
        
         private void cbPRODUCTTYPE_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbFilter.SelectedIndex = 0;
+            tbFilter.Text = "";
             if (cbPRODUCTTYPE.SelectedIndex == 0) //"WPNAMELIST"
             {
                 DBCategory dbc = new DBCategory("WPNAMELIST");
@@ -478,7 +489,7 @@ namespace SummonManager
                 //cbCAT.SelectedValue = 2;
                 cbCAT.SelectedIndex = 0;
                 FillDGV_ZHGUTLIST();
-
+                
             }
             if (cbPRODUCTTYPE.SelectedIndex == 2) //"CABLELIST"
             {
@@ -628,6 +639,64 @@ namespace SummonManager
 
         }
 
+        private void tbFilter_TextChanged(object sender, EventArgs e)
+        {
+            switch (cbFilter.Text)
+            {
+                case "Наименование":
+                    if (cbPRODUCTTYPE.SelectedIndex == 0)
+                        FilterByColumnName("WPNAME");
+                    if (cbPRODUCTTYPE.SelectedIndex == 1)
+                        FilterByColumnName("ZHGUTNAME");
+                    if (cbPRODUCTTYPE.SelectedIndex == 2)
+                        FilterByColumnName("CABLENAME");
+                    break;
+                case "Децимальный номер":
+                    FilterByColumnName("DECNUM");
+                    break;
+                case "ТТ":
+                    if (cbPRODUCTTYPE.SelectedIndex == 0)
+                    {
+                        FilterByColumnName("TECHREQ");
+                    }
+                    else
+                    {
+                        MessageBox.Show("У данного типа продукции нету поля Технические требования");
+                        cbFilter.SelectedIndex = 0;
+                        return;
+                    }
+                    break;
+                case "":
+                    return;
+
+            }
+        }
+        private void FilterByColumnName(string cname)
+        {
+            dgWP.CurrentCell = null;
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                if (tbFilter.Text == "")
+                {
+                    r.Visible = true;
+                    continue;
+                }
+                if (!r.Cells[cname].Value.ToString().ToLower().Contains(tbFilter.Text.ToLower()))
+                {
+                    r.Visible = false;
+                }
+                else
+                {
+                    r.Visible = true;
+                }
+
+            }
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbFilter_TextChanged(sender, e);
+        }
 
 
 
